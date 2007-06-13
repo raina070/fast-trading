@@ -1,5 +1,4 @@
 = Sections =
 
-  * [Design Issues]
-
+  * [Design |Design Issues]
   * [Technical Documents]
