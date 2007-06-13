@@ -1,0 +1,11 @@
+Design Issues in FAST
+
+== BPEL Engine ==
+  Apache ODE
+
+== Component architecture ==
+  Apache Tuscany
+
+
+== IDE Proposed ==
+  Eclipse
