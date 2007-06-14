@@ -5,7 +5,7 @@ To see the concrete tools and platforms, see the [ImplementationChoices Implemen
 
 ==== Process orchestration and choreography ====
   
-  * *Orchestration* of a process is used to implement a certain protocol by a party. BPEL technology is the proposed candidate.
+  * *Orchestration* of a process is used to implement a certain protocol by a party. [BPEL BPEL technology] is the proposed candidate.
 
   * *Choreography* concept is understood as a decentralized way of coordination of different services or processes to fulfill a certain protocol. This can be seen as a contract upon the  protocol that different actors involved have signed. WS-CDL is the proposed candidate
 
@@ -14,4 +14,3 @@ To see the concrete tools and platforms, see the [ImplementationChoices Implemen
   Trading components can be designed according to [SCA Service Component Architecture].
 
   
-
