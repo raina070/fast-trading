@@ -1,10 +1,13 @@
+#labels Phase-Design
 Design Issues in FAST
 
 == BPEL Engine ==
-  Apache ODE
+  [ODE Apache ODE]
 
 == Component architecture ==
-  Apache Tuscany
+  Trading components can be designed according to [SCA Service Component Architecture].
+
+  Implementation recommended:  [Tuscany Apache Tuscany]
 
 
 == IDE Proposed ==
