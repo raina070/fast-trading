@@ -1,14 +1,15 @@
-#summary One-sentence summary of this page.
+#Summary of technological choices as basis of implementation.
 
-= Introduction =
-
-Add your content here.
+IDE proposed: Eclipse with [http://www.eclipse.org/stp/index.php SOA Tools Platform]
 
 
-= Details =
+=== Web Service Platform ===
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * Apache family of projects: Axis. 
+  (Guide on [http://tssblog.techtarget.com/index.php/mini-guide-apache-web-services/ Apache Web Services])
 
+=== BPEL Engine ===
+  * [http://incubator.apache.org/ode/jacob.html Apache ODE]
+
+=== SCA ===
+  * [http://incubator.apache.org/tuscany/ Apache Tuscany]
