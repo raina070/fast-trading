@@ -1,4 +1,4 @@
-#summary of technological choices as basis of implementation.
+#technological choices as basis of implementation.
 
 IDE proposed: Eclipse with [http://www.eclipse.org/stp/index.php SOA Tools Platform]
 
