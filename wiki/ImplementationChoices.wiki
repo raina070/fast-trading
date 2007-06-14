@@ -1,6 +1,6 @@
-#technological choices as basis of implementation#
+_Technological choices as basis of implementation_
 
-IDE proposed: Eclipse with [http://www.eclipse.org/stp/index.php SOA Tools Platform]
+*IDE proposed*: Eclipse with [http://www.eclipse.org/stp/index.php SOA Tools Platform]
 
 
 === Web Service Platform ===
