@@ -1,4 +1,5 @@
-= Sections =
+
+=== Main Pages ===
 
   * [Design Design Issues]
   * [Documents Technical Documents]
