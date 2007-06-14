@@ -1,0 +1,17 @@
+#labels Phase-Requirements
+The Service Component Architecture propose a set of standards to specify the idea of service component.
+
+==== References ====
+  * 
+  * [http://www.regdeveloper.co.uk/2007/03/13/sca_for_soa/ The Holy Grail of services: SCA] Article on benefits of SCA.
+  * [http://lresende.blogspot.com/ Blog of Luciano Resende] (Leader of Apache Tuscany project)
+
+==== Open Implementations ====
+Full list of [http://www.osoa.org/display/Main/Implementation+Examples+and+Tools SCA implementation examples and tools]
+  * Recomended: [http://incubator.apache.org/tuscany/ Apache Tuscany]
+
+
+
+
+
+
