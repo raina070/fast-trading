@@ -1,14 +1,13 @@
 #labels Phase-Design
 Design Issues in FAST
 
-==== BPEL Engine ====
+==== Process orchestration and choreography ====
+   
+   
   [ODE Apache ODE]
 
 ==== Component architecture ====
   Trading components can be designed according to [SCA Service Component Architecture].
 
-  Implementation recommended:  [Tuscany Apache Tuscany]
+  * Implementation recommended:  [Tuscany Apache Tuscany]
 
-
-==== IDE Proposed ====
-  Eclipse with [http://www.eclipse.org/stp/index.php SOA Tools Platform]
