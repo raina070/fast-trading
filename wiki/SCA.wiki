@@ -1,7 +1,7 @@
 #labels Phase-Requirements
 The Service Component Architecture propose a set of specifications on the idea of service component.
 
-=== SCA Specifications  ===
+==== Specifications  ====
   * [http://www.osoa.org/download/attachments/35/SCA_AssemblyModel_V100.pdf?version=1 SCA Assembly Model V1.00]
   * SCA Policy Framework V1.00
   * SCA Java Common Annotations and APIs V1.00
@@ -21,7 +21,6 @@ The Service Component Architecture propose a set of specifications on the idea o
 ==== Open Implementations ====
 Full list of [http://www.osoa.org/display/Main/Implementation+Examples+and+Tools SCA implementation examples and tools]
   * Recomended: [http://incubator.apache.org/tuscany/ Apache Tuscany]
-
 
 
 
