@@ -2,16 +2,16 @@
 The Service Component Architecture propose a set of specifications on the idea of service component.
 
 === SCA Specifications  ===
- [http://www.osoa.org/download/attachments/35/SCA_AssemblyModel_V100.pdf?version=1 SCA Assembly Model V1.00]
- SCA Policy Framework V1.00
- SCA Java Common Annotations and APIs V1.00
- SCA Java Component Implementation V1.00
- SCA Spring Component Implementation V1.00
- SCA BPEL Client and Implementation V1.00
- SCA C++ Client and Implementation V1.00
- SCA Web Services Binding V1.00
- SCA JMS Binding V1.00
- SCA EJB Session Bean Binding V1.00
+  * [http://www.osoa.org/download/attachments/35/SCA_AssemblyModel_V100.pdf?version=1 SCA Assembly Model V1.00]
+  * SCA Policy Framework V1.00
+  * SCA Java Common Annotations and APIs V1.00
+  * SCA Java Component Implementation V1.00
+  * SCA Spring Component Implementation V1.00
+  * SCA BPEL Client and Implementation V1.00
+  * SCA C++ Client and Implementation V1.00
+  * SCA Web Services Binding V1.00
+  * SCA JMS Binding V1.00
+  * SCA EJB Session Bean Binding V1.00
 
 ==== References ====
   * [http://www.osoa.org Open SOA].  Consortium of companies that has created the SCA set of standards.
@@ -21,7 +21,6 @@ The Service Component Architecture propose a set of specifications on the idea o
 ==== Open Implementations ====
 Full list of [http://www.osoa.org/display/Main/Implementation+Examples+and+Tools SCA implementation examples and tools]
   * Recomended: [http://incubator.apache.org/tuscany/ Apache Tuscany]
-
 
 
 
