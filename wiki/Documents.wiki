@@ -1,0 +1,5 @@
+#Technical documents related with the project
+
+=== Abstract Model ===
+
+The whole abstract foundation of FAST is described in the followinf technical report: [http://www.lsi.us.es/docs/doctorado/memorias/1152371045-Memoria-v2.pdf An Abstract Architecture for Service Trading]
