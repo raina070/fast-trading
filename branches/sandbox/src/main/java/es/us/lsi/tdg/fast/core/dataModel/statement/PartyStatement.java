@@ -3,6 +3,8 @@
  */
 package es.us.lsi.tdg.fast.core.dataModel.statement;
 
+import es.us.lsi.tdg.fast.core.dataModel.CounterParty;
+
 /**
  * In this case, an expression about the party is stated.
  * This statements can express either features or 
@@ -14,5 +16,5 @@ package es.us.lsi.tdg.fast.core.dataModel.statement;
  *
  */
 public interface PartyStatement extends Statement {
-
+	public CounterParty getCounterParty();
 }
