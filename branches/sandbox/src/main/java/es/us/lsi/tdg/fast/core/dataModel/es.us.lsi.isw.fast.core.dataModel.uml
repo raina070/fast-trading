@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:JavaProfile_1="http:///_aZXakH6MEdmbwasWWc4yvw.profile.uml2" xmlns:Omondo_1="http:///_zrN_0SUoEdmNXYQzyImvfA.profile.uml2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///_aZXakH6MEdmbwasWWc4yvw.profile.uml2 platform:/plugin/com.omondo.uml.core/profiles/Java.profile.uml#_aZhLlH6MEdmbwasWWc4yvw http:///_zrN_0SUoEdmNXYQzyImvfA.profile.uml2 platform:/plugin/com.omondo.uml.core/profiles/Omondo.profile.uml#_zrN_1iUoEdmNXYQzyImvfA">
+  <uml:Interface xmi:id="_1RY70DYrEdyZkpcsdVBcgQ" name="VariationPoint" clientDependency="_1ZS6oDYrEdyZkpcsdVBcgQ">
+    <ownedOperation xmi:id="_1YPxwDYrEdyZkpcsdVBcgQ" name="getTerm" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1YPxwjYrEdyZkpcsdVBcgQ" type="_1YPxwTYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+  </uml:Interface>
+  <uml:Interface xmi:id="_1YPxwTYrEdyZkpcsdVBcgQ" name="Term" clientDependency="_1a7SUDYrEdyZkpcsdVBcgQ _1bX-QTYrEdyZkpcsdVBcgQ">
+    <ownedOperation xmi:id="_1ayIYDYrEdyZkpcsdVBcgQ" name="getCounterParty" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1ayIYjYrEdyZkpcsdVBcgQ" type="_1ayIYTYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1ayIYzYrEdyZkpcsdVBcgQ" name="getConstraints" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1ayIaDYrEdyZkpcsdVBcgQ" type="_1ayIZzYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1ayIaTYrEdyZkpcsdVBcgQ" name="getCompensations" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1ayIajYrEdyZkpcsdVBcgQ" type="_1ayIZzYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+  </uml:Interface>
+  <uml:Interface xmi:id="_1afNcDYrEdyZkpcsdVBcgQ" name="ProposalPerformative"/>
+  <uml:Interface xmi:id="_1ayIYTYrEdyZkpcsdVBcgQ" name="CounterParty"/>
+  <uml:Interface xmi:id="_1ayIZzYrEdyZkpcsdVBcgQ" name="Set" isAbstract="true"/>
+  <uml:Class xmi:id="_1bhvQjYrEdyZkpcsdVBcgQ" name="AbstractDataComponentTest">
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1j3y9DYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1kKt4jYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1kdo0TYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1knZ0TYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1kxK0jYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1k6UwTYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Abstraction" href="platform:/resource/fast/fast.uml#_1lXAsDYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1lgxsTYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1lp7ojYrEdyZkpcsdVBcgQ"/>
+    <generalization xmi:id="_1jbHAzYrEdyZkpcsdVBcgQ" general="_1jbHAjYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1jk4ADYrEdyZkpcsdVBcgQ" name="testDelete" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1jk4ATYrEdyZkpcsdVBcgQ" name="testSet" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1jk4AjYrEdyZkpcsdVBcgQ" name="testPropertiesCount" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1jk4AzYrEdyZkpcsdVBcgQ" name="testIsProperty" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1jk4BDYrEdyZkpcsdVBcgQ" name="testGet" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1juB8DYrEdyZkpcsdVBcgQ" name="testGetAsString" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1juB8TYrEdyZkpcsdVBcgQ" name="testAbstractDatalComponent" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1juB8jYrEdyZkpcsdVBcgQ" name="testPropertyNames" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1juB8zYrEdyZkpcsdVBcgQ" name="testToString" visibility="public" concurrency="concurrent"/>
+  </uml:Class>
+  <uml:Package xmi:id="_1jbHATYrEdyZkpcsdVBcgQ" name="framework">
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1jbHAjYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1yePoDYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Interface" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1yePojYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1yoApDYrEdyZkpcsdVBcgQ"/>
+  </uml:Package>
+  <uml:Class xmi:id="_1jbHAjYrEdyZkpcsdVBcgQ" name="TestCase" isAbstract="true">
+    <generalization xmi:id="_1yePoTYrEdyZkpcsdVBcgQ" general="_1yePoDYrEdyZkpcsdVBcgQ"/>
+    <generalization xmi:id="_1yoAoDYrEdyZkpcsdVBcgQ" general="_1yePojYrEdyZkpcsdVBcgQ"/>
+    <ownedAttribute xmi:id="_1yoAoTYrEdyZkpcsdVBcgQ" name="fName" visibility="private" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1yoAojYrEdyZkpcsdVBcgQ" name="runBare" visibility="public" concurrency="concurrent" raisedException="_1rxKsTYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1yoAozYrEdyZkpcsdVBcgQ" name="run" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1yoApTYrEdyZkpcsdVBcgQ" type="_1yoApDYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1yoApjYrEdyZkpcsdVBcgQ" name="setName" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1yxKkDYrEdyZkpcsdVBcgQ" name="name" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1y67kDYrEdyZkpcsdVBcgQ" name="createResult" visibility="protected" concurrency="concurrent">
+      <ownedParameter xmi:id="_1y67kTYrEdyZkpcsdVBcgQ" type="_1yoApDYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1y67kjYrEdyZkpcsdVBcgQ" name="tearDown" visibility="protected" concurrency="concurrent" raisedException="_1y67kzYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1y67lDYrEdyZkpcsdVBcgQ" name="toString" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1y67lTYrEdyZkpcsdVBcgQ" type="_1j3y8zYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1y67ljYrEdyZkpcsdVBcgQ" name="runTest" visibility="protected" concurrency="concurrent" raisedException="_1rxKsTYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1y67lzYrEdyZkpcsdVBcgQ" name="getName" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1y67mDYrEdyZkpcsdVBcgQ" type="_1j3y8zYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1y67mTYrEdyZkpcsdVBcgQ" name="TestCase" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1y67mjYrEdyZkpcsdVBcgQ" name="name" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1y67mzYrEdyZkpcsdVBcgQ" name="TestCase" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1y67nDYrEdyZkpcsdVBcgQ" name="run" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1zEskDYrEdyZkpcsdVBcgQ" name="result" type="_1yoApDYrEdyZkpcsdVBcgQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1zEskTYrEdyZkpcsdVBcgQ" name="setUp" visibility="protected" concurrency="concurrent" raisedException="_1y67kzYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1zEskjYrEdyZkpcsdVBcgQ" name="countTestCases" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1zEskzYrEdyZkpcsdVBcgQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+  </uml:Class>
+  <uml:Class xmi:id="_1juB9DYrEdyZkpcsdVBcgQ" name="AbstractDataComponent" clientDependency="_1szsgjYrEdyZkpcsdVBcgQ _1s9dgjYrEdyZkpcsdVBcgQ _1tHOgTYrEdyZkpcsdVBcgQ _1tQYcjYrEdyZkpcsdVBcgQ _1taJcjYrEdyZkpcsdVBcgQ">
+    <ownedAttribute xmi:id="_1p_CADYrEdyZkpcsdVBcgQ" name="properties" visibility="protected" type="_1qIL8DYrEdyZkpcsdVBcgQ" association="_1sqilzYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1qR88TYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1qR88DYrEdyZkpcsdVBcgQ"/>
+      <qualifier xmi:id="_1szsgDYrEdyZkpcsdVBcgQ" name="key" type="_1qIL8DYrEdyZkpcsdVBcgQ"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_1p_CAjYrEdyZkpcsdVBcgQ" name="delete" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1p_CAzYrEdyZkpcsdVBcgQ" name="propertyName" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+      <ownedParameter xmi:id="_1p_CBDYrEdyZkpcsdVBcgQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1p_CBTYrEdyZkpcsdVBcgQ" name="set" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1p_CBjYrEdyZkpcsdVBcgQ" name="propertyName" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+      <ownedParameter xmi:id="_1qIL8TYrEdyZkpcsdVBcgQ" name="propertyValue" type="_1qIL8DYrEdyZkpcsdVBcgQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1qIL8jYrEdyZkpcsdVBcgQ" name="getAsString" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1qIL8zYrEdyZkpcsdVBcgQ" name="propertyName" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+      <ownedParameter xmi:id="_1qIL9DYrEdyZkpcsdVBcgQ" type="_1j3y8zYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1qIL9TYrEdyZkpcsdVBcgQ" name="propertiesCount" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1qIL9jYrEdyZkpcsdVBcgQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1qIL9zYrEdyZkpcsdVBcgQ" name="get" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1qIL-DYrEdyZkpcsdVBcgQ" name="propertyName" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+      <ownedParameter xmi:id="_1qIL-TYrEdyZkpcsdVBcgQ" type="_1qIL8DYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1qIL-jYrEdyZkpcsdVBcgQ" name="isProperty" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1qIL-zYrEdyZkpcsdVBcgQ" name="propertyName" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+      <ownedParameter xmi:id="_1qIL_DYrEdyZkpcsdVBcgQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1qIL_TYrEdyZkpcsdVBcgQ" name="propertyNames" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1qIL_jYrEdyZkpcsdVBcgQ" type="_1ayIZzYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1qIL_zYrEdyZkpcsdVBcgQ" name="AbstractDataComponent" visibility="public" concurrency="concurrent"/>
+  </uml:Class>
+  <uml:Class xmi:id="_1j3y8TYrEdyZkpcsdVBcgQ" name="Boolean" isLeaf="true"/>
+  <uml:Class xmi:id="_1j3y8jYrEdyZkpcsdVBcgQ" name="HashSet"/>
+  <uml:Class xmi:id="_1j3y8zYrEdyZkpcsdVBcgQ" name="String" isLeaf="true"/>
+  <uml:Interface xmi:id="_1l9doDYrEdyZkpcsdVBcgQ" name="Compensation"/>
+  <uml:Interface xmi:id="_1l9doTYrEdyZkpcsdVBcgQ" name="Constraint"/>
+  <uml:Interface xmi:id="_1mGnkDYrEdyZkpcsdVBcgQ" name="Agreement"/>
+  <uml:Interface xmi:id="_1mQYkDYrEdyZkpcsdVBcgQ" name="Proposal">
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1maJkzYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Abstraction" href="platform:/resource/fast/fast.uml#_1mjTgjYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1m2OcTYrEdyZkpcsdVBcgQ"/>
+    <generalization xmi:id="_1mQYkTYrEdyZkpcsdVBcgQ" general="_1mGnkDYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1mQYkjYrEdyZkpcsdVBcgQ" name="getVariationPoints" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1maJkDYrEdyZkpcsdVBcgQ" type="_1ayIZzYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1maJkTYrEdyZkpcsdVBcgQ" name="getPerformative" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1maJkjYrEdyZkpcsdVBcgQ" type="_1afNcDYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+  </uml:Interface>
+  <uml:Interface xmi:id="_1m__cjYrEdyZkpcsdVBcgQ" name="EndPoint" clientDependency="_1nJwdDYrEdyZkpcsdVBcgQ">
+    <ownedOperation xmi:id="_1nJwcDYrEdyZkpcsdVBcgQ" name="getAddress" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1nJwczYrEdyZkpcsdVBcgQ" type="_1nJwcjYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+  </uml:Interface>
+  <uml:Class xmi:id="_1nJwcjYrEdyZkpcsdVBcgQ" name="URI" isLeaf="true"/>
+  <uml:Class xmi:id="_1nS6YjYrEdyZkpcsdVBcgQ" name="WSAddressingEndPoint" isLeaf="true">
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1oChQDYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1oMSQjYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1oWDQjYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1ofNMTYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:Usage" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1oo-MjYrEdyZkpcsdVBcgQ"/>
+    <clientDependency xmi:type="uml:InterfaceRealization" href="platform:/resource/fast/fast.uml#_1o75IDYrEdyZkpcsdVBcgQ"/>
+    <generalization xmi:id="_1ncrYDYrEdyZkpcsdVBcgQ" general="_1m__cjYrEdyZkpcsdVBcgQ"/>
+    <ownedAttribute xmi:id="_1ncrYTYrEdyZkpcsdVBcgQ" name="address" visibility="private" type="_1nJwcjYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1nmcZzYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1nmcZjYrEdyZkpcsdVBcgQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_1ncrYjYrEdyZkpcsdVBcgQ" name="properties" visibility="package" type="_1juB9DYrEdyZkpcsdVBcgQ" association="_1n5XUDYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1nvmUTYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1nvmUDYrEdyZkpcsdVBcgQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_1nmcYDYrEdyZkpcsdVBcgQ" name="parameters" visibility="package" type="_1juB9DYrEdyZkpcsdVBcgQ" association="_1n5XVDYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1nvmUzYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1nvmUjYrEdyZkpcsdVBcgQ"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_1nmcYTYrEdyZkpcsdVBcgQ" name="getAddress" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1nmcYjYrEdyZkpcsdVBcgQ" type="_1nJwcjYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1nmcYzYrEdyZkpcsdVBcgQ" name="WSAddressingEndPoint" visibility="public" concurrency="concurrent" raisedException="_1nmcZTYrEdyZkpcsdVBcgQ">
+      <ownedParameter xmi:id="_1nmcZDYrEdyZkpcsdVBcgQ" name="uri" type="_1j3y8zYrEdyZkpcsdVBcgQ"/>
+    </ownedOperation>
+  </uml:Class>
+  <uml:Class xmi:id="_1nmcZTYrEdyZkpcsdVBcgQ" name="URISyntaxException"/>
+  <uml:Association xmi:id="_1n5XUDYrEdyZkpcsdVBcgQ" memberEnd="_1ncrYjYrEdyZkpcsdVBcgQ _1n5XUTYrEdyZkpcsdVBcgQ">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_1n5XUTYrEdyZkpcsdVBcgQ" name="" type="_1nS6YjYrEdyZkpcsdVBcgQ" association="_1n5XUDYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1n5XUjYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1n5XUzYrEdyZkpcsdVBcgQ"/>
+    </ownedEnd>
+  </uml:Association>
+  <uml:Association xmi:id="_1n5XVDYrEdyZkpcsdVBcgQ" memberEnd="_1nmcYDYrEdyZkpcsdVBcgQ _1n5XVTYrEdyZkpcsdVBcgQ">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_1n5XVTYrEdyZkpcsdVBcgQ" name="" type="_1nS6YjYrEdyZkpcsdVBcgQ" association="_1n5XVDYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1n5XVjYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1n5XVzYrEdyZkpcsdVBcgQ"/>
+    </ownedEnd>
+  </uml:Association>
+  <uml:Interface xmi:id="_1p_CATYrEdyZkpcsdVBcgQ" name="Map" isAbstract="true"/>
+  <uml:Class xmi:id="_1qIL8DYrEdyZkpcsdVBcgQ" name="Object">
+    <ownedOperation xmi:id="_1rxKsDYrEdyZkpcsdVBcgQ" name="finalize" visibility="protected" concurrency="concurrent" raisedException="_1rxKsTYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1rxKsjYrEdyZkpcsdVBcgQ" name="wait" visibility="public" isLeaf="true" concurrency="concurrent" raisedException="_1sEFoDYrEdyZkpcsdVBcgQ">
+      <ownedParameter xmi:id="_1r67sDYrEdyZkpcsdVBcgQ" name="timeout">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_1r67sTYrEdyZkpcsdVBcgQ" name="nanos">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sEFoTYrEdyZkpcsdVBcgQ" name="notifyAll" visibility="public" isLeaf="true" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1sN2oTYrEdyZkpcsdVBcgQ" name="getClass" visibility="public" isLeaf="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_1sN2pDYrEdyZkpcsdVBcgQ" type="_1sN2ozYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sN2pTYrEdyZkpcsdVBcgQ" name="Object" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1sXnoDYrEdyZkpcsdVBcgQ" name="&lt;clinit>" visibility="package" isStatic="true" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1sXnoTYrEdyZkpcsdVBcgQ" name="wait" visibility="public" isLeaf="true" concurrency="concurrent" raisedException="_1sEFoDYrEdyZkpcsdVBcgQ">
+      <ownedParameter xmi:id="_1sXnozYrEdyZkpcsdVBcgQ" name="timeout">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sXnpDYrEdyZkpcsdVBcgQ" name="toString" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1sgxkDYrEdyZkpcsdVBcgQ" type="_1j3y8zYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sgxkTYrEdyZkpcsdVBcgQ" name="hashCode" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1sgxkzYrEdyZkpcsdVBcgQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sgxlDYrEdyZkpcsdVBcgQ" name="notify" visibility="public" isLeaf="true" concurrency="concurrent"/>
+    <ownedOperation xmi:id="_1sgxljYrEdyZkpcsdVBcgQ" name="clone" visibility="protected" concurrency="concurrent" raisedException="_1sqikDYrEdyZkpcsdVBcgQ">
+      <ownedParameter xmi:id="_1sgxmDYrEdyZkpcsdVBcgQ" type="_1qIL8DYrEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sqikTYrEdyZkpcsdVBcgQ" name="wait" visibility="public" isLeaf="true" concurrency="concurrent" raisedException="_1sEFoDYrEdyZkpcsdVBcgQ"/>
+    <ownedOperation xmi:id="_1sqikjYrEdyZkpcsdVBcgQ" name="equals" visibility="public" concurrency="concurrent">
+      <ownedParameter xmi:id="_1sqikzYrEdyZkpcsdVBcgQ" name="obj" type="_1qIL8DYrEdyZkpcsdVBcgQ"/>
+      <ownedParameter xmi:id="_1sqilDYrEdyZkpcsdVBcgQ" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_1sqilTYrEdyZkpcsdVBcgQ" name="registerNatives" visibility="private" isStatic="true" concurrency="concurrent"/>
+  </uml:Class>
+  <uml:Class xmi:id="_1rxKsTYrEdyZkpcsdVBcgQ" name="Throwable"/>
+  <uml:Class xmi:id="_1sEFoDYrEdyZkpcsdVBcgQ" name="InterruptedException"/>
+  <uml:Class xmi:id="_1sN2ozYrEdyZkpcsdVBcgQ" name="Class" isLeaf="true"/>
+  <uml:Class xmi:id="_1sqikDYrEdyZkpcsdVBcgQ" name="CloneNotSupportedException"/>
+  <uml:Association xmi:id="_1sqilzYrEdyZkpcsdVBcgQ" memberEnd="_1p_CADYrEdyZkpcsdVBcgQ _1sqimDYrEdyZkpcsdVBcgQ">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_1sqimDYrEdyZkpcsdVBcgQ" name="" type="_1juB9DYrEdyZkpcsdVBcgQ" association="_1sqilzYrEdyZkpcsdVBcgQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1sqimTYrEdyZkpcsdVBcgQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1sqimjYrEdyZkpcsdVBcgQ"/>
+    </ownedEnd>
+  </uml:Association>
+  <uml:Class xmi:id="_1szsgTYrEdyZkpcsdVBcgQ" name="HashMap"/>
+  <uml:Class xmi:id="_1yePoDYrEdyZkpcsdVBcgQ" name="Assert"/>
+  <uml:Interface xmi:id="_1yePojYrEdyZkpcsdVBcgQ" name="Test" isAbstract="true"/>
+  <uml:Class xmi:id="_1yoApDYrEdyZkpcsdVBcgQ" name="TestResult"/>
+  <uml:Class xmi:id="_1y67kzYrEdyZkpcsdVBcgQ" name="Exception"/>
+  <uml:Interface xmi:id="_1ZBYYDYsEdyZkpcsdVBcgQ" name="Language"/>
+  <uml:Package xmi:id="_0uxPkDYuEdyZkpcsdVBcgQ" name="tradingprotocol">
+    <packagedElement xmi:type="uml:Interface" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_0uxPkTYuEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_ZYEHsDYvEdyZkpcsdVBcgQ" name="TradingProtocolStage" clientDependency="_i7yEMDYwEdyZkpcsdVBcgQ">
+      <ownedOperation xmi:id="_FqcboDYxEdyZkpcsdVBcgQ" name="getTradingProtocol" visibility="public" isAbstract="true" concurrency="concurrent">
+        <ownedParameter xmi:id="_qsWyoDYyEdyZkpcsdVBcgQ" type="_0uxPkTYuEdyZkpcsdVBcgQ" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_63pyADYxEdyZkpcsdVBcgQ" name="Choreography"/>
+  </uml:Package>
+  <uml:Interface xmi:id="_0uxPkTYuEdyZkpcsdVBcgQ" name="TradingProtocol" clientDependency="_VYAEMTYyEdyZkpcsdVBcgQ">
+    <ownedOperation xmi:id="_OWtBIDYxEdyZkpcsdVBcgQ" name="getStages" visibility="public" isAbstract="true" concurrency="concurrent">
+      <ownedParameter xmi:id="_VYAEMDYyEdyZkpcsdVBcgQ" type="_6Ga0QDYvEdyZkpcsdVBcgQ" direction="return"/>
+    </ownedOperation>
+  </uml:Interface>
+  <uml:Package xmi:id="_1ayIZTYrEdyZkpcsdVBcgQ" name="util">
+    <packagedElement xmi:type="uml:Interface" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1ayIZzYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1j3y8jYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Interface" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1p_CATYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1szsgTYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_om5CUDYvEdyZkpcsdVBcgQ" name="Collection" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_6Ga0QDYvEdyZkpcsdVBcgQ" name="List" isAbstract="true"/>
+  </uml:Package>
+  <uml:Package xmi:id="_1j3y8DYrEdyZkpcsdVBcgQ" name="lang">
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1j3y8TYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1j3y8zYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1qIL8DYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1rxKsTYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1sEFoDYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1sN2ozYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1sqikDYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1y67kzYrEdyZkpcsdVBcgQ"/>
+  </uml:Package>
+  <uml:Package xmi:id="_1nJwcTYrEdyZkpcsdVBcgQ" name="net">
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1nJwcjYrEdyZkpcsdVBcgQ"/>
+    <packagedElement xmi:type="uml:Class" href="file:/D:/workspace/fast/src/main/java/es/us/lsi/isw/fast/core/dataModel/es.us.lsi.isw.fast.core.dataModel.uml#_1nmcZTYrEdyZkpcsdVBcgQ"/>
+  </uml:Package>
+  <uml:Usage xmi:id="_1ZS6oDYrEdyZkpcsdVBcgQ" supplier="_1YPxwTYrEdyZkpcsdVBcgQ" client="_1RY70DYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1a7SUDYrEdyZkpcsdVBcgQ" supplier="_1ayIZzYrEdyZkpcsdVBcgQ" client="_1YPxwTYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1bX-QTYrEdyZkpcsdVBcgQ" supplier="_1ayIYTYrEdyZkpcsdVBcgQ" client="_1YPxwTYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1j3y9DYrEdyZkpcsdVBcgQ" supplier="_1j3y8zYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1kKt4jYrEdyZkpcsdVBcgQ" supplier="_1juB9DYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1kdo0TYrEdyZkpcsdVBcgQ" supplier="_1juB9DYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1knZ0TYrEdyZkpcsdVBcgQ" supplier="_1juB9DYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1kxK0jYrEdyZkpcsdVBcgQ" supplier="_1ayIZzYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1k6UwTYrEdyZkpcsdVBcgQ" supplier="_1ayIZzYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1lgxsTYrEdyZkpcsdVBcgQ" supplier="_1j3y8TYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1lp7ojYrEdyZkpcsdVBcgQ" supplier="_1j3y8jYrEdyZkpcsdVBcgQ" client="_1bhvQjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1maJkzYrEdyZkpcsdVBcgQ" supplier="_1afNcDYrEdyZkpcsdVBcgQ" client="_1mQYkDYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1m2OcTYrEdyZkpcsdVBcgQ" supplier="_1ayIZzYrEdyZkpcsdVBcgQ" client="_1mQYkDYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1nJwdDYrEdyZkpcsdVBcgQ" supplier="_1nJwcjYrEdyZkpcsdVBcgQ" client="_1m__cjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1oChQDYrEdyZkpcsdVBcgQ" supplier="_1j3y8zYrEdyZkpcsdVBcgQ" client="_1nS6YjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1oMSQjYrEdyZkpcsdVBcgQ" supplier="_1juB9DYrEdyZkpcsdVBcgQ" client="_1nS6YjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1oWDQjYrEdyZkpcsdVBcgQ" supplier="_1nmcZTYrEdyZkpcsdVBcgQ" client="_1nS6YjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1ofNMTYrEdyZkpcsdVBcgQ" supplier="_1nmcZTYrEdyZkpcsdVBcgQ" client="_1nS6YjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1oo-MjYrEdyZkpcsdVBcgQ" supplier="_1nJwcjYrEdyZkpcsdVBcgQ" client="_1nS6YjYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1szsgjYrEdyZkpcsdVBcgQ" supplier="_1j3y8zYrEdyZkpcsdVBcgQ" client="_1juB9DYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1s9dgjYrEdyZkpcsdVBcgQ" supplier="_1p_CATYrEdyZkpcsdVBcgQ" client="_1juB9DYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1tHOgTYrEdyZkpcsdVBcgQ" supplier="_1p_CATYrEdyZkpcsdVBcgQ" client="_1juB9DYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1tQYcjYrEdyZkpcsdVBcgQ" supplier="_1ayIZzYrEdyZkpcsdVBcgQ" client="_1juB9DYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_1taJcjYrEdyZkpcsdVBcgQ" supplier="_1szsgTYrEdyZkpcsdVBcgQ" client="_1juB9DYrEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_i7yEMDYwEdyZkpcsdVBcgQ" supplier="_0uxPkTYuEdyZkpcsdVBcgQ" client="_ZYEHsDYvEdyZkpcsdVBcgQ"/>
+  <uml:Usage xmi:id="_VYAEMTYyEdyZkpcsdVBcgQ" supplier="_6Ga0QDYvEdyZkpcsdVBcgQ" client="_0uxPkTYuEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owADYyEdyZkpcsdVBcgQ" base_Usage="_1ZS6oDYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owATYyEdyZkpcsdVBcgQ" base_Element="_1ZS6oDYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owAjYyEdyZkpcsdVBcgQ" base_Usage="_1a7SUDYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owAzYyEdyZkpcsdVBcgQ" base_Element="_1a7SUDYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owBDYyEdyZkpcsdVBcgQ" base_Usage="_1bX-QTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owBTYyEdyZkpcsdVBcgQ" base_Element="_1bX-QTYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owBjYyEdyZkpcsdVBcgQ" base_Usage="_1j3y9DYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owBzYyEdyZkpcsdVBcgQ" base_Element="_1j3y9DYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owCDYyEdyZkpcsdVBcgQ" base_Element="_1kKt4jYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owCTYyEdyZkpcsdVBcgQ" base_Element="_1kdo0TYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owCjYyEdyZkpcsdVBcgQ" base_Usage="_1knZ0TYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owCzYyEdyZkpcsdVBcgQ" base_Element="_1knZ0TYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owDDYyEdyZkpcsdVBcgQ" base_Element="_1kxK0jYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owDTYyEdyZkpcsdVBcgQ" base_Usage="_1k6UwTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owDjYyEdyZkpcsdVBcgQ" base_Element="_1k6UwTYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Access xmi:id="_q2owDzYyEdyZkpcsdVBcgQ" base_Usage="_1lgxsTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owEDYyEdyZkpcsdVBcgQ" base_Element="_1lgxsTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owETYyEdyZkpcsdVBcgQ" base_Element="_1lp7ojYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owEjYyEdyZkpcsdVBcgQ" base_Usage="_1maJkzYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owEzYyEdyZkpcsdVBcgQ" base_Element="_1maJkzYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owFDYyEdyZkpcsdVBcgQ" base_Usage="_1m2OcTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owFTYyEdyZkpcsdVBcgQ" base_Element="_1m2OcTYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owFjYyEdyZkpcsdVBcgQ" base_Usage="_1nJwdDYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owFzYyEdyZkpcsdVBcgQ" base_Element="_1nJwdDYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owGDYyEdyZkpcsdVBcgQ" base_Usage="_1oChQDYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owGTYyEdyZkpcsdVBcgQ" base_Element="_1oChQDYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owGjYyEdyZkpcsdVBcgQ" base_Usage="_1oMSQjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owGzYyEdyZkpcsdVBcgQ" base_Element="_1oMSQjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owHDYyEdyZkpcsdVBcgQ" base_Element="_1oWDQjYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owHTYyEdyZkpcsdVBcgQ" base_Usage="_1ofNMTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2owHjYyEdyZkpcsdVBcgQ" base_Element="_1ofNMTYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2owHzYyEdyZkpcsdVBcgQ" base_Usage="_1oo-MjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhADYyEdyZkpcsdVBcgQ" base_Element="_1oo-MjYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2yhATYyEdyZkpcsdVBcgQ" base_Usage="_1szsgjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhAjYyEdyZkpcsdVBcgQ" base_Element="_1szsgjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhAzYyEdyZkpcsdVBcgQ" base_Element="_1s9dgjYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2yhBDYyEdyZkpcsdVBcgQ" base_Usage="_1tHOgTYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhBTYyEdyZkpcsdVBcgQ" base_Element="_1tHOgTYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2yhBjYyEdyZkpcsdVBcgQ" base_Usage="_1tQYcjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhBzYyEdyZkpcsdVBcgQ" base_Element="_1tQYcjYrEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhCDYyEdyZkpcsdVBcgQ" base_Element="_1taJcjYrEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2yhCTYyEdyZkpcsdVBcgQ" base_Usage="_i7yEMDYwEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhCjYyEdyZkpcsdVBcgQ" base_Element="_i7yEMDYwEdyZkpcsdVBcgQ"/>
+  <Omondo_1:Omondo__Import xmi:id="_q2yhCzYyEdyZkpcsdVBcgQ" base_Usage="_VYAEMTYyEdyZkpcsdVBcgQ"/>
+  <JavaProfile_1:JavaProfile__AutoDetected xmi:id="_q2yhDDYyEdyZkpcsdVBcgQ" base_Element="_VYAEMTYyEdyZkpcsdVBcgQ"/>
+  <uml:Package xmi:id="_q2yhDTYyEdyZkpcsdVBcgQ" name="MyProfiles">
+    <profileApplication xmi:id="_tT7WATYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tT7WAjYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Common_3.2_SN.profile.uml#_7hMtlSK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Common_3.2_SN.profile.uml#_RgfPHCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf8DYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf8TYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Meta_3.2_SN.profile.uml#_7sFH4CK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Meta_3.2_SN.profile.uml#_RgVcYiK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf8jYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf8zYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Xml_3.2_SN.profile.uml#_7JNEVSK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Xml_3.2_SN.profile.uml#_RgVfXCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf9DYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf9TYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Archetype.profile.uml#_f6v3QOROEduiB7qvAtFfTA"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Archetype.profile.uml#_j-cLoORNEduiB7qvAtFfTA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf9jYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf9zYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Service_3.2_SN.profile.uml#_6VpgcCK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Service_3.2_SN.profile.uml#_RgMRQCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf-DYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf-TYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Java.profile.uml#_aZhLlH6MEdmbwasWWc4yvw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Java.profile.uml#_aZhLkH6MEdmbwasWWc4yvw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf-jYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf-zYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Presentation_3.2_SN.profile.uml#_4Um1wCK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Presentation_3.2_SN.profile.uml#_RgVcjiK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf_DYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf_TYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Persistence_3.2_SN.profile.uml#_AevloCK6EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Persistence_3.2_SN.profile.uml#_RgVfdiK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEf_jYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEf_zYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Webservice_3.2_SN.profile.uml#_6jgWRSK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Webservice_3.2_SN.profile.uml#_RgVmWCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEgADYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEgATYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/UML2.profile.uml#_dhEUENSUEdqN9tnr0j3PAQ"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/UML2.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUEgAjYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUEgAzYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Meta.profile.uml#_kycnUIE4EduiecUdqhZMrw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Meta.profile.uml#_EJn30IE0EduiecUdqhZMrw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUOQ8DYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUOQ8TYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUOQ8jYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUOQ8zYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Process_3.2_SN.profile.uml#_7D2DMCK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Process_3.2_SN.profile.uml#_RgfOnSK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tUOQ9DYrEdyZkpcsdVBcgQ">
+      <eAnnotations xmi:id="_tUOQ9TYrEdyZkpcsdVBcgQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo.profile.uml#_zrN_1iUoEdmNXYQzyImvfA"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo.profile.uml#_zrN_0iUoEdmNXYQzyImvfA"/>
+    </profileApplication>
+  </uml:Package>
+</xmi:XMI>
