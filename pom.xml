@@ -4,7 +4,7 @@
   <groupId>es.us.lsi.tdg</groupId>
   <artifactId>fast</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1</version>
   <name>fast</name>
   <url>http://maven.apache.org</url>
   <dependencies>
