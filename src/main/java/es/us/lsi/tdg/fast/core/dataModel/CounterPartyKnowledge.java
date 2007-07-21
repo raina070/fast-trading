@@ -2,6 +2,7 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.dataModel;
+import java.util.Set;
 
 /**
  * 
@@ -11,6 +12,10 @@ package es.us.lsi.tdg.fast.core.dataModel;
  * @author José Antonio Parejo Maestre
  *
  */
-public class CounterPartyKnowledge {
+public interface CounterPartyKnowledge {
+	
+	public Set<CounterPartyInformation> getCounterPartyInformation();
+	public Set<TradingInformation> getTradingInformation();
+	public Set<ServiceInformation> getServiceInformation();
 
 }
