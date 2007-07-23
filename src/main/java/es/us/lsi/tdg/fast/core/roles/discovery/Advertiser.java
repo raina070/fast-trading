@@ -2,7 +2,7 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.roles.discovery;
-import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
+import es.us.lsi.tdg.fast.core.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of is to publish 
@@ -15,6 +15,6 @@ through the creation of the appropriate market events.
  * @author José Antonio Parejo Maestre
  *
  */
-public interface Advertiser extends Controllable {
+public interface Advertiser extends ControllableProcess {
 	public void advertise();
 }

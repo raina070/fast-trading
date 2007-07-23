@@ -3,7 +3,7 @@
  */
 package es.us.lsi.tdg.fast.core.roles.selection;
 import es.us.lsi.tdg.fast.core.dataModel.CounterPartyKnowledge;
-import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
+import es.us.lsi.tdg.fast.core.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of create the best possible 
@@ -18,7 +18,7 @@ import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
  * @author Pablo Fernández Montes
  *
  */
-public interface ProposalBuilder extends Controllable {
+public interface ProposalBuilder {
 	/**
 	 * 
 	 * @param info InformationSet refers to the set of information (CP,
