@@ -1,7 +1,7 @@
-package es.us.lsi.tdg.fast.core.dataModel.trading;
+package es.us.lsi.tdg.fast.core;
 
 
-public interface Controllable {
+public interface ControllableProcess {
 	public void start();
 	public void pause();
 	public void resume();

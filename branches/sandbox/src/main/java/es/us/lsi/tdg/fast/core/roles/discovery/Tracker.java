@@ -5,7 +5,7 @@ package es.us.lsi.tdg.fast.core.roles.discovery;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.core.dataModel.CounterParty;
-import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
+import es.us.lsi.tdg.fast.core.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of perform an active
@@ -25,7 +25,7 @@ import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
  * @author Pablo Fernández Montes
  *
  */
-public interface Tracker extends Controllable {
+public interface Tracker {
 	public Set<CounterParty> getPotentialCounterParties();
 	public Set<CounterParty> getNewCounterParties();	
 }

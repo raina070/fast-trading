@@ -2,7 +2,7 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.roles.information;
-import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
+import es.us.lsi.tdg.fast.core.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of perform
@@ -22,6 +22,6 @@ import es.us.lsi.tdg.fast.core.dataModel.trading.Controllable;
  * @author Pablo Fernández Montes
  *
  */
-public interface Inquirer extends Controllable{
+public interface Inquirer {
 	
 }
