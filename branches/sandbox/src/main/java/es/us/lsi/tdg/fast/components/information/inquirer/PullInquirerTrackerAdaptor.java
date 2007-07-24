@@ -19,7 +19,7 @@ import es.us.lsi.tdg.fast.core.dataModel.CounterParty;
  *
  */
   
-public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor, Tracker
+public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 {
 	 private Set<CounterParty> detectedCounterPartySet;
 	 private Set<CounterParty> unprocessedCounterPartySet;
