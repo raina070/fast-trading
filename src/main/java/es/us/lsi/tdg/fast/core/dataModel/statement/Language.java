@@ -1,7 +1,7 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.dataModel;
+package es.us.lsi.tdg.fast.core.dataModel.statement;
 
 /** 
  * 
@@ -14,6 +14,7 @@ package es.us.lsi.tdg.fast.core.dataModel;
  * @author Pablo Fernández Montes
  * @author José Antonio Parejo Maestre
  */
+@Deprecated
 public interface Language {
-
+	
 }
