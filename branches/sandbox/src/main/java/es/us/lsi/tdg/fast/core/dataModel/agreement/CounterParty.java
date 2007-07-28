@@ -1,7 +1,7 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.dataModel;
+package es.us.lsi.tdg.fast.core.dataModel.agreement;
 
 /**
  * This interface represents a counter-party.

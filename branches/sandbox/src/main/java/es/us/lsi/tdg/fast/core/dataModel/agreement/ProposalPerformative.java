@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.core.dataModel;
+package es.us.lsi.tdg.fast.core.dataModel.agreement;
 /**
  *
  * A proposal performative is the expression of the intention
@@ -12,6 +12,4 @@ package es.us.lsi.tdg.fast.core.dataModel;
  * @author Pablo Fernández Montes
  * @author José Antonio Parejo Maestre
  */
-public interface ProposalPerformative {
-
-}
+public enum ProposalPerformative {PROPOSAL,COMMIT,ACCEPT}

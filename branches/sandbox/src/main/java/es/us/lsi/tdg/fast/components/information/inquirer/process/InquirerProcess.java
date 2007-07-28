@@ -4,7 +4,8 @@ import es.us.lsi.tdg.fast.components.information.inquirer.InquirerInformantAdapt
 import es.us.lsi.tdg.fast.components.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.components.information.inquirer.InquirerTrackerAdaptor;
 import es.us.lsi.tdg.fast.core.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.dataModel.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+
 import java.util.Set;
 
 /**

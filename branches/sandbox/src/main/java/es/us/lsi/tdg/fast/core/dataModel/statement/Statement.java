@@ -27,5 +27,5 @@ package es.us.lsi.tdg.fast.core.dataModel.statement;
  *
  */
 public interface Statement {
-	
+	public StatementType getType();
 }

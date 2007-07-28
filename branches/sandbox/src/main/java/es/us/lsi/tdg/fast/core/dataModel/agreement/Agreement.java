@@ -1,7 +1,11 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.dataModel;
+package es.us.lsi.tdg.fast.core.dataModel.agreement;
+
+import java.util.Set;
+
+import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
 
 /**
  * This interface represents an Agreement, that defines a 
@@ -16,5 +20,8 @@ package es.us.lsi.tdg.fast.core.dataModel;
  *
  */
 public interface Agreement {
-
+	public Set<CounterParty> getCounterParties();
+	public Set<Term> getTerms();
+	public void addTerm(Constraint constraint,CounterParty counterParty);
+	public void removeTerm(Term term);
 }

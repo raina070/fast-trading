@@ -1,9 +1,11 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.dataModel;
+package es.us.lsi.tdg.fast.core.dataModel.agreement;
 
 import java.util.Set;
+
+import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
 
 /**
  * 
@@ -47,11 +49,5 @@ public interface Term {
 	 * 
 	 */
 	public Set<Constraint> getConstraints();
-	/**
-	 * This set of compensations will be applied in case the party 
-	 * does not observe the constraints specified in the term. This 
-	 * element is optional, so the set can be empty. 
-	 */
-	public Set<Compensation> getCompensations();
 
 }
