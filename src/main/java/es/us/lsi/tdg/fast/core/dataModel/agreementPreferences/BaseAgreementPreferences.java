@@ -33,7 +33,6 @@ public class BaseAgreementPreferences implements AgreementPreferences {
 	 * @see es.us.lsi.tdg.fast.core.dataModel.AgreementPreferences#getFeatures()
 	 */
 	public Set<Statement> getFeatures() {
-		// TODO Auto-generated method stub
 		return features;
 	}
 
@@ -41,7 +40,6 @@ public class BaseAgreementPreferences implements AgreementPreferences {
 	 * @see es.us.lsi.tdg.fast.core.dataModel.AgreementPreferences#getRequirements()
 	 */
 	public Set<Statement> getRequirements() {
-		// TODO Auto-generated method stub
 		return requirements;
 	}
 	
@@ -51,7 +49,6 @@ public class BaseAgreementPreferences implements AgreementPreferences {
 	}
 
 	public AssessmentMechanism getAssesmentMechanism() {
-		// TODO Auto-generated method stub
 		return assessementMechanism;
 	}
 
