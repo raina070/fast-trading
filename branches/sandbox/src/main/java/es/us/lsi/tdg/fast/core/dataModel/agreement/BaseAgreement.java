@@ -51,8 +51,7 @@ public class BaseAgreement implements Agreement {
 	}
 
 	public void removeTerm(Term term) {
-		// TODO Auto-generated method stub
-		
+		terms.remove(term);		
 	}
 
 }

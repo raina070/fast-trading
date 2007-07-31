@@ -23,12 +23,10 @@ public class BaseAttribute implements Attribute {
 	 * @see es.us.lsi.tdg.fast.core.dataModel.statement.Attribute#getDomain()
 	 */
 	public Domain getDomain() {
-		// TODO Auto-generated method stub
 		return domain;
 	}
 
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
