@@ -10,8 +10,14 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.Term;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.Assessment;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.BaseAssessement;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.DomainConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
+import es.us.lsi.tdg.fast.core.dataModel.statement.SimpleConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.SortedDomainConstraint;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Statement;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Value;
 
 /**
  * @author Pablo Fernández Montes
@@ -29,9 +35,9 @@ public class FOMAssessementMechanism implements AssessmentMechanism {
 		Set<Statement> requirements=prefs.getRequirements();
 		Set<Statement> cons=prefs.getFeatures();
 		double value=0;
-		int costMax=0;
-		int minTime=0;
-		int maxTime=0;
+		double costMax=0;
+		double minTime=0;
+		double maxTime=0;
 		// We search the set of requirements and features for data
 		// of constraints and value function:
 		for(Statement requeriment:requirements)
@@ -41,14 +47,24 @@ public class FOMAssessementMechanism implements AssessmentMechanism {
 				Constraint c=(Constraint)requeriment;
 				if(c.getAttribute().getName().equals("Cost"))
 				{
-					// TODO Extract the cost value
-					costMax=0;
+					if(c instanceof SortedDomainConstraint)
+					{
+						Value maxCostValue=((SortedDomainConstraint)c).getMax();
+						costMax=((IntegerValue)maxCostValue).getValue();
+					}
 				}
 				if(c.getAttribute().getName().equals("Time"))
 				{
-					// TODO Extract the minTime and maxTime;
-					minTime=0;
-					maxTime=0;
+					if(c instanceof SortedDomainConstraint)
+					{
+						if(c instanceof SortedDomainConstraint)
+						{
+							Value minTimeValue=((SortedDomainConstraint)c).getMax();
+							Value maxTimeValue=((SortedDomainConstraint)c).getMax();
+							minTime=((IntegerValue)minTimeValue).getValue();
+							maxTime=((IntegerValue)maxTimeValue).getValue();
+						}
+					}
 				}
 			}			
 		}
@@ -58,20 +74,38 @@ public class FOMAssessementMechanism implements AssessmentMechanism {
 		Set<Term> terms=agreement.getTerms();
 		for(Term term:terms)
 		{
-			// TODO We should test if I am not the conunterparty of the term 
+			// TODO We should test if I am not the counterparty of the term 
 			if(term.getCounterParty()==null)
 			{
 				Set<Constraint> constraints=term.getConstraints();
 				for(Constraint constraint:constraints)
 				{
+					if(constraint.getAttribute().getName().equals("Cost"))
+					{
+						if(constraint instanceof SimpleConstraint)
+						{
+							Value valor=((SimpleConstraint)constraint).getValue();
+							agreementCost=((IntegerValue)valor).getValue();
+						}
+					}
 					if(constraint.getAttribute().getName().equals("Time"))
 					{
-						;
+						if(constraint instanceof SimpleConstraint)
+						{
+							Value valor=((SimpleConstraint)constraint).getValue();
+							agreementTime=((IntegerValue)valor).getValue();
+						}
 					}
 				}
 			}
 			
 		}
+		if(agreementCost<costMax && agreementTime>=minTime && agreementTime<=maxTime )
+		{	
+			value=(costMax/agreementCost)*(maxTime+1)+agreementTime;
+		}else
+			value=-1;
+		result=new BaseAssessement(value);
 		return result;
 		
 	}
