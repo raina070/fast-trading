@@ -1,10 +1,10 @@
 package es.us.lsi.tdg.fast.components.information.inquirer.process;
 
-import es.us.lsi.tdg.fast.components.information.inquirer.InquirerInformantAdaptor;
-import es.us.lsi.tdg.fast.components.information.inquirer.InquirerProposalBuilderAdaptor;
-import es.us.lsi.tdg.fast.components.information.inquirer.InquirerTrackerAdaptor;
 import es.us.lsi.tdg.fast.core.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerInformantAdaptor;
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
 
 import java.util.Set;
 

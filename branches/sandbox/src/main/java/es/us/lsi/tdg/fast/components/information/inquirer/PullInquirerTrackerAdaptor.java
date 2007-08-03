@@ -9,6 +9,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 
 

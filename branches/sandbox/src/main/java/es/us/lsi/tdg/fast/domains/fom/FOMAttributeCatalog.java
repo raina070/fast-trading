@@ -27,7 +27,7 @@ public class FOMAttributeCatalog extends BaseAttributeCatalog {
 		getAttributes().add(attribute);
 		domain=DateDomain.getInstance();
 		attribute=new BaseAttribute("InvocationMinDate",domain);
-		getAttributes().add(attribute);
+		getAttributes().add(attribute);		
 	}
 	
 }
