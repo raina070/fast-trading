@@ -30,10 +30,9 @@ public class FOMAssessementMechanism implements AssessmentMechanism {
 	 * @see es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism#assess(es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences, es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement)
 	 */
 	public Assessment assess(AgreementPreferences prefs, Agreement agreement) {
-		// TODO COMPLETE THIS FUNCTION IMPORTANT!!!!!!!
 		Assessment result=null;
 		Set<Statement> requirements=prefs.getRequirements();
-		Set<Statement> cons=prefs.getFeatures();
+		Set<Statement> features=prefs.getFeatures();
 		double value=0;
 		double costMax=0;
 		double minTime=0;
