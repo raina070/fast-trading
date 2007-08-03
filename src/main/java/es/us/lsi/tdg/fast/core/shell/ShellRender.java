@@ -6,5 +6,9 @@ public interface ShellRender {
 	public String getPrompt();
 
 	public void setPrompt(String prompt);
+	
+	public void print(String s);
+	
+	public void println(String s);
 
 }
