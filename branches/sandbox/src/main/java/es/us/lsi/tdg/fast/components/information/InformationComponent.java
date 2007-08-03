@@ -1,16 +1,13 @@
 package es.us.lsi.tdg.fast.components.information;
 
-import es.us.lsi.tdg.fast.components.information.inquirer.InquirerTrackerAdaptor;
-import es.us.lsi.tdg.fast.components.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.core.ControllableProcess;
 import es.us.lsi.tdg.fast.core.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
 
 public class InformationComponent {
-
-	
-	
 	
 	// Adapters for the offered roles: 
 	protected InquirerTrackerAdaptor inquirerTrackerAdaptor;
@@ -21,6 +18,17 @@ public class InformationComponent {
 	protected ControllableProcess informantProcess;
 	
 	
+	public InformationComponent(InquirerTrackerAdaptor inquirerTrackerAdaptor,
+			InquirerProposalBuilderAdaptor inquirerProposalBuilderAdaptor,
+			ControllableProcess inquirerProcess,
+			ControllableProcess informantProcess) {
+		super();
+		this.inquirerTrackerAdaptor = inquirerTrackerAdaptor;
+		this.inquirerProposalBuilderAdaptor = inquirerProposalBuilderAdaptor;
+		this.inquirerProcess = inquirerProcess;
+		this.informantProcess = informantProcess;
+	}
+
 	// Offered Roles
 	public Inquirer getInquirer()
 	{
