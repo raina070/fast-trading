@@ -28,19 +28,21 @@ public class BaseDomainRegistry implements DomainRegistry {
 		// using persistent or dynamic methods.
 		// a base implementation using dynamic class loading could be:
 		try {
-			Class claseDominio=Class.forName(domainName+"AttributeCatalog");
+			// TODO detect that the class name is absolute and not relative (search for ".")
+			String className="es.us.lsi.tdg.fast.domains."+domainName.toLowerCase()+"."+domainName.toUpperCase()+"AttributeCatalog";
+			Class claseDominio=Class.forName(className);
 			Object objetoDominio=claseDominio.newInstance();
 			if(objetoDominio instanceof AttributeCatalog)			
 				registry.put(domainName, (AttributeCatalog)objetoDominio);			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}

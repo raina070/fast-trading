@@ -6,8 +6,8 @@ public class SimpleFASTShell implements FASTShell {
 
 		CommandFactory commandFactory;
 		
-		CommandFactory.loadCommand("BaseExitCommand");
-		CommandFactory.loadCommand("DomainCommand");
+		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.BaseExitCommand");
+		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.LoadDomainCommand");
 	    
 		String[] initialCommands = {"exit","domain"};
 		
