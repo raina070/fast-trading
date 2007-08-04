@@ -8,11 +8,11 @@ import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 
 public class BaseDomainRegistry implements DomainRegistry {
 
-	Map<String,AttributeCatalog> registry;
+	Map<String,DomainManifest> registry;
 	
 	public BaseDomainRegistry()
 	{
-		registry=new HashMap<String,AttributeCatalog>();		
+		registry=new HashMap<String,DomainManifest>();		
 	}
 	
 	public Set<String> getAllDomains(String domainName) {		
@@ -20,20 +20,35 @@ public class BaseDomainRegistry implements DomainRegistry {
 	}
 
 	public AttributeCatalog getAttributeCatalog(String domainName) {		
-		return registry.get(domainName);
+		DomainManifest manifest = registry.get(domainName);
+		return manifest.getAttributeCatalog();
 	}
 
+	public DomainManifest getManifest(String domainName) {		
+		DomainManifest manifest = registry.get(domainName);
+		return manifest;
+	}
+
+	@SuppressWarnings("unchecked")
 	public void loadDomain(String domainName) {
 		// This is left blank for further implementations of domain loading 
 		// using persistent or dynamic methods.
 		// a base implementation using dynamic class loading could be:
 		try {
 			// TODO detect that the class name is absolute and not relative (search for ".")
-			String className="es.us.lsi.tdg.fast.domains."+domainName.toLowerCase()+"."+domainName.toUpperCase()+"AttributeCatalog";
-			Class claseDominio=Class.forName(className);
-			Object objetoDominio=claseDominio.newInstance();
-			if(objetoDominio instanceof AttributeCatalog)			
-				registry.put(domainName, (AttributeCatalog)objetoDominio);			
+			
+			String className="es.us.lsi.tdg.fast.domains."+domainName.toLowerCase()+".Manifest";
+			
+			Class<DomainManifest> domainClass= (Class<DomainManifest>) Class.forName(className);
+			
+			Object domainObject=domainClass.newInstance();
+			if(domainObject instanceof DomainManifest)			
+				registry.put(domainName, (DomainManifest) domainObject);
+			else throw new WrongManifestException();
+
+		} catch (WrongManifestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

@@ -2,7 +2,6 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.dataModel.information;
-import java.util.Set;
 
 /**
  * 

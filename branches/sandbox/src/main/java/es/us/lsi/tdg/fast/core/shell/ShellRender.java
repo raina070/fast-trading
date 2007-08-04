@@ -11,4 +11,6 @@ public interface ShellRender {
 	
 	public void println(String s);
 
+	public void printWellcome();
+
 }

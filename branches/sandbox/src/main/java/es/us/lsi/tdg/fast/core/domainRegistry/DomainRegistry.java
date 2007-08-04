@@ -25,4 +25,6 @@ public interface DomainRegistry {
 	
 	public AttributeCatalog getAttributeCatalog(String domainName);
 	
+	public DomainManifest getManifest(String domainName);
+	
 }

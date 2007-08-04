@@ -5,5 +5,8 @@ public class BaseExitCommand extends BaseCommand implements ExitCommand {
 	public BaseExitCommand() {
 		super("exit");
 	}
-
+	
+	public void execute(ShellRender shellRender){
+		System.out.println("Hasta luego lucas!");
+	}
 }

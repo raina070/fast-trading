@@ -29,8 +29,9 @@ public class LoadDomainCommand extends BaseCommand {
 			FAST.domainRegistry.loadDomain(domain);
 			if(FAST.domainRegistry.searchDomain(domain))
 			{
-				AttributeCatalog acatalog=FAST.domainRegistry.getAttributeCatalog(domain);				
-				FAST.currentDomain=acatalog;
+				FAST.currentDomain = FAST.domainRegistry.getManifest(domain);
+				AttributeCatalog acatalog = FAST.currentDomain.getAttributeCatalog();
+				
 				shellRenderer.setPrompt(domain+"-"+shellRenderer.getPrompt());
 				shellRenderer.println("OK: "+domain+" domain loaded.");
 				// TODO generate specific domain commands based on the AttributeCatalog of this domain:

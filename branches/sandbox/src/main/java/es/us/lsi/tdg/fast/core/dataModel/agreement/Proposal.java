@@ -3,8 +3,6 @@
  */
 package es.us.lsi.tdg.fast.core.dataModel.agreement;
 
-import java.util.Set;
-
 /**
  * A proposal is an offer for an agreement made by one party to its
  * CounterParty. We can understand a proposal as a type of agreement 

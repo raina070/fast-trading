@@ -1,7 +1,6 @@
 package es.us.lsi.tdg.fast.components.information;
 
 import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.information.Informant;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;

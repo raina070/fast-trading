@@ -1,9 +1,10 @@
 package es.us.lsi.tdg.fast.core.shell;
 
 public class SimpleFASTShell implements FASTShell {
-
-	public void run() {
-
+	
+	FASTShell shell;
+	
+	public SimpleFASTShell() {
 		CommandFactory commandFactory;
 		
 		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.BaseExitCommand");
@@ -15,13 +16,22 @@ public class SimpleFASTShell implements FASTShell {
 			commandFactory = new CommandFactory(initialCommands);
 			ShellRender shellRender = new ConsoleRender("FAST",commandFactory);
 
-			FASTShell shell = new BaseFASTShell(shellRender);
+			shell = new BaseFASTShell(shellRender);
 			
-			shell.run();
 		} catch (UnknownCommandException e) {
 			e.printStackTrace();
 		}
+
 		
+	}
+
+	
+	public void run() {
+		shell.run();				
+	}
+
+	public void showMessage(String message) {
+		shell.showMessage(message);
 	}
 
 }
