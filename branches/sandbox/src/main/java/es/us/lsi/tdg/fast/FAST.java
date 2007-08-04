@@ -5,6 +5,8 @@ import es.us.lsi.tdg.fast.components.ComponentFactory;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRegistry;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainRegistry;
+import es.us.lsi.tdg.fast.core.preferenceRegistry.BasePreferenceRegistry;
+import es.us.lsi.tdg.fast.core.preferenceRegistry.PreferenceRegistry;
 import es.us.lsi.tdg.fast.core.shell.FASTShell;
 import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
 
@@ -20,6 +22,7 @@ public class FAST
 	public static DomainRegistry domainRegistry=null;
 	public static DomainManifest currentDomain=null;
 	public static ComponentFactory componentFactory=null;
+	public static PreferenceRegistry preferenceRegistry=null;
 	public static FASTShell shell = null;
 	
     public static void main( String[] args )
@@ -27,7 +30,7 @@ public class FAST
     	shell = new SimpleFASTShell();
         domainRegistry=new BaseDomainRegistry();
         componentFactory=new BaseComponentFactory();
-        
+        preferenceRegistry=new BasePreferenceRegistry();
         shell.run();
         
     }

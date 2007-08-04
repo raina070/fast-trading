@@ -3,12 +3,14 @@ package es.us.lsi.tdg.fast.core.shell;
 
 public class BaseCommand implements Command {
 	private String name;
-	protected CommandFactory commandFactory;
+	private String help;
+	protected CommandFactory commandFactory;	
 	
-	public BaseCommand(String name) {
+	public BaseCommand(String name, String help) {
 		super();
 		this.name = name;
-	}
+		this.help=help;
+	}	
 	
 	public void configure(String[] arguments){
 		
@@ -25,6 +27,10 @@ public class BaseCommand implements Command {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getHelp() {		
+		return help;
 	}
 
 }

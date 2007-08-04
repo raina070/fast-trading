@@ -21,12 +21,12 @@ public class FOMAttributeCatalog extends BaseAttributeCatalog {
 	{
 		super(new HashSet<Attribute>(),"FOMBasicAttributeCatalog","FOM");
 		Domain domain=IntegerDomain.getInstance();
-		Attribute attribute=new BaseAttribute("Time",domain);
+		Attribute attribute=new BaseAttribute("Time",domain,"Computation time to solve the optimization problem, in seconds.");
 		getAttributes().add(attribute);
-		attribute=new BaseAttribute("Cost",domain);
+		attribute=new BaseAttribute("Cost",domain,"Total cost of the optimization time in €.");
 		getAttributes().add(attribute);
 		domain=DateDomain.getInstance();
-		attribute=new BaseAttribute("InvocationMinDate",domain);
+		attribute=new BaseAttribute("InvocationMinDate",domain,"Stabilish a minimum time when the service can be invoked, expressed as time and date.");
 		getAttributes().add(attribute);		
 	}
 	

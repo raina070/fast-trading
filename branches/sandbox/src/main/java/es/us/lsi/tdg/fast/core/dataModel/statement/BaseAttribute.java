@@ -11,12 +11,14 @@ package es.us.lsi.tdg.fast.core.dataModel.statement;
 public class BaseAttribute implements Attribute {
 
 	private String name;
+	private String description;
 	private Domain domain;
 	
-	public BaseAttribute(String name, Domain domain)
+	public BaseAttribute(String name, Domain domain, String description)
 	{
 		this.name=name;
 		this.domain=domain;
+		this.description=description;
 	}
 	
 	/* (non-Javadoc)
@@ -28,6 +30,11 @@ public class BaseAttribute implements Attribute {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return description;
 	}
 
 }
