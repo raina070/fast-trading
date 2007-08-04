@@ -4,4 +4,6 @@ public interface FASTShell {
 
 	public void run();
 	
+	public void showMessage(String message);
+	
 }

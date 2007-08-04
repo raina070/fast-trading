@@ -5,11 +5,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.us.lsi.tdg.fast.FAST;
+
 
 public class ConsoleRender implements ShellRender {
 
 	private String prompt;
 	private CommandFactory commandFactory;
+	private String wellcomeMessage="=== Wellcome to FAST === (v "+FAST.version+", "+FAST.releaseName+" release)";
 	
 	
 	public ConsoleRender(String prompt, CommandFactory commandFactory) {
@@ -140,6 +143,11 @@ public class ConsoleRender implements ShellRender {
 
 	public void println(String s) {
 		System.out.println(s);		
+	}
+
+	public void printWellcome() {
+		System.out.println(wellcomeMessage);
+		
 	}
 
 }
