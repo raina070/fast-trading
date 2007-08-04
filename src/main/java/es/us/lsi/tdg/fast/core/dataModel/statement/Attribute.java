@@ -11,4 +11,5 @@ package es.us.lsi.tdg.fast.core.dataModel.statement;
 public interface Attribute {
 	public Domain getDomain();
 	public String getName();
+	public String getDescription();
 }

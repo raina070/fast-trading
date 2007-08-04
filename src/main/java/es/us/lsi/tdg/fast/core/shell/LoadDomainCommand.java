@@ -2,6 +2,8 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.shell;
+import java.util.Set;
+
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 /**
@@ -13,7 +15,7 @@ public class LoadDomainCommand extends BaseCommand {
 
 	String domain;
 	public LoadDomainCommand() {
-		super("domain");		
+		super("domain","Load a specific domain attribute catalog. You moust load a domain previously to the specification of command preferences.");		
 	}
 	
 	public void configure(String[] arguments){
@@ -34,7 +36,7 @@ public class LoadDomainCommand extends BaseCommand {
 				
 				shellRenderer.setPrompt(domain+"-"+shellRenderer.getPrompt());
 				shellRenderer.println("OK: "+domain+" domain loaded.");
-				// TODO generate specific domain commands based on the AttributeCatalog of this domain:
+				
 			}else
 				shellRenderer.println("ERROR: "+domain+" is not a valid domain name.");
 		}else
