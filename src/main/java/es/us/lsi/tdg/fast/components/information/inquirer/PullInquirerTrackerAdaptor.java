@@ -6,7 +6,7 @@ package es.us.lsi.tdg.fast.components.information.inquirer;
 import java.util.HashSet;
 import java.util.Set;
 
-import es.us.lsi.tdg.fast.core.ProcessingModel;
+import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;

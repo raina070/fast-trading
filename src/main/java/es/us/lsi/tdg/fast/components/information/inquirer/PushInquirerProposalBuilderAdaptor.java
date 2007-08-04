@@ -3,8 +3,8 @@
  */
 package es.us.lsi.tdg.fast.components.information.inquirer;
 
-import es.us.lsi.tdg.fast.core.ProcessingModel;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
+import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.ProposalBuilder;
 

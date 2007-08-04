@@ -2,7 +2,7 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.roles.information;
-import es.us.lsi.tdg.fast.core.ControllableProcess;
+import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of perform

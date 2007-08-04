@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.core;
+package es.us.lsi.tdg.fast.core.roles;
 
 
 /**
