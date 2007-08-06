@@ -36,9 +36,17 @@ public class AttributePreferenceBuilder implements StatementFactory {
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.dataModel.statement.StatementFactory#create(java.lang.String[])
 	 */
-	public Statement create(String[] definition) {
+	public Statement create(String[] definition) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		Statement result=null;
+		if(definition.length==1)
+		{
+			result=new BaseSimpleConstraint(attribute.getDomain().parseValue(definition[0]),attribute,StatementType.TRADING);
+		}else if(definition.length==2)
+		{
+			result=new BaseSortedDomainConstraint((ComparableValue)attribute.getDomain().parseValue(definition[0]),(ComparableValue)attribute.getDomain().parseValue(definition[1]),attribute,StatementType.TRADING);
+		}
+		return result;
 	}
 	
 	public Attribute getAttribute(){

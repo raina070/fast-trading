@@ -3,6 +3,7 @@ package es.us.lsi.tdg.fast.domains.fom;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.components.Component;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 
 public class Manifest implements
@@ -10,7 +11,8 @@ public class Manifest implements
 
 	protected String name = "FOM";
 	protected AttributeCatalog attributeCatalog =  new FOMAttributeCatalog(); 
-	protected Set<Component> components; 
+	protected Set<Component> components;
+	protected AssessmentMechanism assessmentMechanism =new FOMAssessementMechanism();
 	
 	public AttributeCatalog getAttributeCatalog() {
 		return attributeCatalog;		
@@ -23,6 +25,10 @@ public class Manifest implements
 
 	public String getName() {
 		return name;
+	}
+
+	public AssessmentMechanism getAssessMentMechanism() {
+		return assessmentMechanism;
 	}
 
 }

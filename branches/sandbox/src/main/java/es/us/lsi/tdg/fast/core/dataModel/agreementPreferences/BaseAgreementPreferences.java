@@ -52,4 +52,15 @@ public class BaseAgreementPreferences implements AgreementPreferences {
 		return assessementMechanism;
 	}
 
+	public String toString()
+	{
+		StringBuffer sb=new StringBuffer();
+		sb.append("Features:\n");
+		for(Statement s:features)
+			sb.append(s.toString()+"\n");
+		sb.append("Requirements:\n");
+		for(Statement s:requirements)
+			sb.append(s.toString()+"\n");		
+		return sb.toString();
+	}
 }

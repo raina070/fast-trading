@@ -27,13 +27,13 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 	public BaseDomainPreferencesCommand(AttributeCatalog attributeCatalog) {
 		super("preferences","Definition of trading preferences for a pecific domain. Type \"preferencesmodehelp\" in preferences mode for domain specific information.");
 		this.attributeCatalog=attributeCatalog;
-		Command clearCommand=new BaseCommand("clearall","Remove all actual counter party preferences"){
+		Command clearCommand=new BaseCommand("clearall","Remove all actual client preferences"){
 			public void execute(ShellRender shellRenderer){
 				clearallPreferences(shellRenderer);
 			}
 		};
 		clearCommand.setCommandFactory(commandFactory);
-		Command showCommand=new BaseCommand("show","Shows all actual conterparty specified preferences"){
+		Command showCommand=new BaseCommand("show","Shows all actual client specified preferences"){
 			public void execute(ShellRender shellRenderer){
 				showPreferences(shellRenderer);
 			}
@@ -59,8 +59,10 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 		if(arguments[0].equals(getName()))
 		{
 			if(arguments.length>1){
-				if(!arguments[1].equals("help"))
+				if(arguments[1].equals("help"))
 				{
+					showHelp(shellRenderer);
+				}else{
 					String candidateIDC=arguments[1];
 					if(validateCounterpartyID(candidateIDC))
 					{
@@ -68,18 +70,16 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 						AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
 						// TODO IMPORTANTEEEE!!!! COMENTAR  CON PABLO. ¿Que assesement mechanism usamos?: --> Opciones: Carga dinámica, factoría global, submodo de especificación de assessement mechanism.
 						if(preferences==null)
-							preferences=new BaseAgreementPreferences(null);						
+							preferences=new BaseAgreementPreferences(FAST.currentDomain.getAssessMentMechanism());						
 						FAST.preferenceRegistry.setPreferences(IDC, preferences);
 						registersSpecificCommands(IDC);
 						super.execute(shellRenderer);						
 					}else{
-						shellRenderer.println("ERROR: "+candidateIDC+" is not a valid CounterParty ID.");
-					}
-				}else{
-					showHelp(shellRenderer);
+						shellRenderer.println("ERROR: "+candidateIDC+" is not a valid client ID.");
+					}	
 				}
 			}else
-				shellRenderer.println("ERROR: You must specify the counterparty ID (IDC) for which you want specify the preferences.");
+				shellRenderer.println("ERROR: You must specify the client ID (IDC) for which you want specify the preferences.");
 		}else
 			super.execute(shellRenderer);		
 	}
@@ -108,7 +108,7 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 		AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
 		if(preferences==null)
 		{
-			shellRenderer.println("ERROR: Invalid counter party ID \""+IDC+"\", the counter party is not registered.");
+			shellRenderer.println("ERROR: Invalid client ID \""+IDC+"\", the counter party is not registered.");
 		}else{
 			shellRenderer.println("Actual preferences of "+IDC+":");
 			shellRenderer.println(preferences.toString());
@@ -120,7 +120,7 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 		AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
 		if(preferences==null)
 		{
-			shellRenderer.println("ERROR: Invalid counter party ID \""+IDC+"\", the counter party is not registered.");
+			shellRenderer.println("ERROR: Invalid client ID \""+IDC+"\", the counter party is not registered.");
 		}else{
 			preferences.getFeatures().clear();
 			preferences.getRequirements().clear();

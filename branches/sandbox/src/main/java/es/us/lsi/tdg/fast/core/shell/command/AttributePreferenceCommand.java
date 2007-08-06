@@ -61,8 +61,7 @@ public class AttributePreferenceCommand extends BaseCommand {
 				shellRender.println(generatePreferenceDefinitionError(""));
 			}
 		}else
-			shellRender.println("ERROR: Invalid counter party ID \""+IDC+"\", the counter party is not registered.");
-		
+			shellRender.println("ERROR: Invalid client ID \""+IDC+"\", the counter party is not registered.");		
 	}
 
 	private String generatePreferenceDefinitionError(String info) {
@@ -70,9 +69,7 @@ public class AttributePreferenceCommand extends BaseCommand {
 		sb.append(attribute.getName());
 		sb.append(" using definition: \"");
 		for(String s:preferenceDefinition)
-		{
-			sb.append(s);
-		}
+			sb.append(s);		
 		sb.append("\".");
 		sb.append(info);
 		return sb.toString();
