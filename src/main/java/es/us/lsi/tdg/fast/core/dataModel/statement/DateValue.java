@@ -42,5 +42,11 @@ public class DateValue implements ComparableValue {
 			throw new IllegalArgumentException();
 		return result;		
 	}
+	
+	public String toString()
+	{
+		return value.toString();
+	}
+	
 
 }

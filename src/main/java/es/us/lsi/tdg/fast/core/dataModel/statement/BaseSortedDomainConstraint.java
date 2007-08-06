@@ -130,5 +130,10 @@ public class BaseSortedDomainConstraint implements SortedDomainConstraint {
 		// TODO Auto-generated method stub
 		return type;
 	}
+	
+	public String toString()
+	{
+		return attribute.getName()+" in "+"["+min.toString()+","+max.toString()+"]";
+	}
 
 }

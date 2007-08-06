@@ -37,4 +37,9 @@ public class IntegerDomain implements Domain {
 		return null;
 	}
 
+	public Value parseValue(String value) {
+		// TODO Auto-generated method stub
+		return new IntegerValue(Integer.parseInt(value));
+	}
+
 }

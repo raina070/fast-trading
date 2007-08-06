@@ -42,4 +42,8 @@ public class IntegerValue implements ComparableValue {
 		return result;
 	}
 	
+	public String toString()
+	{
+		return String.valueOf(value);
+	}
 }

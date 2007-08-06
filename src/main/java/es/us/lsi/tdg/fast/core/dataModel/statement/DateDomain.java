@@ -3,6 +3,8 @@
  */
 package es.us.lsi.tdg.fast.core.dataModel.statement;
 
+import java.util.Date;
+
 /**
  * @author Pablo Fernandez Montes
  * @author José Antonio Parejo Maestre
@@ -33,6 +35,13 @@ public class DateDomain implements Domain {
 	 */
 	public Value getInfinite() {
 		return null;
+	}
+
+	@SuppressWarnings("deprecation")
+	public Value parseValue(String value) {
+		// TODO Auto-generated method stub
+		Date date=new Date(value);
+		return new DateValue(date);
 	}
 
 }

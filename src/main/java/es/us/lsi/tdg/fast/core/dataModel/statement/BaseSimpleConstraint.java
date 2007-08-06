@@ -30,5 +30,10 @@ public class BaseSimpleConstraint implements SimpleConstraint {
 	public StatementType getType() {
 		return  type;
 	}
+	
+	public String toString()
+	{
+		return attribute.getName()+" = "+value.toString();
+	}
 
 }
