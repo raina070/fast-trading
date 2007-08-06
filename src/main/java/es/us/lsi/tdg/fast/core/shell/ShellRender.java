@@ -1,4 +1,7 @@
 package es.us.lsi.tdg.fast.core.shell;
+
+import es.us.lsi.tdg.fast.core.shell.command.Command;
+
 public interface ShellRender {
 
 	public Command getCommand();

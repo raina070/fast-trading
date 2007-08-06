@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.shell.command.Command;
 
 
 public class ConsoleRender implements ShellRender {

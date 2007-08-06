@@ -1,4 +1,8 @@
 package es.us.lsi.tdg.fast.core.shell;
+
+import es.us.lsi.tdg.fast.core.shell.command.Command;
+import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
+
 public class BaseFASTShell implements FASTShell {
 
 	private ShellRender shellRender;

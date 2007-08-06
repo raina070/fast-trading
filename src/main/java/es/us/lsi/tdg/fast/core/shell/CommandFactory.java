@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.core.shell.command.Command;
+
 public class CommandFactory {
 
 	private static Map<String,Class> commandRegistry;
@@ -13,6 +15,13 @@ public class CommandFactory {
     }	
 	
 	private Set<String> activeCommands;
+	
+	public void loadCommand(String commandName, Command command)
+	{
+		Class commandClass=command.getClass();
+		commandInstances.put(commandName,command);
+		loadCommand(commandName,commandClass.getCanonicalName());
+	}
 	
 	public static void loadCommand(String commandName, String className)
 	{
@@ -72,15 +81,16 @@ public class CommandFactory {
 	}		
 	
 	public void addCommand(String commandName) throws UnknownCommandException  {
-		if (commandRegistry.containsKey(commandName)){
+		if (commandRegistry.containsKey(commandName)|| commandInstances.containsKey(commandName) ){
 			activeCommands.add(commandName);	
 		}else throw new UnknownCommandException();
 	}
 
 	public void removeCommand(String commandName) throws UnknownCommandException,InvalidCommandException  {
-		if (commandRegistry.containsKey(commandName)){
+		if (commandRegistry.containsKey(commandName) || commandInstances.containsKey(commandName)){
 			if (activeCommands.contains(commandName)){
 				activeCommands.remove(commandName);
+				commandInstances.remove(commandName);				
 			}else throw new InvalidCommandException();
 		}else throw new UnknownCommandException();
 	}

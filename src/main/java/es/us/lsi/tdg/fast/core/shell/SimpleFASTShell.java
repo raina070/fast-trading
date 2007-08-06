@@ -7,10 +7,10 @@ public class SimpleFASTShell implements FASTShell {
 	public SimpleFASTShell() {
 		CommandFactory commandFactory;
 		
-		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.BaseExitCommand");
-		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.LoadDomainCommand");
-	    
-		String[] initialCommands = {"exit","domain"};
+		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand");
+		CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.command.LoadDomainCommand");
+	    CommandFactory.loadCommand("es.us.lsi.tdg.fast.core.shell.command.HelpCommand");
+		String[] initialCommands = {"exit","domain","help"};
 		
 		try {
 			commandFactory = new CommandFactory(initialCommands);

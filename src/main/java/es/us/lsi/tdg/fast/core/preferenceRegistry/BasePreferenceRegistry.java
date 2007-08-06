@@ -3,6 +3,7 @@
  */
 package es.us.lsi.tdg.fast.core.preferenceRegistry;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,6 +18,10 @@ public class BasePreferenceRegistry implements PreferenceRegistry {
 
 	 private Map<String,AgreementPreferences> registry;
 	
+	public BasePreferenceRegistry(){
+		registry=new HashMap<String,AgreementPreferences>();
+	}
+	 
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.preferencesRegistry.PreferencesRegistry#getPreferences(java.lang.String)
 	 */
