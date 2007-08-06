@@ -89,6 +89,7 @@ public class BaseModeCommand extends BaseCommand
 				commandFactory.addCommand(command.getName());
 			} catch (UnknownCommandException e) {}
 		}
+		modeInited=true;
 	}
 	
 	protected void closeMode(ShellRender shellRenderer)
@@ -113,6 +114,7 @@ public class BaseModeCommand extends BaseCommand
 		}				
 		activeCommansdBackup.clear();
 		shellRenderer.setPrompt(promptBackup);
+		modeInited=false;
 	}
 	
 	public void execute(ShellRender shellRenderer)
