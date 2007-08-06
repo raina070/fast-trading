@@ -1,4 +1,7 @@
-package es.us.lsi.tdg.fast.core.shell;
+package es.us.lsi.tdg.fast.core.shell.command;
+
+import es.us.lsi.tdg.fast.core.shell.CommandFactory;
+import es.us.lsi.tdg.fast.core.shell.ShellRender;
 
 
 public class BaseCommand implements Command {
