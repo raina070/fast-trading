@@ -5,7 +5,6 @@ package es.us.lsi.tdg.fast.core.roles.discovery;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of perform an active
