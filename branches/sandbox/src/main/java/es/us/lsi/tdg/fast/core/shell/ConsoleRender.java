@@ -71,7 +71,7 @@ public class ConsoleRender implements ShellRender {
 	            strings.add(item);
 	            startx = cursor + 1;
 	            cursor++;
-	            while((commandLine.charAt(cursor) == separator) && (cursor < length)){
+	            while((cursor < length) && (commandLine.charAt(cursor) == separator)){
 	            	startx = cursor + 1;
 	            	cursor++;
 	            }
