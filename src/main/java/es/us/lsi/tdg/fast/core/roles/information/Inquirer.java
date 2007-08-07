@@ -2,6 +2,10 @@
  * 
  */
 package es.us.lsi.tdg.fast.core.roles.information;
+import java.util.Set;
+
+import es.us.lsi.tdg.fast.components.IllegalAdapterMethodCall;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 /**
  * 
@@ -23,5 +27,5 @@ import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
  *
  */
 public interface Inquirer {
-	
+	public void potentialCounterParties(Set<CounterParty> counterParties);
 }

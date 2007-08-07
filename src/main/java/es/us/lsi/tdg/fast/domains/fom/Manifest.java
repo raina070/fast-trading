@@ -5,6 +5,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.components.Component;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscoveryComponent;
 
 public class Manifest implements
 		es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest {
@@ -19,7 +20,7 @@ public class Manifest implements
 	}
 	
 	public Set<Component> getComponents() {
-		components.add(new FOMInformationComponent());
+		components.add(new FOMDiscoveryComponent());
 		return components;
 	}
 

@@ -5,6 +5,7 @@ package es.us.lsi.tdg.fast.core.shell.command;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.components.Component;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 import es.us.lsi.tdg.fast.core.shell.CommandFactory;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
@@ -35,10 +36,19 @@ public class LoadDomainCommand extends BaseCommand {
 			if(FAST.domainRegistry.searchDomain(domain))
 			{
 				FAST.currentDomain = FAST.domainRegistry.getManifest(domain);
+				
+			
 				AttributeCatalog acatalog = FAST.currentDomain.getAttributeCatalog();
 				Command preferencesCommand=new BaseDomainPreferencesCommand(acatalog);
 				preferencesCommand.setCommandFactory(commandFactory);
-				commandFactory.loadCommand(preferencesCommand.getName(), preferencesCommand);				
+				commandFactory.loadCommand(preferencesCommand.getName(), preferencesCommand);
+			
+				// Load specific components
+				Set<Component> domainComponents = FAST.currentDomain.getComponents();
+				for(Component component : domainComponents){
+					FAST.componentFactory.loadComponent(component);
+				}
+				
 				try {
 					commandFactory.addCommand(preferencesCommand.getName());
 				} catch (UnknownCommandException e) {}

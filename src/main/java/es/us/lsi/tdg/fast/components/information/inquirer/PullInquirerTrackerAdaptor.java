@@ -6,6 +6,7 @@ package es.us.lsi.tdg.fast.components.information.inquirer;
 import java.util.HashSet;
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.components.IllegalAdapterMethodCall;
 import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
@@ -53,6 +54,10 @@ public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 		newUnprocessed.removeAll(detectedCounterPartySet);
 		detectedCounterPartySet.addAll(totalTracked);
 		unprocessedCounterPartySet.addAll(newUnprocessed);
+	}
+
+	public void potentialCounterParties(Set<CounterParty> counterParties){
+		throw new IllegalAdapterMethodCall();
 	}
 
 }

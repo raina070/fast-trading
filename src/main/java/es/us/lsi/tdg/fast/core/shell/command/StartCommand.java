@@ -8,7 +8,7 @@ import es.us.lsi.tdg.fast.core.shell.ShellRender;
 public class StartCommand extends BaseCommand {
 
 	private String orchName;
-	private Integer PID;
+	private String PID;
 	
 	private String error=null; 
 	private static String usageHelp="Usage: start orchestration PID";
@@ -32,13 +32,8 @@ public class StartCommand extends BaseCommand {
 		if(arguments.length==3){
 			
 			String orchName = arguments[1];
-			
-			try{
-				PID = new Integer(arguments[2]);
-			}catch(NumberFormatException e){
-				PID = null;
-			}
-			
+			String PID = arguments[2];
+						
 			PID = validatePID(PID); 
 			
 			if(PID == null){
@@ -61,7 +56,7 @@ public class StartCommand extends BaseCommand {
 		return orchName;
 	}
 
-	private Integer validatePID(Integer PID) {
+	private String validatePID(String PID) {
 		// TODO Check if Party exists.
 		return PID;
 	}
