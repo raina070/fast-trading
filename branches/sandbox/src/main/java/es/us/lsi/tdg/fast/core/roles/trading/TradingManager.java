@@ -1,15 +1,12 @@
 package es.us.lsi.tdg.fast.core.roles.trading;
 
+import es.us.lsi.tdg.fast.components.TradingProcess;
+
 public interface TradingManager {
 
-	/**
-	 * Returns a trading orchestrator for the specific TOID (Trading Orchestration ID) 
+		/**
+	 * Returns a trading orchestrator for the given trading process 
 	 */
-	public TradingOrchestrator getTradingOrchestrator(String TOID, String CID);
-
-	/**
-	 * Returns a trading orchestrator based on several things (preferences, etc...) 
-	 */
-	public TradingOrchestrator getTradingOrchestrator(String CID);
+	public TradingOrchestrator getTradingOrchestrator(TradingProcess tradingProcess);
 	
 }

@@ -39,7 +39,7 @@ public class FAST
     	
     	shell = new SimpleFASTShell();
     	domainRegistry=new BaseDomainRegistry();
-        componentFactory=new BaseComponentFactory();
+        componentFactory= BaseComponentFactory.getInstance();
         preferenceRegistry=new BasePreferenceRegistry();
         shell.run();
         

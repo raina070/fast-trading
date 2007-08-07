@@ -71,13 +71,17 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 			{
 				if(pauseSignal)
 					wait();			
-				doStep();
+				run();
 			}
 		}catch (InterruptedException e) {
 		}					
 	}
 	
-	protected abstract void  doStep();
+	protected abstract void  run();
+
+	public boolean isPaused() {
+		return pauseSignal;
+	}
 	
 
 }
