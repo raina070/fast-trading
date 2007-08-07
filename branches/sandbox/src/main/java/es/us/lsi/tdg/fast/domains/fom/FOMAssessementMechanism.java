@@ -12,7 +12,6 @@ import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.Assessment;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.BaseAssessement;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
-import es.us.lsi.tdg.fast.core.dataModel.statement.DomainConstraint;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
 import es.us.lsi.tdg.fast.core.dataModel.statement.SimpleConstraint;
 import es.us.lsi.tdg.fast.core.dataModel.statement.SortedDomainConstraint;

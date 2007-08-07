@@ -1,5 +1,9 @@
 package es.us.lsi.tdg.fast;
 
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import es.us.lsi.tdg.fast.components.BaseComponentFactory;
 import es.us.lsi.tdg.fast.components.ComponentFactory;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRegistry;
@@ -17,7 +21,9 @@ import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
 public class FAST 
 {
 	public static String version = "0.1";
-	public static String releaseName = "Mapashito";
+	public static String releaseName = "Bilbo";
+	
+	public static Logger log=Logger.getLogger("FAST");
 	
 	public static DomainRegistry domainRegistry=null;
 	public static DomainManifest currentDomain=null;
@@ -25,10 +31,14 @@ public class FAST
 	public static PreferenceRegistry preferenceRegistry=null;
 	public static FASTShell shell = null;
 	
+	
     public static void main( String[] args )
     {
+		log.addHandler(new ConsoleHandler());
+    	log.setLevel(Level.OFF);
+    	
     	shell = new SimpleFASTShell();
-        domainRegistry=new BaseDomainRegistry();
+    	domainRegistry=new BaseDomainRegistry();
         componentFactory=new BaseComponentFactory();
         preferenceRegistry=new BasePreferenceRegistry();
         shell.run();
