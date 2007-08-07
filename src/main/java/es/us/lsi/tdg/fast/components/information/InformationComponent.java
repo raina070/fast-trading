@@ -43,7 +43,5 @@ public class InformationComponent {
 	{
 		return informantProcess;
 	}
-
-	
 	
 }
