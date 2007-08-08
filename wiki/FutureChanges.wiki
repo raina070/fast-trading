@@ -1,4 +1,3 @@
-
 == Extensions ==
 
 === Semantic Preferences ===
@@ -12,7 +11,7 @@
 == Changes ==
 
 === Features and Requirements ===
-  * Is it usefull to classify statements in this groups?
+  * Is it usefull to classify statements into these groups?
   * FOM Translations don't use Features.
   * Matching Features to Requirements
 
