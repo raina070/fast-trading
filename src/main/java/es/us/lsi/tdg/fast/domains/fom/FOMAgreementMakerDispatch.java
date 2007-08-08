@@ -1,0 +1,140 @@
+package es.us.lsi.tdg.fast.domains.fom;
+
+import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMFactory;
+import org.apache.axiom.om.OMNamespace;
+import org.apache.axis2.Constants;
+import org.apache.axis2.addressing.EndpointReference;
+import org.apache.axis2.client.Options;
+import org.apache.axis2.client.ServiceClient;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.io.*;
+
+import javax.xml.stream.XMLStreamException;
+
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.BaseAgreement;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
+
+public class FOMAgreementMakerDispatch {
+	
+	public void dispatchAgreement(Set<BaseAgreement> agreements,String ep){
+		int sent = 0;
+		for (BaseAgreement agree:agreements){
+			if (sent==0){
+				sendCommit(agree,ep);
+				sent = 1;
+			}
+		}
+	}
+	
+	public OMElement accept(OMElement elementSLA) {
+	    
+		elementSLA.build();
+	    //elementTime.
+	    elementSLA.detach();		
+		OMElement symbolElement = elementSLA.getFirstElement();
+	    
+	    try {
+			BaseAgreement SLA = FOMSLATranslator.getAgreement(translateOMElement(elementSLA));
+		} catch (IncompatibleAttributeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return symbolElement;
+	}
+	
+	public OMElement reject(OMElement elementSLA) {
+	    
+		elementSLA.build();
+	    //elementTime.
+	    elementSLA.detach();		
+		OMElement symbolElement = elementSLA.getFirstElement();
+	    
+	    try {
+			BaseAgreement SLA = FOMSLATranslator.getAgreement(translateOMElement(elementSLA));
+		} catch (IncompatibleAttributeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return symbolElement;
+	}
+		
+	public static OMElement sendMethod(Agreement SLA, String myEndPoint) {
+		
+        OMFactory fac = OMAbstractFactory.getOMFactory();
+        OMNamespace omNs = fac.createOMNamespace("http://axiom.service.mysample.samples/xsd", "tns");
+        OMElement method = fac.createOMElement("commit", omNs);
+        OMElement value = fac.createOMElement("agreement", omNs);
+        //value.addChild(translateFOMSLA(FOMSLATranslator.getFOMAgreement((BaseAgreement)SLA),fac,omNs));
+        method.addChild(value);   
+        //OMElement value2 = fac.createOMElement("ep", omNs);
+        //value2.addChild(fac.createOMText(value, myEndPoint));
+        //method.addChild(value2);
+        return method;
+    }
+	
+	
+	public void sendCommit(Agreement SLA, String ep){
+		EndpointReference targetEPR = 
+	        new EndpointReference(ep);
+		try {
+			String myEndPoint = "";
+            OMElement accept = sendMethod(SLA, myEndPoint);
+            Options options = new Options();
+            options.setTo(targetEPR);
+            options.setTransportInProtocol(Constants.TRANSPORT_HTTP);
+            ServiceClient sender = new ServiceClient();
+            sender.setOptions(options);
+            OMElement response = sender.sendReceive(accept);
+            System.out.println(translateOMElement(response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }		
+        
+	}
+
+	public static OMElement translateFOMSLA(FOMAgreement agree,OMFactory fac, OMNamespace omNs){
+		OMElement result = fac.createOMElement("Agreement", omNs);
+	
+		OMElement Cost = fac.createOMElement("Cost", omNs);
+		OMElement timeInit = fac.createOMElement("Time", omNs);
+		
+		Cost.addChild(fac.createOMText(Double.toString(agree.getCost())));
+		timeInit.addChild(fac.createOMText(Integer.toString(agree.getTime())));
+		result.addChild(Cost);
+		result.addChild(timeInit);
+		FileOutputStream out;
+		try {
+			out = new FileOutputStream("myfile.txt");
+			result.serialize(out);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (XMLStreamException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		return result;
+	}
+	
+	public static FOMAgreement translateOMElement(OMElement agree){
+		
+		OMElement agreement = (OMElement)agree.getFirstElement();
+		Iterator<OMElement>agreeChild = agreement.getChildElements();
+		int time = 0;
+		double cost = 0;
+		while (agreeChild.hasNext()){
+			cost = Double.parseDouble(agreeChild.next().getText());
+			time = Integer.parseInt(agreeChild.next().getText());
+		}
+		FOMAgreement result = new FOMAgreement(time,cost);
+		
+		return result;
+	}
+}
