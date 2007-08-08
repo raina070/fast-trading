@@ -19,6 +19,7 @@
 
 === Multiple domains loaded ===
   * Technology domains + specific domain
+  * Interaction Adaptor: Using decorator pattern they add interoperability between DomainSpecific Adaptors and TechnologySpecific Adaptors.
 
 === FAST as a domain ===
   * Generic components and wiring as a domain. 
