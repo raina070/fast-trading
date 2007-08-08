@@ -19,7 +19,7 @@ import es.us.lsi.tdg.fast.core.shell.ShellRender;
 public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 		DomainPreferencesCommand {
 		
-	private String IDC;			
+	private String PID;			
 	private AttributeCatalog attributeCatalog;
 	public BaseDomainPreferencesCommand(AttributeCatalog attributeCatalog) {
 		super("preferences","Definition of trading preferences for a pecific domain. Type \"preferencesmodehelp\" in preferences mode for domain specific information.");
@@ -60,23 +60,23 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 				{
 					showHelp(shellRenderer);
 				}else{
-					String candidateIDC=arguments[1];
-					if(validateCounterpartyID(candidateIDC))
+					String candidatePID=arguments[1];
+					if(validateCounterpartyID(candidatePID))
 					{
-						IDC=candidateIDC;
-						AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
+						PID=candidatePID;
+						AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(PID);
 						// TODO IMPORTANTEEEE!!!! COMENTAR  CON PABLO. ¿Que assesement mechanism usamos?: --> Opciones: Carga dinámica, factoría global, submodo de especificación de assessement mechanism.
 						if(preferences==null)
 							preferences=new BaseAgreementPreferences(FAST.currentDomain.getAssessmentMechanism());						
-						FAST.preferenceRegistry.setPreferences(IDC, preferences);
-						registersSpecificCommands(IDC);
+						FAST.preferenceRegistry.setPreferences(PID, preferences);
+						registersSpecificCommands(PID);
 						super.execute(shellRenderer);						
 					}else{
-						shellRenderer.println("ERROR: "+candidateIDC+" is not a valid client ID.");
+						shellRenderer.println("ERROR: "+candidatePID+" is not a valid client ID.");
 					}	
 				}
 			}else
-				shellRenderer.println("ERROR: You must specify the client ID (IDC) for which you want specify the preferences.");
+				shellRenderer.println("ERROR: You must specify the party ID (PID) for which you want specify the preferences.");
 		}else
 			super.execute(shellRenderer);		
 	}
@@ -84,7 +84,7 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 	private void registersSpecificCommands(String idc2) {		
 		for(Attribute attribute:attributeCatalog.getAttributes())
 		{
-			 Command attributeCommand=new AttributePreferenceCommand(attribute,IDC);
+			 Command attributeCommand=new AttributePreferenceCommand(attribute,PID);
 			 attributeCommand.setCommandFactory(commandFactory);
 			 addSubCommand(attributeCommand.getName(),attributeCommand);			 
 		}
@@ -102,26 +102,26 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 	
 	private void showPreferences(ShellRender shellRenderer)
 	{
-		AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
+		AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(PID);
 		if(preferences==null)
 		{
-			shellRenderer.println("ERROR: Invalid client ID \""+IDC+"\", the counter party is not registered.");
+			shellRenderer.println("ERROR: Invalid party ID \""+PID+"\", the counter party is not registered.");
 		}else{
-			shellRenderer.println("Actual preferences of "+IDC+":");
+			shellRenderer.println("Actual preferences of "+PID+":");
 			shellRenderer.println(preferences.toString());
 		}
 	}
 	
 	private void clearallPreferences(ShellRender shellRenderer)
 	{
-		AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
+		AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(PID);
 		if(preferences==null)
 		{
-			shellRenderer.println("ERROR: Invalid client ID \""+IDC+"\", the counter party is not registered.");
+			shellRenderer.println("ERROR: Invalid party ID \""+PID+"\", the counter party is not registered.");
 		}else{
 			preferences.getFeatures().clear();
 			preferences.getRequirements().clear();
-			shellRenderer.println("Actual preferences of "+IDC+":");
+			shellRenderer.println("Actual preferences of "+PID+":");
 			shellRenderer.println(preferences.toString());
 		}
 	}	
