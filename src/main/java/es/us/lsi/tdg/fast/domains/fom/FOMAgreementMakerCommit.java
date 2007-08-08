@@ -43,12 +43,13 @@ public class FOMAgreementMakerCommit {
 	}
 
 		
-	public static OMElement sendMethod(Agreement SLA, String accept) {
+	public static OMElement sendMethod(Agreement SLA) {
 		
 		OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://axiom.service.mysample.samples/xsd", "tns");
         OMElement method = fac.createOMElement("accept", omNs);
         OMElement value =  fac.createOMElement("test",omNs);
+        value.addChild(fac.createOMText(value, "eso"));
         //OMElement value =  FOMAgreementMakerDispatch.translateFOMSLA(FOMSLATranslator.getFOMAgreement(SLA),fac,omNs);
         method.addChild(value);        
         return method;
@@ -59,33 +60,20 @@ public class FOMAgreementMakerCommit {
 		EndpointReference targetEPR = 
 	        new EndpointReference(ep);
 		try {
-            OMElement accept = sendMethod(SLA,"accept");
+            OMElement accept = sendMethod(SLA);
             Options options = new Options();
             options.setTo(targetEPR);
             options.setTransportInProtocol(Constants.TRANSPORT_HTTP);
             ServiceClient sender = new ServiceClient();
             sender.setOptions(options);
             //System.out.println(ep);
-            OMElement response = sender.sendReceive(accept);
+            
+            //OMElement response = sender.sendReceive(accept);
+            sender.fireAndForget(accept);
+            Thread.sleep(500);
         } catch (Exception e) {
             e.printStackTrace();
         }		
 	}
-	
-	public void sendReject(Agreement SLA, String ep){
-		EndpointReference targetEPR = 
-	        new EndpointReference(ep);
-		try {
-            OMElement accept = sendMethod(SLA,"reject");
-            Options options = new Options();
-            options.setTo(targetEPR);
-            options.setTransportInProtocol(Constants.TRANSPORT_HTTP);
-            ServiceClient sender = new ServiceClient();
-            sender.setOptions(options);
-            sender.sendReceive(accept);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }		
-	}
-	
+		
 }

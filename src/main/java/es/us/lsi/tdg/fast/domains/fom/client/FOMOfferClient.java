@@ -37,7 +37,7 @@ public class FOMOfferClient {
 		Set<Agreement> BaseAgreements = new HashSet<Agreement>();
 		
 		FOMSLATranslator Translator = new FOMSLATranslator();
-		FOMProposal Proposer = new FOMProposal();
+		FOMProposalBuilder Proposer = new FOMProposalBuilder();
 		Agreement = Proposer.FOMOfferToAgreement(result.iterate(),new FOMOffer(10,40,60));
 		for (FOMAgreement AgreeTest: Agreement){
 			BaseAgreements.add(Translator.getAgreement(AgreeTest));

@@ -80,13 +80,15 @@ public class FOMAgreementMakerDispatch {
 	        new EndpointReference(ep);
 		try {
 			String myEndPoint = "http://localhost:8080/axis2/services/FOMAgreementMakerDispatch";
-            OMElement accept = sendMethod(SLA, myEndPoint);
+            OMElement commit = sendMethod(SLA, myEndPoint);
             Options options = new Options();
             options.setTo(targetEPR);
             options.setTransportInProtocol(Constants.TRANSPORT_HTTP);
             ServiceClient sender = new ServiceClient();
             sender.setOptions(options);
-            OMElement response = sender.sendReceive(accept);
+            sender.fireAndForget(commit);
+            Thread.sleep(500);
+            //OMElement response = sender.sendReceive(accept);
             
         } catch (Exception e) {
             e.printStackTrace();

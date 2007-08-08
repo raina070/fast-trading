@@ -22,7 +22,7 @@ import java.util.TreeSet;
 
 public class FOMAgreementSelection {
 
-	public void FOMAgreementSort(Set<Agreement> myAgreements,BaseAgreementPreferences myAgreementPreferences){
+	public SortedSet<FOMAgreementOffer> FOMAgreementSort(Set<Agreement> myAgreements,AgreementPreferences myAgreementPreferences){
 		SortedSet<FOMAgreementOffer> myFOMOffer = new TreeSet<FOMAgreementOffer>();
 		for (Agreement Agree:myAgreements){	
 			try {
@@ -31,20 +31,10 @@ public class FOMAgreementSelection {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
 		}
 		for (FOMAgreementOffer Offer:myFOMOffer){
 			
 		}
-		//return myFOMOffer;
-	
-
-		
-		
+		return myFOMOffer;	
 	}
-	
-	
-	
-	
 }
