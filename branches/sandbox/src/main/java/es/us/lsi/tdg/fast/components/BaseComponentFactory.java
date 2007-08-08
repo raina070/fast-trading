@@ -1,5 +1,7 @@
 package es.us.lsi.tdg.fast.components;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import es.us.lsi.tdg.fast.FAST;
@@ -70,7 +72,7 @@ public class BaseComponentFactory implements ComponentFactory {
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.components.ComponentFactory#getComponentByName(java.lang.String)
 	 */
-	public Component getComponentByName(String componentName) throws UnknownComponentException{
+	public Component getByName(String componentName) throws UnknownComponentException{
 		
 
 		if (componentRegistry.containsKey(componentName)){
@@ -104,5 +106,32 @@ public class BaseComponentFactory implements ComponentFactory {
 
 	public void loadComponent(Component component) {
 		this.loadComponent(component.getClass());
+	}
+
+	public Component getByType(String type) {
+
+		try{
+		
+			Collection<Class<Component>> components = componentRegistry.values();
+			
+			Iterator<Class<Component>> iterator = components.iterator();
+			
+			while(iterator.hasNext()){
+				Class<Component> componentClass =  iterator.next();
+				Component component = (Component) componentClass.newInstance();
+				
+				if(component.getType().equals(type))
+					return component;
+				
+			}
+		
+		}catch(IllegalAccessException e){
+			e.printStackTrace();
+		}catch(InstantiationException e){
+			e.printStackTrace();
+		}
+		
+		
+		return null;
 	}
 }
