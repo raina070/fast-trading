@@ -27,10 +27,10 @@ public class FAST
 	
 	public static DomainRegistry domainRegistry=null;
 	public static DomainManifest currentDomain=null;
+	public static String currentDomainRole=null;
 	public static ComponentFactory componentFactory=null;
 	public static PreferenceRegistry preferenceRegistry=null;
 	public static FASTShell shell = null;
-	
 	
     public static void main( String[] args )
     {

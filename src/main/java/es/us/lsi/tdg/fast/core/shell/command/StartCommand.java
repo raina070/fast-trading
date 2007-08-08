@@ -34,13 +34,13 @@ public class StartCommand extends BaseCommand {
 			String orchName = arguments[1];
 			String PID = arguments[2];
 						
-			PID = validatePID(PID); 
+			this.PID = validatePID(PID); 
 			
 			if(PID == null){
 				error = "ERROR: Wrong PID.\n"+usageHelp;
 			}
 
-			orchName = validateOrchestration(orchName); 
+			this.orchName = validateOrchestration(orchName); 
 			
 			if(orchName == null){
 				error = "ERROR: Wrong Orchestration name.\n"+usageHelp; 

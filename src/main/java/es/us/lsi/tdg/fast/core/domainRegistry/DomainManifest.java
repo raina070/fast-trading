@@ -15,5 +15,7 @@ public interface DomainManifest {
 		public Set<Component> getComponents();
 		
 		public AssessmentMechanism getAssessMentMechanism();
+		
+		public Set<String> getDomainRoles();
 }
 

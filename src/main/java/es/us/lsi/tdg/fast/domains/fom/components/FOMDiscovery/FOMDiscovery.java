@@ -5,7 +5,7 @@ import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.discovery.tracker.TrackerInquirerAdaptor;
 
-public class FOMDiscoveryComponent implements Component {
+public class FOMDiscovery implements Component {
 
 	// Adapters for the offered roles: 
 	protected TrackerInquirerAdaptor trackerInquirerAdaptor;
@@ -14,6 +14,7 @@ public class FOMDiscoveryComponent implements Component {
 	protected ControllableProcess trackerProcess;
 	
 	private String name="FOMDiscovery";
+	private String type="Discovery";
 	
 	public String getName() {
 		return name;
@@ -25,6 +26,10 @@ public class FOMDiscoveryComponent implements Component {
 
 	public ControllableProcess getTrackerProcess() {
 		return trackerProcess;
+	}
+
+	public String getType() {
+		return type;
 	} 
 	
 

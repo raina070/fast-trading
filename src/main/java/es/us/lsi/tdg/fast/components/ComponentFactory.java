@@ -2,7 +2,7 @@ package es.us.lsi.tdg.fast.components;
 
 public interface ComponentFactory {
 
-	public Component getComponentByName(String componentName)
+	public Component getByName(String componentName)
 			throws UnknownComponentException;
 
 	public void loadComponent(String className);
@@ -11,4 +11,6 @@ public interface ComponentFactory {
 	public void loadComponent(Class componentClass);
 
 	public void loadComponent(Component component);
+
+	public Component getByType(String string);
 }
