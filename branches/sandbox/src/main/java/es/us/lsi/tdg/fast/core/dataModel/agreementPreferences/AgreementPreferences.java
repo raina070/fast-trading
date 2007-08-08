@@ -15,5 +15,5 @@ import es.us.lsi.tdg.fast.core.dataModel.statement.Statement;
 public interface AgreementPreferences {
 	Set<Statement> getRequirements();
 	Set<Statement> getFeatures();
-	AssessmentMechanism getAssesmentMechanism();
+	AssessmentMechanism getAssessmentMechanism();
 }

@@ -3,14 +3,13 @@
  */
 package es.us.lsi.tdg.fast.core.shell.command;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Attribute;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributePreferenceBuilder;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Statement;
 import es.us.lsi.tdg.fast.core.dataModel.statement.StatementFactory;
-import es.us.lsi.tdg.fast.core.shell.CommandFactory;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
-import es.us.lsi.tdg.fast.FAST;
 
 /**
  * @author Pablo Fernández Montes

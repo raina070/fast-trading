@@ -1,17 +1,22 @@
 package es.us.lsi.tdg.fast.components.information;
 
+import es.us.lsi.tdg.fast.core.component.information.InformationComponent;
 import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
 
-public class InformationComponent {
+public class BaseInformation implements InformationComponent{
 
+	protected String name="BaseInformation";
+	protected String type="Information";
+	
+	
 	// Adapters for the offered roles: 
 	protected InquirerTrackerAdaptor inquirerTrackerAdaptor;
 	protected InquirerProposalBuilderAdaptor inquirerProposalBuilderAdaptor;
 	
-	public InformationComponent(InquirerTrackerAdaptor inquirerTrackerAdaptor,
+	public BaseInformation(InquirerTrackerAdaptor inquirerTrackerAdaptor,
 			InquirerProposalBuilderAdaptor inquirerProposalBuilderAdaptor,
 			ControllableProcess inquirerProcess,
 			ControllableProcess informantProcess) {
@@ -42,6 +47,14 @@ public class InformationComponent {
 	public ControllableProcess getInformantProcess()
 	{
 		return informantProcess;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getType() {
+		return type;
 	}
 	
 }

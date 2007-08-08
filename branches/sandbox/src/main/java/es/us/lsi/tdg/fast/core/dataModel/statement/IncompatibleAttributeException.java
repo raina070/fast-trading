@@ -8,4 +8,10 @@ package es.us.lsi.tdg.fast.core.dataModel.statement;
  * @author José Antonio Parejo Maestre
  *
  */
-public class IncompatibleAttributeException extends Exception {}
+public class IncompatibleAttributeException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+}

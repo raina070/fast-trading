@@ -1,9 +1,9 @@
 package es.us.lsi.tdg.fast.core.shell.command;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.components.BaseTradingProcess;
-import es.us.lsi.tdg.fast.components.TradingProcess;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
+import es.us.lsi.tdg.fast.core.trading.BaseTradingProcess;
+import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public class StartCommand extends BaseCommand {
 

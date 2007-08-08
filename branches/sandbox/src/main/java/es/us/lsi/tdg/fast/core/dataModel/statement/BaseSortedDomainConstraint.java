@@ -57,12 +57,13 @@ public class BaseSortedDomainConstraint implements SortedDomainConstraint {
 				result=!(intersection.isEmpty());
 		}else
 			throw new IncompatibleAttributeException();
-		return false;
+		return result;
 	}
 
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.dataModel.statement.DomainConstraint#intersect(es.us.lsi.tdg.fast.core.dataModel.statement.Constraint)
 	 */
+	@SuppressWarnings("unchecked")
 	public DomainConstraint intersect(Constraint constraint) {
 		// TODO Auto-generated method stub
 		DomainConstraint result=null;
@@ -108,6 +109,7 @@ public class BaseSortedDomainConstraint implements SortedDomainConstraint {
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.dataModel.statement.Constraint#evaluate(es.us.lsi.tdg.fast.core.dataModel.statement.Value)
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean evaluate(Value val) {
 		
 		ComparableValue compValue = (ComparableValue) val;

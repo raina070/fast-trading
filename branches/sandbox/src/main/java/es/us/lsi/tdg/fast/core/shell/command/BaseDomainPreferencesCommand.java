@@ -3,9 +3,6 @@
  */
 package es.us.lsi.tdg.fast.core.shell.command;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.BaseAgreementPreferences;
@@ -70,7 +67,7 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 						AgreementPreferences preferences=FAST.preferenceRegistry.getPreferences(IDC);
 						// TODO IMPORTANTEEEE!!!! COMENTAR  CON PABLO. ¿Que assesement mechanism usamos?: --> Opciones: Carga dinámica, factoría global, submodo de especificación de assessement mechanism.
 						if(preferences==null)
-							preferences=new BaseAgreementPreferences(FAST.currentDomain.getAssessMentMechanism());						
+							preferences=new BaseAgreementPreferences(FAST.currentDomain.getAssessmentMechanism());						
 						FAST.preferenceRegistry.setPreferences(IDC, preferences);
 						registersSpecificCommands(IDC);
 						super.execute(shellRenderer);						

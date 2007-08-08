@@ -1,6 +1,6 @@
-package es.us.lsi.tdg.fast.components.trading;
+package es.us.lsi.tdg.fast.core.component.trading;
 
-import es.us.lsi.tdg.fast.components.Component;
+import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.roles.trading.TradingManager;
 
 public interface TradingComponent extends Component {

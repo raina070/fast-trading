@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.components;
+package es.us.lsi.tdg.fast.core.component;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -46,6 +46,7 @@ public class BaseComponentFactory implements ComponentFactory {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void loadComponent(Class componentClass){
 
 		try {

@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.components;
+package es.us.lsi.tdg.fast.core.trading;
 
 public interface TradingProcess {
 
