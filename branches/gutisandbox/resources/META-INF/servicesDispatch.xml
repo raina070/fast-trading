@@ -5,8 +5,5 @@
     <operation name="accept">
         <messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver"/>
     </operation>
-    <operation name="reject">
-        <messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver"/>
-    </operation>
    <parameter name="ServiceClass">es.us.lsi.tdg.fast.domains.fom.FOMAgreementMakerDispatch</parameter>
 </service>
