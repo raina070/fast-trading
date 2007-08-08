@@ -1,6 +1,7 @@
 package es.us.lsi.tdg.fast.domains.fom.client;
 
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.HashSet;
 import es.us.lsi.tdg.fast.core.dataModel.information.*;
 import es.us.lsi.tdg.fast.core.dataModel.statement.*;
@@ -54,12 +55,13 @@ public class FOMOfferClient {
 		FOMAgreementSelection Test4 = new FOMAgreementSelection();
 		BaseAgreementPreferences myAgreePrefs;
 		myAgreePrefs = Aux(10,40,60);
+		SortedSet<Agreement> Test6 = Test4.FOMSortAgreement(BaseAgreements,myAgreePrefs);
 		
-		Test4.FOMAgreementSort(BaseAgreements,myAgreePrefs);
-		
-		
-		FOMAgreementMakerDispatch Test5 = new FOMAgreementMakerDispatch();
-		Test5.dispatchAgreement(BaseAgreements, "http://localhost:8080/axis2/services/FOMAgreementMakerCommit");
+		for (Agreement agree:Test6){
+			System.out.println(Translator.getFOMAgreement(agree));
+		}
+		//FOMAgreementMakerDispatch Test5 = new FOMAgreementMakerDispatch();
+		//Test5.dispatchAgreement(BaseAgreements, "http://localhost:8080/axis2/services/FOMAgreementMakerCommit");
 		
 		//System.out.println(result);
 		//System.out.println(Test2);

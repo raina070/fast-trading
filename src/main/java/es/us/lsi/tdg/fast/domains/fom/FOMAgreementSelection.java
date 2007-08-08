@@ -37,4 +37,13 @@ public class FOMAgreementSelection {
 		}
 		return myFOMOffer;	
 	}
+	
+	public SortedSet<Agreement> FOMSortAgreement(Set<Agreement> myAgreements, AgreementPreferences agreePrefs){
+		FOMAgreementComparator FOMComparator = new FOMAgreementComparator(agreePrefs);
+		SortedSet<Agreement> result = new TreeSet<Agreement>(FOMComparator);
+		for (Agreement agree:myAgreements){
+			result.add(agree);
+		}
+		return result;
+	}
 }

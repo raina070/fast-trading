@@ -1,0 +1,22 @@
+package es.us.lsi.tdg.fast.domains.fom;
+
+import java.util.Comparator;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.*;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
+
+public class FOMAgreementComparator implements Comparator {
+
+	private AgreementPreferences agreePrefs;
+	
+	public int compare(Object o1, Object o2){
+		AssessmentMechanism assessMech = agreePrefs.getAssessmentMechanism();
+		Assessment a1 = assessMech.assess(agreePrefs,(Agreement)o1);
+		Assessment a2 = assessMech.assess(agreePrefs,(Agreement)o1);
+		return a1.compareTo(a2);
+	}
+	
+	public FOMAgreementComparator(AgreementPreferences agreePrefs){
+		this.agreePrefs = agreePrefs;
+	}
+	
+}
