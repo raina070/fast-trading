@@ -1,0 +1,19 @@
+
+
+
+=== Extensions ===
+
+== Semantic Preferences ==
+  * Add semantic structures to dataModel
+  * Take advantage of semantic reasoning
+  * Coherence 
+  * Best trading preferences based on service preferences
+  * Concept Instantiation. Automated generation of domain-specific stuff (commands, components, etc...) based on AttributeCatalog.
+
+
+=== To discuss ===
+
+== Features and Requirements ==
+  * Is it usefull to classify statements in this groups?
+  * FOM Translations don't use Features.
+  * Matching Features to Requirements
