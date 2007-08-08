@@ -3,6 +3,11 @@
  */
 package es.us.lsi.tdg.fast.core.roles.agreementMaking;
 
+import java.util.Set;
+
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
+
 /**
  * 
  * This interface has the responsibility of to come up with 
@@ -17,5 +22,6 @@ package es.us.lsi.tdg.fast.core.roles.agreementMaking;
  *
  */
 public interface AgreementMaker {
-
+	public void createAgreement(Proposal proposal);
+	public Set<Agreement> createdAgreements();
 }

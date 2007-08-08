@@ -1,7 +1,9 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.roles.selection;
+package es.us.lsi.tdg.fast.core.roles.selection.proposalCollector;
+
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 
 /**
  * This interface has the responsibility of create a unique point
@@ -22,5 +24,5 @@ package es.us.lsi.tdg.fast.core.roles.selection;
  *
  */
 public interface ProposalCollector {
-
+	public void addProposal(Proposal proposal);
 }

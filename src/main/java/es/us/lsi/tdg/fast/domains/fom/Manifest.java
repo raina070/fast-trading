@@ -6,6 +6,8 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
+import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRole;
+import es.us.lsi.tdg.fast.core.domainRegistry.DomainRole;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMTrading.FOMTrading;
@@ -17,13 +19,13 @@ public class Manifest implements
 	protected AttributeCatalog attributeCatalog =  new FOMAttributeCatalog(); 
 	protected Set<Component> components;
 	protected AssessmentMechanism assessmentMechanism =new FOMAssessmentMechanism();
-	protected Set<String> domainRoles;
-	
+	protected Set<DomainRole> domainRoles;
+	 
 	
 	public Manifest() {
-		domainRoles = new HashSet<String>();
-		domainRoles.add("customer");
-		domainRoles.add("provider");
+		domainRoles = new HashSet<DomainRole>();
+		domainRoles.add(new BaseDomainRole("customer",this));
+		domainRoles.add(new BaseDomainRole("provider",this));
 		
 		components = new HashSet<Component>();
 		components.add(new FOMDiscovery());
@@ -48,7 +50,7 @@ public class Manifest implements
 		return assessmentMechanism;
 	}
 
-	public Set<String> getDomainRoles() {
+	public Set<DomainRole> getDomainRoles() {
 		return domainRoles;
 	}
 }

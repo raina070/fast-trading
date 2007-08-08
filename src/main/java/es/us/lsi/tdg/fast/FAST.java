@@ -10,6 +10,7 @@ import es.us.lsi.tdg.fast.core.component.ComponentFactory;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRegistry;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainRegistry;
+import es.us.lsi.tdg.fast.core.domainRegistry.DomainRole;
 import es.us.lsi.tdg.fast.core.preferenceRegistry.BasePreferenceRegistry;
 import es.us.lsi.tdg.fast.core.preferenceRegistry.PreferenceRegistry;
 import es.us.lsi.tdg.fast.core.shell.FASTShell;
@@ -28,7 +29,7 @@ public class FAST
 	
 	public static DomainRegistry domainRegistry=null;
 	public static DomainManifest currentDomain=null;
-	public static String currentDomainRole=null;
+	public static DomainRole currentDomainRole=null;
 	public static ComponentFactory componentFactory=null;
 	public static PreferenceRegistry preferenceRegistry=null;
 	public static FASTShell shell = null;

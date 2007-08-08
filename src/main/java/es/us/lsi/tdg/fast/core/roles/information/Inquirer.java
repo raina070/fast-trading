@@ -5,6 +5,7 @@ package es.us.lsi.tdg.fast.core.roles.information;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 /**
  * 
  * This interface has the responsibility of perform
@@ -26,4 +27,5 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
  */
 public interface Inquirer {
 	public void potentialCounterParties(Set<CounterParty> counterParties);
+	public Set<CounterPartyKnowledge> getInformation();
 }

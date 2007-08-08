@@ -3,6 +3,10 @@
  */
 package es.us.lsi.tdg.fast.core.roles.binding;
 
+import java.util.Set;
+
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
+
 /**
  * 
  * This interface has the responsibility of make the final decision 
@@ -17,5 +21,6 @@ package es.us.lsi.tdg.fast.core.roles.binding;
  *
  */
 public interface CommitHandler {
-
+	public void newAgreeement(Agreement agreement);
+	public Set<Agreement> commitedAgreements();
 }

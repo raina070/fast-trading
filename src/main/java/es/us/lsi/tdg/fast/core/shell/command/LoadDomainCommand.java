@@ -8,6 +8,7 @@ import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest;
+import es.us.lsi.tdg.fast.core.domainRegistry.DomainRole;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
 import es.us.lsi.tdg.fast.core.shell.UnknownCommandException;
 /**
@@ -41,11 +42,16 @@ public class LoadDomainCommand extends BaseCommand {
 			if(FAST.domainRegistry.searchDomain(domain))
 			{
 				DomainManifest domainManifest = FAST.domainRegistry.getManifest(domain);
-				Set<String> domainRoles = domainManifest.getDomainRoles();
-				
-				if(domainRoles.contains(domainRole)){
+				Set<DomainRole> domainRoles = domainManifest.getDomainRoles();
+				DomainRole selectedRole=null;
+				for(DomainRole searchDomainRole:domainRoles)
+				{
+					if(searchDomainRole.getName().equals(domainRole))
+						selectedRole=searchDomainRole;
+				}
+				if(selectedRole!=null){
 					FAST.currentDomain = domainManifest;
-					FAST.currentDomainRole = domainRole;
+					FAST.currentDomainRole = selectedRole;
 					
 					AttributeCatalog acatalog = FAST.currentDomain.getAttributeCatalog();
 					Command preferencesCommand=new BaseDomainPreferencesCommand(acatalog);
