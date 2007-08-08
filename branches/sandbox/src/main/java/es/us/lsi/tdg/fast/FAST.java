@@ -4,6 +4,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import es.us.lsi.tdg.fast.components.GenericComponentsLoader;
 import es.us.lsi.tdg.fast.core.component.BaseComponentFactory;
 import es.us.lsi.tdg.fast.core.component.ComponentFactory;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRegistry;
@@ -38,8 +39,12 @@ public class FAST
     	log.setLevel(Level.OFF);
     	
     	shell = new SimpleFASTShell();
+
     	domainRegistry=new BaseDomainRegistry();
-        componentFactory= BaseComponentFactory.getInstance();
+
+    	componentFactory= BaseComponentFactory.getInstance();
+        GenericComponentsLoader.loadComponents(componentFactory);
+        
         preferenceRegistry=new BasePreferenceRegistry();
         shell.run();
         

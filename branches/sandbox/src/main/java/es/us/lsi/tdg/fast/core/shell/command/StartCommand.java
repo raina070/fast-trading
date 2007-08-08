@@ -11,10 +11,10 @@ public class StartCommand extends BaseCommand {
 	private String PID;
 	
 	private String error=null; 
-	private static String usageHelp="Usage: start orchestration PID";
+	private static String usageHelp="Usage: start PID [orchestrationName]";
 	
 	public StartCommand() {
-		super("start", 	"Starts a trading orchestration for a certain party.\n"+usageHelp);
+		super("start", 	"Starts the trading process for a certain party .\n"+usageHelp);
 	}
 	
 	public void configure(String[] arguments){
@@ -29,10 +29,9 @@ public class StartCommand extends BaseCommand {
 		
 		error = null;
 		
-		if(arguments.length==3){
+		if(arguments.length>1 && arguments.length<4){
 			
-			String orchName = arguments[1];
-			String PID = arguments[2];
+			String PID = arguments[1];
 						
 			this.PID = validatePID(PID); 
 			
@@ -40,10 +39,13 @@ public class StartCommand extends BaseCommand {
 				error = "ERROR: Wrong PID.\n"+usageHelp;
 			}
 
-			this.orchName = validateOrchestration(orchName); 
+			if(arguments.length == 3){
+				String orchName = arguments[2];
+				this.orchName = validateOrchestration(orchName); 
 			
-			if(orchName == null){
-				error = "ERROR: Wrong Orchestration name.\n"+usageHelp; 
+				if(orchName == null){
+					error = "ERROR: Wrong Orchestration name.\n"+usageHelp; 
+				}
 			}
 				
 		}else{
@@ -68,7 +70,12 @@ public class StartCommand extends BaseCommand {
 			return;
 		}
 		
-		TradingProcess tradingProcess = new BaseTradingProcess(PID,orchName);
+		TradingProcess tradingProcess;
+		
+		if (this.orchName == null)
+			tradingProcess = new BaseTradingProcess(PID);
+		else
+			tradingProcess = new BaseTradingProcess(PID,orchName);
 								
 		tradingProcess.start();
 					

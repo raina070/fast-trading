@@ -13,4 +13,6 @@ public interface ComponentFactory {
 	public void loadComponent(Component component);
 
 	public Component getByType(String string);
+
+	public void bind(String choreography,Component comp1,Component comp2);
 }

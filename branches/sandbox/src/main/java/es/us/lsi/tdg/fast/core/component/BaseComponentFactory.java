@@ -5,17 +5,20 @@ import java.util.Iterator;
 import java.util.Map;
 
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.choreographies.Choreography;
+import es.us.lsi.tdg.fast.core.choreographies.wiring.BaseWiringChoreographyFactory;
+import es.us.lsi.tdg.fast.core.choreographies.wiring.ChoreographyFactory;
 
 
 public class BaseComponentFactory implements ComponentFactory {
 
 	private Map<String,Class<Component>> componentRegistry;
 	private static ComponentFactory instance = null;
+	private ChoreographyFactory wiringChoreographyFactory = null;
 
 	private BaseComponentFactory(){
           componentRegistry = new HashMap<String,Class<Component>>();
-          FAST.shell.showMessage("Loading generic components...");
-          //loadComponent("es.us.lsi.tdg.fast.components.trading.BaseTradingComponent");  
+          wiringChoreographyFactory = BaseWiringChoreographyFactory.getInstance();
     }
 		
 	@SuppressWarnings("unchecked")
@@ -33,13 +36,13 @@ public class BaseComponentFactory implements ComponentFactory {
 			FAST.shell.showMessage("    Component <"+className+"> loaded.");
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 		
@@ -60,10 +63,10 @@ public class BaseComponentFactory implements ComponentFactory {
 			FAST.shell.showMessage("    Component <"+componentClass.getName()+"> loaded.");
 			
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 		
@@ -83,6 +86,7 @@ public class BaseComponentFactory implements ComponentFactory {
 			try{
 				
 				Component component = (Component) componentClass.newInstance();
+				FAST.shell.showMessage("    Component "+component.getName()+" instantianted.");
 				return component;
 				
 			}catch(IllegalAccessException e){
@@ -121,9 +125,10 @@ public class BaseComponentFactory implements ComponentFactory {
 				Class<Component> componentClass =  iterator.next();
 				Component component = (Component) componentClass.newInstance();
 				
-				if(component.getType().equals(type))
+				if(component.getType().equals(type)){
+					FAST.shell.showMessage("    Component "+component.getName()+" instantianted.");
 					return component;
-				
+				}
 			}
 		
 		}catch(IllegalAccessException e){
@@ -135,4 +140,14 @@ public class BaseComponentFactory implements ComponentFactory {
 		
 		return null;
 	}
+
+	public void bind(String wiringChoreographyName, Component comp1, Component comp2) {
+		Choreography wiringChoreography = this.wiringChoreographyFactory.getByName(wiringChoreographyName);
+
+		comp1.setWiringChoreography(wiringChoreography);
+		comp2.setWiringChoreography(wiringChoreography);
+		
+		FAST.shell.showMessage("    Wiring done: "+comp1.getName()+" <"+wiringChoreographyName+"> "+comp2.getName());
+	}
+
 }

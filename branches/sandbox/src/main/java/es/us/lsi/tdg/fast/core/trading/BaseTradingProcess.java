@@ -8,6 +8,7 @@ public class BaseTradingProcess implements TradingProcess{
 
 	private String PID;
 	private String orchName;
+	private TradingOrchestrator orchestrator=null;
 	
 	public String getPID() {
 		return PID;
@@ -20,6 +21,11 @@ public class BaseTradingProcess implements TradingProcess{
 	public BaseTradingProcess(String PID, String orchName) {
 		this.PID = PID;
 		this.orchName = orchName;
+	}
+
+	public BaseTradingProcess(String PID) {
+		this.PID = PID;
+		this.orchName = null;
 	}
 
 	public void start() {
@@ -42,4 +48,13 @@ public class BaseTradingProcess implements TradingProcess{
 		}
 			
 	}
+
+	public void setOrchestrator(TradingOrchestrator orchestrator) {
+		this.orchestrator = orchestrator;
+	}
+
+	public void event(String event) {
+		this.orchestrator.event(event);
+	}
+
 }
