@@ -1,0 +1,9 @@
+<service name="FOMAgreementMakerCommit" scope="application">
+    <description>
+		FOMAgreementMakerCommit Service
+    </description>
+    <operation name="commit">
+        <messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver"/>
+    </operation>
+   <parameter name="ServiceClass">es.us.lsi.tdg.fast.domains.fom.FOMAgreementMakerCommit</parameter>
+</service>
