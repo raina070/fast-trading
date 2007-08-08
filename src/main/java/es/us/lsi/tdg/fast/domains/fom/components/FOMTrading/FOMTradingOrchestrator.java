@@ -17,5 +17,10 @@ public class FOMTradingOrchestrator extends AbstractControllableProcess implemen
 	
 		
 	}
+
+	public void event(String event) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -22,4 +22,9 @@ public class FOMProviderOrchestrator
 		
 	}
 
+	public void event(String event) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
