@@ -8,6 +8,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 
 /**
@@ -32,6 +33,10 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 		this.inquirer = inquirer;
 	}
 		
+	public FOMTrackerProcess(FOMDiscovery discovery) {
+		// TODO Auto-generated constructor stub
+	}
+
 	private FOMCounterParty testProvider(){
 		FOMCounterParty provider = null;
 		try {
