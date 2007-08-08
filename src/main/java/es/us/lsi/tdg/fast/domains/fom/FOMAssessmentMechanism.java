@@ -10,7 +10,7 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.Term;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.Assessment;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.BaseAssessement;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.BaseAssessment;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
 import es.us.lsi.tdg.fast.core.dataModel.statement.SimpleConstraint;
@@ -23,7 +23,7 @@ import es.us.lsi.tdg.fast.core.dataModel.statement.Value;
  * @author José Antonio Parejo Maestre
  *
  */
-public class FOMAssessementMechanism implements AssessmentMechanism {
+public class FOMAssessmentMechanism implements AssessmentMechanism {
 	
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism#assess(es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences, es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement)
@@ -31,6 +31,7 @@ public class FOMAssessementMechanism implements AssessmentMechanism {
 	public Assessment assess(AgreementPreferences prefs, Agreement agreement) {
 		Assessment result=null;
 		Set<Statement> requirements=prefs.getRequirements();
+		@SuppressWarnings("unused")
 		Set<Statement> features=prefs.getFeatures();
 		double value=0;
 		double costMax=0;
@@ -103,7 +104,7 @@ public class FOMAssessementMechanism implements AssessmentMechanism {
 			value=(costMax/agreementCost)*(maxTime+1)+agreementTime;
 		}else
 			value=-1;
-		result=new BaseAssessement(value);
+		result=new BaseAssessment(value);
 		return result;
 		
 	}

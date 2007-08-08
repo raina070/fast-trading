@@ -1,6 +1,6 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMTrading;
 
-import es.us.lsi.tdg.fast.components.trading.TradingComponent;
+import es.us.lsi.tdg.fast.core.component.trading.TradingComponent;
 import es.us.lsi.tdg.fast.core.roles.trading.TradingManager;
 
 

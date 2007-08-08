@@ -1,6 +1,7 @@
 package es.us.lsi.tdg.fast.core.roles.trading;
 
-import es.us.lsi.tdg.fast.components.TradingProcess;
+import es.us.lsi.tdg.fast.core.trading.TradingOrchestrator;
+import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public interface TradingManager {
 

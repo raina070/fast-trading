@@ -6,11 +6,13 @@ import java.util.Set;
 
 import es.us.lsi.tdg.fast.core.shell.command.Command;
 
+@SuppressWarnings("unchecked")
 public class CommandFactory {
 
 	private static Map<String,Class> commandRegistry;
 	private Map<String,Command> commandInstances;
 	static {
+		
           commandRegistry = new HashMap<String,Class>();          
     }	
 	

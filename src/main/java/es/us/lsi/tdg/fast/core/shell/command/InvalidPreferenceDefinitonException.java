@@ -8,4 +8,10 @@ package es.us.lsi.tdg.fast.core.shell.command;
  * @author José Antonio Parejo Maestre
  *
  */
-public class InvalidPreferenceDefinitonException extends Exception {}
+public class InvalidPreferenceDefinitonException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+}

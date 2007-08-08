@@ -9,6 +9,6 @@ public class BaseExitCommand extends BaseCommand implements ExitCommand {
 	}
 	
 	public void execute(ShellRender shellRender){
-		System.out.println("Hasta luego lucas!");
+		System.out.println("Namárië!");
 	}
 }

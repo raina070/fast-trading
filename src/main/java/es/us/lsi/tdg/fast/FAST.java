@@ -4,8 +4,8 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import es.us.lsi.tdg.fast.components.BaseComponentFactory;
-import es.us.lsi.tdg.fast.components.ComponentFactory;
+import es.us.lsi.tdg.fast.core.component.BaseComponentFactory;
+import es.us.lsi.tdg.fast.core.component.ComponentFactory;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRegistry;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainRegistry;

@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.components;
+package es.us.lsi.tdg.fast.core.component;
 
 public interface Component {
 

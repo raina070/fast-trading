@@ -1,9 +1,8 @@
-package es.us.lsi.tdg.fast.components;
+package es.us.lsi.tdg.fast.core.trading;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.components.trading.TradingComponent;
+import es.us.lsi.tdg.fast.core.component.trading.TradingComponent;
 import es.us.lsi.tdg.fast.core.roles.trading.TradingManager;
-import es.us.lsi.tdg.fast.core.roles.trading.TradingOrchestrator;
 
 public class BaseTradingProcess implements TradingProcess{
 

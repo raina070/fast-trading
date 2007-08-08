@@ -3,7 +3,7 @@ package es.us.lsi.tdg.fast.domains.fom;
 import java.util.HashSet;
 import java.util.Set;
 
-import es.us.lsi.tdg.fast.components.Component;
+import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
@@ -16,7 +16,7 @@ public class Manifest implements
 	protected String name = "FOM";
 	protected AttributeCatalog attributeCatalog =  new FOMAttributeCatalog(); 
 	protected Set<Component> components;
-	protected AssessmentMechanism assessmentMechanism =new FOMAssessementMechanism();
+	protected AssessmentMechanism assessmentMechanism =new FOMAssessmentMechanism();
 	protected Set<String> domainRoles;
 	
 	
@@ -44,7 +44,7 @@ public class Manifest implements
 		return name;
 	}
 
-	public AssessmentMechanism getAssessMentMechanism() {
+	public AssessmentMechanism getAssessmentMechanism() {
 		return assessmentMechanism;
 	}
 

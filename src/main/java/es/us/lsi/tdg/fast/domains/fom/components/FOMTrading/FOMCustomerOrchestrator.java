@@ -1,8 +1,8 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMTrading;
 
-import es.us.lsi.tdg.fast.components.TradingProcess;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.trading.TradingOrchestrator;
+import es.us.lsi.tdg.fast.core.trading.TradingOrchestrator;
+import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 import es.us.lsi.tdg.fast.FAST;
 
 public class FOMCustomerOrchestrator 

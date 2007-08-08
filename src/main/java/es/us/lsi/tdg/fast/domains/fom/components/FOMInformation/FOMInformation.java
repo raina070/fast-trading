@@ -1,8 +1,8 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation;
 
-import es.us.lsi.tdg.fast.components.Component;
+import es.us.lsi.tdg.fast.core.component.information.InformationComponent;
 
-public class FOMInformation implements Component {
+public class FOMInformation implements InformationComponent {
 
 	protected String name = "FOMInformation";
 	protected String type = "Information";

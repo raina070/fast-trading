@@ -5,10 +5,9 @@ package es.us.lsi.tdg.fast.core.shell.command;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.components.Component;
+import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest;
-import es.us.lsi.tdg.fast.core.shell.CommandFactory;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
 import es.us.lsi.tdg.fast.core.shell.UnknownCommandException;
 /**

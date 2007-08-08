@@ -19,14 +19,14 @@ public class BaseAgreementPreferences implements AgreementPreferences {
 	
 	protected Set<Statement> features;
 	protected Set<Statement> requirements;
-	protected AssessmentMechanism assessementMechanism;
+	protected AssessmentMechanism assessmentMechanism;
 	
 	
 	public BaseAgreementPreferences(AssessmentMechanism assessementMechanism)
 	{
 		features=new HashSet<Statement>();
 		requirements=new HashSet<Statement>();
-		this.assessementMechanism = assessementMechanism;
+		this.assessmentMechanism = assessementMechanism;
 	}
 	
 	/* (non-Javadoc)
@@ -45,11 +45,11 @@ public class BaseAgreementPreferences implements AgreementPreferences {
 	
 	public Assessment assess(Agreement agreement)
 	{
-		return	getAssesmentMechanism().assess(this,agreement);
+		return	getAssessmentMechanism().assess(this,agreement);
 	}
 
-	public AssessmentMechanism getAssesmentMechanism() {
-		return assessementMechanism;
+	public AssessmentMechanism getAssessmentMechanism() {
+		return assessmentMechanism;
 	}
 
 	public String toString()

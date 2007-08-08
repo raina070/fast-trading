@@ -1,6 +1,6 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery;
 
-import es.us.lsi.tdg.fast.components.Component;
+import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.discovery.tracker.TrackerInquirerAdaptor;

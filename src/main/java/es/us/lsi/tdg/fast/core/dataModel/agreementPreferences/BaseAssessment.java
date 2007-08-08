@@ -1,11 +1,11 @@
 package es.us.lsi.tdg.fast.core.dataModel.agreementPreferences;
 
 
-public class BaseAssessement implements Assessment {
+public class BaseAssessment implements Assessment {
 
 	private Double value;
 	
-	public BaseAssessement(double value)
+	public BaseAssessment(double value)
 	{
 		this.value=new Double(value);
 	}
@@ -14,9 +14,9 @@ public class BaseAssessement implements Assessment {
 		int result=0;
 		if(o instanceof Double)
 			result=value.compareTo((Double)o);
-		else if(o instanceof BaseAssessement)
+		else if(o instanceof BaseAssessment)
 		{
-			result=this.value.compareTo(((BaseAssessement)o).value);
+			result=this.value.compareTo(((BaseAssessment)o).value);
 		}else			
 			throw new IllegalArgumentException();
 		return result;
