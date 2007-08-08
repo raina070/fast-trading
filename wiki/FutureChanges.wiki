@@ -24,7 +24,7 @@
   * Using decorator pattern they provide interoperability between DomainSpecific Adaptors and TechnologySpecific Adaptors.
 
 === Trading processes introspection interface ===
-  * Implement some general functions that allow monitoring the status of the trading process, including (generalStatus of subprocesses, number of proposals collected, number of potential counterparties found, etc...
+  * Implement some general functions that allow monitoring the status of the trading process, including (generalStatus of subprocesses, number of proposals collected, number of potential counterparties found, etc...).
 
 === FAST as a domain ===
   * Generic components and wiring as a domain. 
