@@ -22,21 +22,9 @@ import java.util.TreeSet;
 
 public class FOMAgreementSelection {
 
-	public void FOMAgreementSort(Set<BaseAgreement> myAgreements,BaseAgreementPreferences myAgreementPreferences){
-		
-		Set<FOMAgreementOffer> myFOMOffer = new TreeSet<FOMAgreementOffer>();
-		
-		
-		Set<Assessment> myAssess = new TreeSet<Assessment>();
-		for (BaseAgreement Agree:myAgreements){
-			
-			Assessment Test = null;
-			Test = myAgreementPreferences.assess(Agree);
-			myAssess.add(Test);
-		}
-		
-		for (BaseAgreement Agree:myAgreements){
-			
+	public void FOMAgreementSort(Set<Agreement> myAgreements,BaseAgreementPreferences myAgreementPreferences){
+		SortedSet<FOMAgreementOffer> myFOMOffer = new TreeSet<FOMAgreementOffer>();
+		for (Agreement Agree:myAgreements){	
 			try {
 				myFOMOffer.add(new FOMAgreementOffer(Agree, myAgreementPreferences));
 			} catch (IncompatibleAttributeException e) {
@@ -46,17 +34,10 @@ public class FOMAgreementSelection {
 			
 			
 		}
-		
-		
-		//System.out.println(myAssess.size());
-		for (Assessment Assess:myAssess){
-			//System.out.println(Assess);
-		}
-		
 		for (FOMAgreementOffer Offer:myFOMOffer){
-			//System.out.println(Offer);
+			
 		}
-		
+		//return myFOMOffer;
 	
 
 		

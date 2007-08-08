@@ -1,11 +1,16 @@
 package es.us.lsi.tdg.fast.domains.fom;
 
+import java.io.FileOutputStream;
+import java.util.Iterator;
+
 import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
 
+import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
+import org.apache.axiom.om.OMNamespace;
 import org.apache.axiom.om.OMNamespace;
 import org.apache.axis2.Constants;
 import org.apache.axis2.addressing.EndpointReference;
@@ -16,20 +21,24 @@ public class FOMAgreementMakerCommit {
 	public OMElement commit(OMElement elementSLA) {
 	    
 		elementSLA.build();
-	    //elementTime.
 	    elementSLA.detach();		
-	    OMElement symbolElement = elementSLA.getFirstElement();
-	    
+	    Agreement SLA = null;
+	    OMElement symbolElement=null; 
+	    String endPoint = ""; 		
 	    try {
-			BaseAgreement SLA = FOMSLATranslator.getAgreement(FOMAgreementMakerDispatch.translateOMElement(elementSLA));
-			//This must be taken from OMElement
-			String ep="http://";
-		    //sendAccept((Agreement)SLA,ep);
+	    	Iterator<OMElement>agreeChild = elementSLA.getChildElements();
+			while (agreeChild.hasNext()){
+				symbolElement = agreeChild.next();
+			    endPoint=agreeChild.next().getText();
+	    		SLA = FOMSLATranslator.getAgreement(FOMAgreementMakerDispatch.translateOMElement(symbolElement));
+			
+	    	}
+		    sendAccept((Agreement)SLA,endPoint);
 		} catch (IncompatibleAttributeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return elementSLA;
+		return symbolElement;
 	    
 	}
 
@@ -38,12 +47,10 @@ public class FOMAgreementMakerCommit {
 		
 		OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://axiom.service.mysample.samples/xsd", "tns");
-        OMElement method = fac.createOMElement("commit", omNs);
-        OMElement value = fac.createOMElement("agreement", omNs);
-        value.addChild(FOMAgreementMakerDispatch.translateFOMSLA(FOMSLATranslator.getFOMAgreement((BaseAgreement)SLA),fac,omNs));
+        OMElement method = fac.createOMElement("accept", omNs);
+        OMElement value =  fac.createOMElement("test",omNs);
+        //OMElement value =  FOMAgreementMakerDispatch.translateFOMSLA(FOMSLATranslator.getFOMAgreement(SLA),fac,omNs);
         method.addChild(value);        
-        
-       
         return method;
     }
 	
@@ -58,7 +65,8 @@ public class FOMAgreementMakerCommit {
             options.setTransportInProtocol(Constants.TRANSPORT_HTTP);
             ServiceClient sender = new ServiceClient();
             sender.setOptions(options);
-            sender.sendReceive(accept);
+            //System.out.println(ep);
+            OMElement response = sender.sendReceive(accept);
         } catch (Exception e) {
             e.printStackTrace();
         }		
