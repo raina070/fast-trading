@@ -1,7 +1,12 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.roles.selection;
+package es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher;
+
+import java.util.List;
+import java.util.Set;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
+import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 
 /**
  * 
@@ -51,6 +56,7 @@ package es.us.lsi.tdg.fast.core.roles.selection;
  * @author Pablo Fernández Montes
  *
  */
-public interface ProposalDisatcher {
-
+public interface ProposalDispatcher {	
+	public void dispatch(List<Proposal> proposals);
+	public List<Proposal> getProposalsDispatched(AgreementMaker agreementMaker);
 }

@@ -6,18 +6,23 @@ package es.us.lsi.tdg.fast.components.information.inquirer;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
-import es.us.lsi.tdg.fast.core.roles.selection.ProposalBuilder;
+import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 
 /**
  * @author Pablo Fernandez Montes
  * @author José Antonio Parejo Maestre
  *
  */
-public class PushInquirerProposalBuilderAdaptor implements InquirerProposalBuilderAdaptor {
+public class PushInquirerProposalBuilderAdaptor implements  es.us.lsi.tdg.fast.components.information.inquirer.InquirerProposalBuilderAdaptor {
 
 	protected ProposalBuilder proposalBuilder;
 	
 	public PushInquirerProposalBuilderAdaptor(ProposalBuilder proposalBuilder)
+	{
+		this.proposalBuilder=proposalBuilder;
+	}
+	
+	public void setProposalBuilder(ProposalBuilder proposalBuilder)
 	{
 		this.proposalBuilder=proposalBuilder;
 	}

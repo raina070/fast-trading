@@ -6,7 +6,7 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
-import es.us.lsi.tdg.fast.core.roles.selection.ProposalBuilder;
+import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 
 /**
  * 

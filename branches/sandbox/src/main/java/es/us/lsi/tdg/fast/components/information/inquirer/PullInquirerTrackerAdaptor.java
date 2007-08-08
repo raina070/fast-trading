@@ -10,7 +10,9 @@ import es.us.lsi.tdg.fast.core.roles.IllegalAdapterMethodCall;
 import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
+import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 
 
 
@@ -58,6 +60,10 @@ public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 
 	public void potentialCounterParties(Set<CounterParty> counterParties){
 		throw new IllegalAdapterMethodCall();
+	}
+
+	public Set<CounterPartyKnowledge> getInformation() {		
+		throw new IllegalChoreographyMethodCallException();
 	}
 
 }
