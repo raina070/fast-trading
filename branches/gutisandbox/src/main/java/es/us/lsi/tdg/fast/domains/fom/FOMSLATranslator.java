@@ -8,36 +8,34 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
 
 public class FOMSLATranslator {
 	
-	public static BaseAgreement getAgreement(FOMAgreement Offer) throws IncompatibleAttributeException{
-		BaseCounterParty CT = new BaseCounterParty();
+	public static Agreement getAgreement(FOMAgreement Offer) throws IncompatibleAttributeException{
 		
-		
-		HashSet<Constraint> Constraints = new HashSet<Constraint>();
-		HashSet<Term> myTermSet = new HashSet<Term>();
+		CounterParty CT = new BaseCounterParty();
+		Set<Constraint> Constraints = new HashSet<Constraint>();
+		Set<Term> myTermSet = new HashSet<Term>();
 		IntegerValue costValue = new IntegerValue((int)Offer.getCost());
-		BaseAttribute costAttribute = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
-		BaseSimpleConstraint  costConstraint = new BaseSimpleConstraint((Value)costValue,costAttribute,StatementType.SERVICE);
+		Attribute costAttribute = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
+		SimpleConstraint  costConstraint = new BaseSimpleConstraint((Value)costValue,costAttribute,StatementType.SERVICE);
 		Constraints.add(costConstraint);	
 		IntegerValue timeValue = new IntegerValue(Offer.getTime());
-		BaseAttribute timeAttribute = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
-		BaseSimpleConstraint timeConstraint = new BaseSimpleConstraint((Value)timeValue,timeAttribute,StatementType.SERVICE);
+		Attribute timeAttribute = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
+		SimpleConstraint timeConstraint = new BaseSimpleConstraint((Value)timeValue,timeAttribute,StatementType.SERVICE);
 		Constraints.add(timeConstraint);
-		BaseTerm TermOffer = new BaseTerm(Constraints, CT);
-		myTermSet.add(TermOffer);
-		
-		BaseAgreement SLA = new BaseAgreement(myTermSet,null);
+		Term TermOffer = new BaseTerm(Constraints, CT);
+		myTermSet.add(TermOffer);	
+		Agreement SLA = new BaseAgreement(myTermSet,null);
 		return SLA;
 	}
 	
-	public static FOMAgreement getFOMAgreement(BaseAgreement SLA){
+	public static FOMAgreement getFOMAgreement(Agreement SLA){
 		FOMAgreement result = new FOMAgreement();
 		double agreementCost=0,agreementTime=0;
-		HashSet<Term> Terms= (HashSet)SLA.getTerms();
+		Set<Term> Terms= (HashSet)SLA.getTerms();
 		for(Term term:Terms)
 		{
 			if(term.getCounterParty()==null)
 			{
-				HashSet<Constraint> constraints=(HashSet)term.getConstraints();
+				Set<Constraint> constraints=(HashSet)term.getConstraints();
 				for(Constraint constraint:constraints)
 				{
 					if(constraint.getAttribute().getName().equals("Cost"))
@@ -63,7 +61,5 @@ public class FOMSLATranslator {
 
 		}
 		return result;
-		
-	
 	}
 }

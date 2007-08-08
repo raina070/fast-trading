@@ -1,5 +1,6 @@
 package es.us.lsi.tdg.fast.domains.fom;
 
+import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
@@ -11,9 +12,6 @@ import org.apache.axis2.client.ServiceClient;
 
 import java.util.Iterator;
 import java.util.Set;
-import java.io.*;
-
-import javax.xml.stream.XMLStreamException;
 
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.BaseAgreement;
@@ -21,9 +19,9 @@ import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeExceptio
 
 public class FOMAgreementMakerDispatch {
 	
-	public void dispatchAgreement(Set<BaseAgreement> agreements,String ep){
+	public void dispatchAgreement(Set<Agreement> agreements,String ep){
 		int sent = 0;
-		for (BaseAgreement agree:agreements){
+		for (Agreement agree:agreements){
 			if (sent==0){
 				sendCommit(agree,ep);
 				sent = 1;
@@ -37,25 +35,25 @@ public class FOMAgreementMakerDispatch {
 	    //elementTime.
 	    elementSLA.detach();		
 		OMElement symbolElement = elementSLA.getFirstElement();
-	    
+	    /**
 	    try {
-			BaseAgreement SLA = FOMSLATranslator.getAgreement(translateOMElement(elementSLA));
+			Agreement SLA = FOMSLATranslator.getAgreement(translateOMElement(elementSLA));
 		} catch (IncompatibleAttributeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		
 	    return symbolElement;
 	}
 	
 	public OMElement reject(OMElement elementSLA) {
 	    
 		elementSLA.build();
-	    //elementTime.
 	    elementSLA.detach();		
 		OMElement symbolElement = elementSLA.getFirstElement();
 	    
 	    try {
-			BaseAgreement SLA = FOMSLATranslator.getAgreement(translateOMElement(elementSLA));
+			Agreement SLA = FOMSLATranslator.getAgreement(translateOMElement(elementSLA));
 		} catch (IncompatibleAttributeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,12 +66,11 @@ public class FOMAgreementMakerDispatch {
         OMFactory fac = OMAbstractFactory.getOMFactory();
         OMNamespace omNs = fac.createOMNamespace("http://axiom.service.mysample.samples/xsd", "tns");
         OMElement method = fac.createOMElement("commit", omNs);
-        OMElement value = fac.createOMElement("agreement", omNs);
-        //value.addChild(translateFOMSLA(FOMSLATranslator.getFOMAgreement((BaseAgreement)SLA),fac,omNs));
-        method.addChild(value);   
-        //OMElement value2 = fac.createOMElement("ep", omNs);
-        //value2.addChild(fac.createOMText(value, myEndPoint));
-        //method.addChild(value2);
+        OMElement agreement = translateFOMSLA(FOMSLATranslator.getFOMAgreement((BaseAgreement)SLA),fac,omNs);
+        OMElement endPoint = fac.createOMElement("ep", omNs);
+        endPoint.addChild(fac.createOMText(endPoint, myEndPoint));
+        method.addChild(agreement);   
+        method.addChild(endPoint);
         return method;
     }
 	
@@ -82,7 +79,7 @@ public class FOMAgreementMakerDispatch {
 		EndpointReference targetEPR = 
 	        new EndpointReference(ep);
 		try {
-			String myEndPoint = "";
+			String myEndPoint = "http://localhost:8080/axis2/services/FOMAgreementMakerDispatch";
             OMElement accept = sendMethod(SLA, myEndPoint);
             Options options = new Options();
             options.setTo(targetEPR);
@@ -90,7 +87,7 @@ public class FOMAgreementMakerDispatch {
             ServiceClient sender = new ServiceClient();
             sender.setOptions(options);
             OMElement response = sender.sendReceive(accept);
-            System.out.println(translateOMElement(response));
+            
         } catch (Exception e) {
             e.printStackTrace();
         }		
@@ -98,6 +95,7 @@ public class FOMAgreementMakerDispatch {
 	}
 
 	public static OMElement translateFOMSLA(FOMAgreement agree,OMFactory fac, OMNamespace omNs){
+	
 		OMElement result = fac.createOMElement("Agreement", omNs);
 	
 		OMElement Cost = fac.createOMElement("Cost", omNs);
@@ -107,26 +105,13 @@ public class FOMAgreementMakerDispatch {
 		timeInit.addChild(fac.createOMText(Integer.toString(agree.getTime())));
 		result.addChild(Cost);
 		result.addChild(timeInit);
-		FileOutputStream out;
-		try {
-			out = new FileOutputStream("myfile.txt");
-			result.serialize(out);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (XMLStreamException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-	
 		return result;
 	}
 	
 	public static FOMAgreement translateOMElement(OMElement agree){
 		
-		OMElement agreement = (OMElement)agree.getFirstElement();
-		Iterator<OMElement>agreeChild = agreement.getChildElements();
+		Iterator<OMElement>agreeChild = agree.getChildElements();
 		int time = 0;
 		double cost = 0;
 		while (agreeChild.hasNext()){

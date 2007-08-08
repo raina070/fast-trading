@@ -9,25 +9,25 @@ import es.us.lsi.tdg.fast.core.dataModel.statement.*;
 public class FOMOfferInformationTranslator {
 
 	
-	public static BaseInformation getInformation(FOMOffer Offer) throws IncompatibleAttributeException{
+	public static Information getInformation(FOMOffer Offer) throws IncompatibleAttributeException{
 		
-		BaseInformation result = new BaseInformation();
+		Information result = new BaseInformation();
 		
 		IntegerValue costValue = new IntegerValue((int)Offer.getCost());
-		BaseAttribute Cost = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
-		BaseSimpleConstraint c = new BaseSimpleConstraint((Value)costValue,Cost,StatementType.SERVICE);
+		Attribute Cost = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
+		SimpleConstraint costConstraint = new BaseSimpleConstraint((Value)costValue,Cost,StatementType.SERVICE);
 		IntegerValue timeInitValue = new IntegerValue(Offer.getTimeInit());
 		IntegerValue timeEndValue = new IntegerValue(Offer.getTimeEnd());
-		BaseAttribute time = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
-		BaseSortedDomainConstraint tOffer = new BaseSortedDomainConstraint((ComparableValue)timeInitValue,(ComparableValue)timeEndValue, time,StatementType.SERVICE);
-		result.addRequirement((Statement)c);
-		result.addRequirement((Statement)tOffer);
-		
-			
+		Attribute time = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
+		SortedDomainConstraint timeConstraint = new BaseSortedDomainConstraint((ComparableValue)timeInitValue,(ComparableValue)timeEndValue, time,StatementType.SERVICE);
+		Set<Statement> requirements = result.getRequirements();
+		//new HashSet<Statement>();
+		requirements.add((Statement)costConstraint);
+		requirements.add((Statement)timeConstraint);
 		return result;
 	}
 	
-	public static FOMOffer getFOMOffer(BaseInformation Offer){
+	public static FOMOffer getFOMOffer(Information Offer){
 		FOMOffer result = new FOMOffer();
 		double cost=0,maxTime=0,minTime=0;
 		Set<Statement> requirements=Offer.getRequirements();

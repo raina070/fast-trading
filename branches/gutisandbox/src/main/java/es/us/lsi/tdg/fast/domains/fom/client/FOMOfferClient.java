@@ -18,23 +18,23 @@ public class FOMOfferClient {
 		FOMOfferInquirer Requirer = new FOMOfferInquirer();
 		FOMOfferInformation result;
 		result = Requirer.newCP("http://localhost:8080/axis2/services/FOMOfferInformant");
-		FOMOfferInformationTranslator Adaptor = new FOMOfferInformationTranslator();
+		
 		FOMOfferInformation 		  Test2   = new FOMOfferInformation();
-		HashSet<BaseInformation> Test = new HashSet<BaseInformation>();
+		Set<Information> Test = new HashSet<Information>();
 		
 		
 		for (FOMOffer Offer: result.iterate()){
-				Test.add(Adaptor.getInformation(Offer));
+				Test.add(FOMOfferInformationTranslator.getInformation(Offer));
 			
 		}
 		
-		for (BaseInformation BIOffer: Test){
-			Test2.add(Adaptor.getFOMOffer(BIOffer));
+		for (Information BIOffer: Test){
+			Test2.add(FOMOfferInformationTranslator.getFOMOffer(BIOffer));
 			
 		}
 		
 		Set<FOMAgreement> Agreement = new HashSet<FOMAgreement>();
-		Set<BaseAgreement> BaseAgreements = new HashSet<BaseAgreement>();
+		Set<Agreement> BaseAgreements = new HashSet<Agreement>();
 		
 		FOMSLATranslator Translator = new FOMSLATranslator();
 		FOMProposal Proposer = new FOMProposal();
@@ -45,7 +45,7 @@ public class FOMOfferClient {
 		}
 		
 		
-		for (BaseAgreement AgreeTest: BaseAgreements){
+		for (Agreement AgreeTest: BaseAgreements){
 			
 			//System.out.println(Translator.getFOMAgreement(AgreeTest));
 			
