@@ -1,8 +1,7 @@
 
-
 == Extensions ==
 
-= Semantic Preferences =
+=== Semantic Preferences ===
   * Add semantic structures to dataModel
   * Take advantage of semantic reasoning
   * Coherence 
@@ -12,15 +11,15 @@
 
 == Changes ==
 
-= Features and Requirements =
+=== Features and Requirements ===
   * Is it usefull to classify statements in this groups?
   * FOM Translations don't use Features.
   * Matching Features to Requirements
 
 == Improvements ==
 
-= Multiple domains loaded =
+=== Multiple domains loaded ===
   * Technology domains + specific domain
 
-= FAST as a domain =
+=== FAST as a domain ===
   * Generic components and wiring as a domain. 
