@@ -6,8 +6,8 @@ import es.us.lsi.tdg.fast.components.selection.proposalBuilder.PullProposalBuild
 public class PushNewInformationNotification extends NewInformationNotification {
 	public PushNewInformationNotification()
 	{
-		proposalBuilderInquierrAdaptor=new PullProposalBuilderInquirerAdaptor();
-		inquirerProposalBuilderAdaptor=new PushInquirerProposalBuilderAdaptor(proposalBuilderInquierrAdaptor);
+		proposalBuilderInquirerAdaptor=new PullProposalBuilderInquirerAdaptor();
+		inquirerProposalBuilderAdaptor=new PushInquirerProposalBuilderAdaptor(proposalBuilderInquirerAdaptor);
 		
 	}
 }

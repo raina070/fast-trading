@@ -3,7 +3,8 @@
  */
 package es.us.lsi.tdg.fast.core.choreographies.wiring;
 
-import es.us.lsi.tdg.fast.components.information.inquirer.InquirerProposalBuilderAdaptor;
+
+import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.core.choreographies.AbstractChoreography;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderInquirerAdaptor;
 
@@ -15,7 +16,7 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderIn
 public abstract class NewInformationNotification extends AbstractChoreography {
 	
 	protected InquirerProposalBuilderAdaptor inquirerProposalBuilderAdaptor;
-	protected ProposalBuilderInquirerAdaptor proposalBuilderInquierrAdaptor;
+	protected ProposalBuilderInquirerAdaptor proposalBuilderInquirerAdaptor;
 	
 	public NewInformationNotification()
 	{
@@ -29,8 +30,8 @@ public abstract class NewInformationNotification extends AbstractChoreography {
 		return inquirerProposalBuilderAdaptor;
 	}
 
-	public ProposalBuilderInquirerAdaptor getProposalBuilderInquierrAdaptor() {
-		return proposalBuilderInquierrAdaptor;
+	public ProposalBuilderInquirerAdaptor getProposalBuilderInquirerAdaptor() {
+		return proposalBuilderInquirerAdaptor;
 	}
 	
 	
