@@ -21,7 +21,7 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 	
 	private Inquirer inquirer;
 	Set<CounterParty> FOMProviders;
-	
+	private FOMDiscovery discoveryComponent;
 	
 	public FOMTrackerProcess(Inquirer inquirer) {
 		this("FOMTracker",inquirer);				
@@ -33,10 +33,12 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 		this.inquirer = inquirer;
 	}
 		
-	public FOMTrackerProcess(FOMDiscovery discovery) {
-		// TODO Auto-generated constructor stub
+	public FOMTrackerProcess(FOMDiscovery discoveryComponent) {
+		this((Inquirer) discoveryComponent.getTracker());
+		this.discoveryComponent = discoveryComponent;
 	}
 
+	
 	private FOMCounterParty testProvider(){
 		FOMCounterParty provider = null;
 		try {
