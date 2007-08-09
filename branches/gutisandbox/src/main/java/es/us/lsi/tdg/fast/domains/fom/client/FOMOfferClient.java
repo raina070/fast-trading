@@ -17,14 +17,14 @@ public class FOMOfferClient {
 	public static void main(String[] args) throws IncompatibleAttributeException {
 		// TODO Auto-generated method stub
 		FOMOfferInquirer Requirer = new FOMOfferInquirer();
-		FOMOfferInformation result;
+		Set<FOMOffer> result = new HashSet<FOMOffer>();
 		result = Requirer.newCP("http://localhost:8080/axis2/services/FOMOfferInformant");
 		
-		FOMOfferInformation 		  Test2   = new FOMOfferInformation();
+		Set <FOMOffer> Test2   = new HashSet<FOMOffer>();
 		Set<Information> Test = new HashSet<Information>();
 		
 		
-		for (FOMOffer Offer: result.iterate()){
+		for (FOMOffer Offer: result){
 				Test.add(FOMOfferInformationTranslator.getInformation(Offer));
 			
 		}
@@ -39,7 +39,7 @@ public class FOMOfferClient {
 		
 		
 		FOMProposalBuilder Proposer = new FOMProposalBuilder();
-		Agreement = Proposer.FOMOfferToAgreement(result.iterate(),new FOMOffer(10,40,60));
+		Agreement = Proposer.FOMOfferToAgreement(result,new FOMOffer(10,40,60));
 		for (FOMAgreement AgreeTest: Agreement){
 			BaseAgreements.add(FOMSLATranslator.getAgreement(AgreeTest));
 			//System.out.println(AgreeTest);
