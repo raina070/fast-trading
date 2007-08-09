@@ -1,16 +1,16 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
 
-public class FOMAgreement {
+public class FOMProposal {
 
 	public int time;
 	public double cost;
 	
-	public FOMAgreement(){
+	public FOMProposal(){
 		this.time = 0;
 		this.cost = 0;
 	}
 	
-	public FOMAgreement(int time, double cost){
+	public FOMProposal(int time, double cost){
 		this.time	= time;
 		this.cost 	= cost;	
 	}

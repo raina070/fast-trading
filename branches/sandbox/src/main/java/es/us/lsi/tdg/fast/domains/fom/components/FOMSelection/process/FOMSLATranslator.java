@@ -9,27 +9,33 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.*;
 
 public class FOMSLATranslator {
 	
-	public static Agreement getAgreement(FOMAgreement Offer) throws IncompatibleAttributeException{
+	public static Proposal getAgreement(FOMProposal Offer){
 		
 		CounterParty CT = new FOMCounterParty(null,null,null,null,null);
 		Set<Constraint> Constraints = new HashSet<Constraint>();
 		Set<Term> myTermSet = new HashSet<Term>();
 		IntegerValue costValue = new IntegerValue((int)Offer.getCost());
 		Attribute costAttribute = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
-		SimpleConstraint  costConstraint = new BaseSimpleConstraint((Value)costValue,costAttribute,StatementType.SERVICE);
-		Constraints.add(costConstraint);	
-		IntegerValue timeValue = new IntegerValue(Offer.getTime());
-		Attribute timeAttribute = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
-		SimpleConstraint timeConstraint = new BaseSimpleConstraint((Value)timeValue,timeAttribute,StatementType.SERVICE);
-		Constraints.add(timeConstraint);
-		Term TermOffer = new BaseTerm(Constraints, CT);
-		myTermSet.add(TermOffer);	
-		Agreement SLA = new BaseAgreement(myTermSet,null);
+		SimpleConstraint costConstraint;
+		try {
+			costConstraint = new BaseSimpleConstraint((Value)costValue,costAttribute,StatementType.SERVICE);
+			Constraints.add(costConstraint);	
+			IntegerValue timeValue = new IntegerValue(Offer.getTime());
+			Attribute timeAttribute = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
+			SimpleConstraint timeConstraint = new BaseSimpleConstraint((Value)timeValue,timeAttribute,StatementType.SERVICE);
+			Constraints.add(timeConstraint);
+			Term TermOffer = new BaseTerm(Constraints, CT);
+			myTermSet.add(TermOffer);	
+		} catch (IncompatibleAttributeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Proposal SLA = new BaseProposal(myTermSet,null,ProposalPerformative.PROPOSAL);
 		return SLA;
 	}
 	
-	public static FOMAgreement getFOMAgreement(Agreement SLA){
-		FOMAgreement result = new FOMAgreement();
+	public static FOMProposal getFOMAgreement(Proposal SLA){
+		FOMProposal result = new FOMProposal();
 		double agreementCost=0,agreementTime=0;
 		Set<Term> Terms= (HashSet)SLA.getTerms();
 		for(Term term:Terms)
