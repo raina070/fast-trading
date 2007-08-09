@@ -55,6 +55,10 @@ public class FOMDiscovery implements Component {
 
 	public void setTradingProcess(TradingProcess tradingProcess) {
 		this.tradingProcess = tradingProcess;
+	}
+
+	public TradingProcess getTradingProcess() {		
+		return tradingProcess;
 	} 
 	
 

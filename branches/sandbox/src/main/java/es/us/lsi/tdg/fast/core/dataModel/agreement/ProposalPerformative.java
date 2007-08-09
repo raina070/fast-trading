@@ -12,4 +12,4 @@ package es.us.lsi.tdg.fast.core.dataModel.agreement;
  * @author Pablo Fernández Montes
  * @author José Antonio Parejo Maestre
  */
-public enum ProposalPerformative {PROPOSAL,COMMIT,ACCEPT}
+public enum ProposalPerformative {PROPOSAL,COMMIT,ACCEPT,REJECT}

@@ -13,7 +13,7 @@ import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferenc
  *
  */
 public interface PreferenceRegistry {
-	public void setPreferences(String IDC, AgreementPreferences preferences);	
-	AgreementPreferences getPreferences(String IDC);
+	public void setPreferences(String PID, AgreementPreferences preferences);	
+	AgreementPreferences getPreferences(String PID);
 	public Set<String> getRegisteredIdentifiers();
 }

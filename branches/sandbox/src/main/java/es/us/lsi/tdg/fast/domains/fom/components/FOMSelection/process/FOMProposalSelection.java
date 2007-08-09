@@ -2,6 +2,7 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
 
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.*;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalComparator;
 
 import java.util.Set;
 import java.util.SortedSet;

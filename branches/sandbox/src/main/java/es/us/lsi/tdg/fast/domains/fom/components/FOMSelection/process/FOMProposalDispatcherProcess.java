@@ -28,7 +28,7 @@ public class FOMProposalDispatcherProcess extends AbstractControllableProcess {
 	private FOMSelection 	selectionComponent;
 	
 	public FOMProposalDispatcherProcess(AgreementMaker agreementMaker) {
-		this("FOMAgreementMaker",agreementMaker);				
+		this("FOMProposalDispatcher",agreementMaker);				
 	}
 
 	public FOMProposalDispatcherProcess(String threadName,AgreementMaker agreementMaker)

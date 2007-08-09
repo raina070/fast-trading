@@ -42,7 +42,7 @@ public class FOMInquirerProcess extends AbstractControllableProcess {
 	}
 		
 	public FOMInquirerProcess(FOMInformation informationComponent) {
-		this((Tracker) informationComponent.getInquirerTrackerAdaptor(), (ProposalBuilder)informationComponent.getInquirerProposalBuilderAdaptor());
+		this((Tracker) informationComponent.getInquirer(Tracker.class), (ProposalBuilder)informationComponent.getInquirer(ProposalBuilder.class));
 		this.informationComponent = informationComponent;
 	}
 	

@@ -1,5 +1,6 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation;
 
+import es.us.lsi.tdg.fast.components.selection.SelectionComponent;
 import es.us.lsi.tdg.fast.core.choreographies.Choreography;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.PotentialCounterPartyNotification;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.NewInformationNotification;
@@ -9,9 +10,11 @@ import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
+import es.us.lsi.tdg.fast.core.roles.information.informant.InformantInquirerAdaptor;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerProposalBuilderAdaptor;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMInformantProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMInquirerProcess;
 
 public class FOMInformation implements InformationComponent {
@@ -19,13 +22,16 @@ public class FOMInformation implements InformationComponent {
 
 	protected String name = "FOMInformation";
 	protected String type = "Information";
-	TradingProcess tradingProcess = null;
+	protected TradingProcess tradingProcess = null;
 
 	protected ControllableProcess inquirerProcess=null;
+	protected ControllableProcess informantProcess=null;
 	
 	// Adapters for the offered roles: 
 	protected InquirerTrackerAdaptor 			inquirerTrackerAdaptor;
 	protected InquirerProposalBuilderAdaptor 	inquirerProposalBuilderAdaptor;
+	
+	//protected InformantInquirerAdaptor informantInquierAdaptor;
 	
 	public String getName() {
 		return name;
@@ -48,6 +54,13 @@ public class FOMInformation implements InformationComponent {
 		return inquirerProcess;
 	}
 	
+	public ControllableProcess getInformantProcess()
+	{
+		if(informantProcess==null)
+			informantProcess=new FOMInformantProcess();
+		return informantProcess;
+	}
+	
 	
 	public void setWiringChoreography(Choreography wiringChoreography) {
 		String woType = wiringChoreography.getType();
@@ -63,11 +76,16 @@ public class FOMInformation implements InformationComponent {
 		this.tradingProcess = tradingProcess;	
 	}
 
-	public Inquirer getInquirerTrackerAdaptor(){
-		return inquirerTrackerAdaptor;
+	public Inquirer getInquirer(Object obj){
+		Inquirer inquirer=null;
+		if((obj instanceof Tracker) || obj == Tracker.class)
+			inquirer=inquirerTrackerAdaptor;
+		else if((obj instanceof ProposalBuilder) || (obj instanceof SelectionComponent) || obj==ProposalBuilder.class)
+			inquirer=inquirerProposalBuilderAdaptor;
+		return inquirer;
 	}
-	
-	public Inquirer getInquirerProposalBuilderAdaptor(){
-		return inquirerProposalBuilderAdaptor;
+
+	public TradingProcess getTradingProcess() {		
+		return tradingProcess;
 	}
 }

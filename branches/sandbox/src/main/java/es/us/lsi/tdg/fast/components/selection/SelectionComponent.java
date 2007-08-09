@@ -81,4 +81,8 @@ public class SelectionComponent implements Component {
 	public void setWiringChoreography(Choreography wiringChoreography) {
 		this.wiringChoreography=wiringChoreography;		
 	}
+
+	public TradingProcess getTradingProcess() {
+			return tradingProcess;
+	}
 }

@@ -3,6 +3,7 @@ package es.us.lsi.tdg.fast.components.information.inquirer.process;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
@@ -37,7 +38,9 @@ public class InquirerProcess extends AbstractControllableProcess{
 		Set<CounterParty> counterParties=tracker.getNewCounterParties();
 		for(CounterParty counterParty:counterParties)
 		{
-			proposalBuilder.newInformation(informant.getKnowledge(counterParty));
+			Set<CounterPartyKnowledge> knoledges=informant.getKnowledge(counterParty);
+			for(CounterPartyKnowledge knoledge:knoledges)
+				proposalBuilder.newInformation(knoledge);
 		}
 		
 	}
