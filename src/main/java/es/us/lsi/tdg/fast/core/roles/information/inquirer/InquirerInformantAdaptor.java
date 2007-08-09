@@ -3,6 +3,8 @@
  */
 package es.us.lsi.tdg.fast.core.roles.information.inquirer;
 
+import java.util.Set;
+
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
@@ -15,5 +17,5 @@ import es.us.lsi.tdg.fast.core.roles.information.Informant;
  *
  */
 public interface InquirerInformantAdaptor extends Informant {
-	public CounterPartyKnowledge getKnowledge(CounterParty counterParty);	
+	public Set<CounterPartyKnowledge> getKnowledge(CounterParty counterParty);	
 }

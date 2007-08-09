@@ -8,13 +8,16 @@ public class BaseProposal extends BaseAgreement implements Proposal{
 		
 	public BaseProposal(Set<Term> terms, Set<CounterParty> counterParties, ProposalPerformative proposalPerformative) {
 		super(terms, counterParties);
-		this.proposalPerformative = proposalPerformative;
-		// TODO Auto-generated constructor stub
+		this.proposalPerformative = proposalPerformative;		
 	}
 
-	public ProposalPerformative getPerformative() {
-		// TODO Auto-generated method stub
+	public ProposalPerformative getPerformative() {		
 		return proposalPerformative;
+	}
+	
+	public void setPerformative(ProposalPerformative value)
+	{
+		proposalPerformative=value;
 	}
 	
 

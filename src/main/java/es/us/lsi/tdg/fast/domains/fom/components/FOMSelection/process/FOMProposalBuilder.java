@@ -3,6 +3,9 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
 import java.util.Set;
 import java.util.HashSet;
 
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
+
 /**
  * 
  * @author Antonio Manuel

@@ -5,9 +5,10 @@ import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public interface Component {
 
-	String getName();
-	String getType();
-	void setTradingProcess(TradingProcess tradingProcess);
-	void setWiringChoreography(Choreography wiringChoreography);
+	public String getName();
+	public String getType();
+	public void setTradingProcess(TradingProcess tradingProcess);
+	public TradingProcess getTradingProcess();
+	public void setWiringChoreography(Choreography wiringChoreography);
 	
 }

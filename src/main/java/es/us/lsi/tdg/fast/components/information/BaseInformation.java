@@ -81,5 +81,9 @@ public class BaseInformation implements InformationComponent{
 		this.tradingProcess = tradingProcess;
 		
 	}
+
+	public TradingProcess getTradingProcess() {
+		return tradingProcess;
+	}
 	
 }

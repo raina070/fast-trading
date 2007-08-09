@@ -20,5 +20,5 @@ public interface Proposal extends Agreement {
 	 * proposal.
 	 */
 	public ProposalPerformative getPerformative();
-	
+	public void setPerformative(ProposalPerformative value);
 }

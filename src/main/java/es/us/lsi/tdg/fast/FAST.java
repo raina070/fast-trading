@@ -5,6 +5,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import es.us.lsi.tdg.fast.components.GenericComponentsLoader;
+import es.us.lsi.tdg.fast.core.agreementRegistry.AgreementRegistry;
+import es.us.lsi.tdg.fast.core.agreementRegistry.BaseAgreementRegistry;
 import es.us.lsi.tdg.fast.core.component.BaseComponentFactory;
 import es.us.lsi.tdg.fast.core.component.ComponentFactory;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRegistry;
@@ -32,6 +34,7 @@ public class FAST
 	public static DomainRole currentDomainRole=null;
 	public static ComponentFactory componentFactory=null;
 	public static PreferenceRegistry preferenceRegistry=null;
+	public static AgreementRegistry agreementRegistry=null;
 	public static FASTShell shell = null;
 	
     public static void main( String[] args )
@@ -47,6 +50,7 @@ public class FAST
         GenericComponentsLoader.loadComponents(componentFactory);
         
         preferenceRegistry=new BasePreferenceRegistry();
+        agreementRegistry=new BaseAgreementRegistry();
         shell.run();
         
     }

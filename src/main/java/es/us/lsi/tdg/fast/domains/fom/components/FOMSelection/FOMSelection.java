@@ -84,4 +84,8 @@ public class FOMSelection implements Component {
 	public ProposalDispatcher getProposalDispatcher(){
 		return proposalDispatcher;
 	}
+
+	public TradingProcess getTradingProcess() {		
+		return tradingProcess;
+	}
 }

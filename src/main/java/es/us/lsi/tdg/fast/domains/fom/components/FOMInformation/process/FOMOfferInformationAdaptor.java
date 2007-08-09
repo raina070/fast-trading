@@ -5,8 +5,8 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
 
-import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMOffer;
-import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMOfferInformationTranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformationTranslator;
 
 public class FOMOfferInformationAdaptor {
 

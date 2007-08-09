@@ -42,5 +42,9 @@ public class FOMTrading implements TradingComponent{
 		this.tradingProcess = tradingProcess;
 		
 	}
+
+	public TradingProcess getTradingProcess() {		
+		return tradingProcess;
+	}
 	
 }

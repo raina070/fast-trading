@@ -5,6 +5,10 @@ import java.util.HashSet;
 
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformationTranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
 
 public class FOMProposalOfferAdaptor {
 	public static Set<Proposal>getAgreementSet(Set<Information> infoSet){

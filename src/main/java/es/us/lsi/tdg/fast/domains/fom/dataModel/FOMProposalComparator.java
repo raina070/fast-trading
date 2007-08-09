@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
+package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Comparator;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.*;

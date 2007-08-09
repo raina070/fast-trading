@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
+package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 public class FOMProposal {
 
