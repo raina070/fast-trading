@@ -4,7 +4,7 @@ import java.util.Comparator;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.*;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
 
-public class FOMAgreementComparator implements Comparator {
+public class FOMProposalComparator implements Comparator {
 
 	private AgreementPreferences agreePrefs;
 	
@@ -16,7 +16,7 @@ public class FOMAgreementComparator implements Comparator {
 		return a2.compareTo(a1);
 	}
 	
-	public FOMAgreementComparator(AgreementPreferences agreePrefs){
+	public FOMProposalComparator(AgreementPreferences agreePrefs){
 		this.agreePrefs = agreePrefs;
 	}
 	
