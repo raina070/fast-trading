@@ -10,9 +10,10 @@ public class FOMAgreementComparator implements Comparator {
 	
 	public int compare(Object o1, Object o2){
 		AssessmentMechanism assessMech = agreePrefs.getAssessmentMechanism();
+		
 		Assessment a1 = assessMech.assess(agreePrefs,(Agreement)o1);
-		Assessment a2 = assessMech.assess(agreePrefs,(Agreement)o1);
-		return a1.compareTo(a2);
+		Assessment a2 = assessMech.assess(agreePrefs,(Agreement)o2);
+		return a2.compareTo(a1);
 	}
 	
 	public FOMAgreementComparator(AgreementPreferences agreePrefs){

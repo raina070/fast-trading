@@ -22,22 +22,6 @@ import java.util.TreeSet;
 
 public class FOMAgreementSelection {
 
-	public SortedSet<FOMAgreementOffer> FOMAgreementSort(Set<Agreement> myAgreements,AgreementPreferences myAgreementPreferences){
-		SortedSet<FOMAgreementOffer> myFOMOffer = new TreeSet<FOMAgreementOffer>();
-		for (Agreement Agree:myAgreements){	
-			try {
-				myFOMOffer.add(new FOMAgreementOffer(Agree, myAgreementPreferences));
-			} catch (IncompatibleAttributeException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		for (FOMAgreementOffer Offer:myFOMOffer){
-			
-		}
-		return myFOMOffer;	
-	}
-	
 	public SortedSet<Agreement> FOMSortAgreement(Set<Agreement> myAgreements, AgreementPreferences agreePrefs){
 		FOMAgreementComparator FOMComparator = new FOMAgreementComparator(agreePrefs);
 		SortedSet<Agreement> result = new TreeSet<Agreement>(FOMComparator);
