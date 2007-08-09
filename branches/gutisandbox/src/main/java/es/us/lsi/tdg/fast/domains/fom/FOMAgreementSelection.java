@@ -22,7 +22,7 @@ import java.util.TreeSet;
 
 public class FOMAgreementSelection {
 
-	public SortedSet<Agreement> FOMSortAgreement(Set<Agreement> myAgreements, AgreementPreferences agreePrefs){
+	public static SortedSet<Agreement> FOMSortAgreement(Set<Agreement> myAgreements, AgreementPreferences agreePrefs){
 		FOMAgreementComparator FOMComparator = new FOMAgreementComparator(agreePrefs);
 		SortedSet<Agreement> result = new TreeSet<Agreement>(FOMComparator);
 		for (Agreement agree:myAgreements){

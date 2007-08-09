@@ -30,12 +30,7 @@ public class FOMOfferInquirer {
         
         value.addChild(fac.createOMText(value, Integer.toString(0)));
         method.addChild(value);
-        //Future Fix
-        /**
-        OMElement value2 = fac.createOMElement("factor", omNs);
-        value2.addChild(fac.createOMText(value, Double.toString(1)));
-        method.addChild(value2);
-        */
+        
         return method;
     }
 	
