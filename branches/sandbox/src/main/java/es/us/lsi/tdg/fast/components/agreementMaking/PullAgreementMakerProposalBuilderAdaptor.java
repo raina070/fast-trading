@@ -12,7 +12,7 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
-import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMakerProposalDispatcherAdaptor;
+import es.us.lsi.tdg.fast.core.roles.agreementMaking.agreementMaker.AgreementMakerProposalDispatcherAdaptor;
 
 public class PullAgreementMakerProposalBuilderAdaptor implements
 		AgreementMakerProposalDispatcherAdaptor {

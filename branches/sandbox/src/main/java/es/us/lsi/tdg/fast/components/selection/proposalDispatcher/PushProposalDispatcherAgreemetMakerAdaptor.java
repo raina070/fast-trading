@@ -8,10 +8,10 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
-import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreemenMakerAdaptor;
+import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreementMakerAdaptor;
 
 public class PushProposalDispatcherAgreemetMakerAdaptor implements
-		ProposalDispatcherAgreemenMakerAdaptor {
+		ProposalDispatcherAgreementMakerAdaptor {
 	private AgreementMaker agreementMaker;
 	
 	public PushProposalDispatcherAgreemetMakerAdaptor(

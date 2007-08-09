@@ -11,7 +11,7 @@ import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
  * @author José Antonio Parejo Maestre 
  *
  */
-public interface ProposalDispatcherAgreemenMakerAdaptor extends
+public interface ProposalDispatcherAgreementMakerAdaptor extends
 		ProposalDispatcher, AgreementMaker, RoleAdaptor {
 
 }
