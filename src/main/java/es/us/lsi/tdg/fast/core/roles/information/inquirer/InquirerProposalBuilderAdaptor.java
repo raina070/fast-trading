@@ -5,7 +5,7 @@ package es.us.lsi.tdg.fast.core.roles.information.inquirer;
 
 import es.us.lsi.tdg.fast.core.roles.RoleAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
-
+import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 /**
  * 
  * 
@@ -14,6 +14,6 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
  * @author José Antonio Parejo Maestre
  *
  */
-public interface InquirerProposalBuilderAdaptor extends ProposalBuilder, RoleAdaptor {
+public interface InquirerProposalBuilderAdaptor extends ProposalBuilder, Inquirer, RoleAdaptor {
 	public void setProposalBuilder(ProposalBuilder propBuilder);
 }
