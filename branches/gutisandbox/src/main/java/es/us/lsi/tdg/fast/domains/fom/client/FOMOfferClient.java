@@ -37,11 +37,11 @@ public class FOMOfferClient {
 		Set<FOMAgreement> Agreement = new HashSet<FOMAgreement>();
 		Set<Agreement> BaseAgreements = new HashSet<Agreement>();
 		
-		FOMSLATranslator Translator = new FOMSLATranslator();
+		
 		FOMProposalBuilder Proposer = new FOMProposalBuilder();
 		Agreement = Proposer.FOMOfferToAgreement(result.iterate(),new FOMOffer(10,40,60));
 		for (FOMAgreement AgreeTest: Agreement){
-			BaseAgreements.add(Translator.getAgreement(AgreeTest));
+			BaseAgreements.add(FOMSLATranslator.getAgreement(AgreeTest));
 			//System.out.println(AgreeTest);
 		}
 		
@@ -53,18 +53,18 @@ public class FOMOfferClient {
 		}
 		
 		FOMAgreementSelection Test4 = new FOMAgreementSelection();
+		for (Agreement agree:BaseAgreements){
+			//System.out.println(FOMSLATranslator.getFOMAgreement(agree));
+		}
 		BaseAgreementPreferences myAgreePrefs;
 		myAgreePrefs = Aux(10,40,60);
 		SortedSet<Agreement> Test6 = Test4.FOMSortAgreement(BaseAgreements,myAgreePrefs);
-		
 		for (Agreement agree:Test6){
-			System.out.println(Translator.getFOMAgreement(agree));
+			System.out.println(FOMSLATranslator.getFOMAgreement(agree));
 		}
 		//FOMAgreementMakerDispatch Test5 = new FOMAgreementMakerDispatch();
 		//Test5.dispatchAgreement(BaseAgreements, "http://localhost:8080/axis2/services/FOMAgreementMakerCommit");
 		
-		//System.out.println(result);
-		//System.out.println(Test2);
 	}
 
 	public static BaseAgreementPreferences Aux(int minTime, int maxTime,int costTest) throws IncompatibleAttributeException{
