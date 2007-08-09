@@ -15,7 +15,7 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderIn
 import es.us.lsi.tdg.fast.core.roles.selection.proposalCollector.ProposalCollector;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalCollector.ProposalCollectorProponentAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcher;
-import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreemenMakerAdaptor;
+import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreementMakerAdaptor;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 /**
@@ -33,7 +33,7 @@ public class SelectionComponent implements Component {
 	
 	// Selection roles Adaptors
 	protected ProposalBuilderInquirerAdaptor proposalBuilderInquirerAdaptor;
-	protected ProposalDispatcherAgreemenMakerAdaptor proposalDispatcherAgreementMakerAdaptor;
+	protected ProposalDispatcherAgreementMakerAdaptor proposalDispatcherAgreementMakerAdaptor;
 	protected ProposalCollectorProponentAdaptor proposaCollectorProponentAdaptor;
 	// Selection roles processes:
 	protected ControllableProcess selectionProcess; 
