@@ -1,15 +1,15 @@
 package es.us.lsi.tdg.fast.core.choreographies.wiring;
 
 import es.us.lsi.tdg.fast.core.choreographies.AbstractChoreography;
-import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMakerProposalDispatcherAdaptor;
-import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreemenMakerAdaptor;
+import es.us.lsi.tdg.fast.core.roles.agreementMaking.agreementMaker.AgreementMakerProposalDispatcherAdaptor;
+import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreementMakerAdaptor;
 
 public class ProposalSelectionNotification extends AbstractChoreography {
 	
-	protected ProposalDispatcherAgreemenMakerAdaptor proposalDispatcherAgreemenMakerAdaptor;
+	protected ProposalDispatcherAgreementMakerAdaptor proposalDispatcherAgreemenMakerAdaptor;
 	protected AgreementMakerProposalDispatcherAdaptor agreementMakerProposalDispatcherAdaptor;
 	
-	public ProposalDispatcherAgreemenMakerAdaptor getProposalDispatcherAgreemenMakerAdaptor() {
+	public ProposalDispatcherAgreementMakerAdaptor getProposalDispatcherAgreemenMakerAdaptor() {
 		return proposalDispatcherAgreemenMakerAdaptor;
 	}
 
