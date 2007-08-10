@@ -20,7 +20,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 public class FOMTrackerProcess extends AbstractControllableProcess{
 	
 	private Inquirer inquirer;
-	Set<CounterParty> FOMProviders;
+	
 	private FOMDiscovery discoveryComponent;
 	
 	public FOMTrackerProcess(Inquirer inquirer) {
@@ -54,10 +54,8 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 	
 	protected  void  run()
 	{
-		FOMProviders= new HashSet<CounterParty>();		
-		FOMProviders.add(testProvider());
 		
-		inquirer.potentialCounterParties(FOMProviders);
+		inquirer.potentialCounterParties(discoveryComponent.getFOMProviders());
 		stop();
 		
 	}

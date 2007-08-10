@@ -1,8 +1,12 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection;
 
 import java.util.SortedSet;
+import java.util.TreeSet;
+
 import es.us.lsi.tdg.fast.core.choreographies.Choreography;
+import es.us.lsi.tdg.fast.core.choreographies.UnknownChoreographyException;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.NewInformationNotification;
+import es.us.lsi.tdg.fast.core.choreographies.wiring.ProposalSelectionNotification;
 
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
@@ -14,6 +18,7 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispat
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreementMakerAdaptor;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalBuilderProcess;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalCollectorProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalDispatcherProcess;
 
 public class FOMSelection implements Component {
@@ -25,6 +30,7 @@ public class FOMSelection implements Component {
 
 	protected ControllableProcess proposalBuilderProcess=null;
 	protected ControllableProcess proposalDispatcherProcess=null;
+	protected ControllableProcess proposalCollectorProcess=null;
 	
 	// Adapters for the offered roles: 
 	
@@ -39,10 +45,19 @@ public class FOMSelection implements Component {
 		return type;
 	}
 
+	
+	
+	public FOMSelection() {
+		this.proposalSet = new TreeSet<Proposal>();
+	}
+
 	public void setWiringChoreography(Choreography wiringChoreography) {
 		String woType = wiringChoreography.getType();
 		if (woType.equals("NewInformationNotification"))
 			this.proposalBuilder = ((NewInformationNotification) wiringChoreography).getProposalBuilderInquirerAdaptor();
+		else if (woType.equals("ProposalSelectionNotification"))
+			this.proposalDispatcher = ((ProposalSelectionNotification) wiringChoreography).getProposalDispatcherAgreemenMakerAdaptor();
+		else throw new UnknownChoreographyException();
 		
 	}
 
@@ -50,7 +65,7 @@ public class FOMSelection implements Component {
 		if(proposalBuilder == null){
 			throw new UnwiredComponent("proposalBuilderInquirerAdaptor");
 		}else
-			this.proposalBuilderProcess = new FOMProposalBuilderProcess(this.proposalBuilder);
+			this.proposalBuilderProcess = new FOMProposalBuilderProcess(this);
 			
 		return proposalBuilderProcess;
 	}
@@ -59,9 +74,16 @@ public class FOMSelection implements Component {
 		if(proposalDispatcher == null){
 			throw new UnwiredComponent("proposalDispatcherAgreementMakerAdaptor");
 		}else
-			this.proposalBuilderProcess = new FOMProposalDispatcherProcess(this.proposalDispatcher);
+			this.proposalBuilderProcess = new FOMProposalDispatcherProcess(this);
 			
 		return proposalBuilderProcess;
+	}
+
+	public ControllableProcess getProposalCollectorProcess() {		
+		if(proposalCollectorProcess == null)
+			this.proposalCollectorProcess = new FOMProposalCollectorProcess(this);
+			
+		return proposalCollectorProcess;
 	}
 	
 	

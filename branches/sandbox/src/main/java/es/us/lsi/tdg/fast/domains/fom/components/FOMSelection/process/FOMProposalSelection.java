@@ -14,6 +14,7 @@ public class FOMProposalSelection {
 		FOMProposalComparator FOMComparator = new FOMProposalComparator(agreePrefs);
 		SortedSet<Proposal> result = new TreeSet<Proposal>(FOMComparator);
 		for (Proposal agree:myAgreements){
+			
 			result.add(agree);
 		}
 		return result;

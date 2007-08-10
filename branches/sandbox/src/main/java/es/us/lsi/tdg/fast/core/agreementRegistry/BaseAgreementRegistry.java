@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
 
 /**
@@ -35,7 +36,7 @@ public class BaseAgreementRegistry implements AgreementRegistry {
 			agreements.add(agreement);
 			registry.put(PID, agreements);
 		}
-			
+		FAST.shell.showMessage("Reached agreement for PID "+PID+".");
 	}
 
 	/* (non-Javadoc)

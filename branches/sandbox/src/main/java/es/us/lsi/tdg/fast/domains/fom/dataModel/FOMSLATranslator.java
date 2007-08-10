@@ -30,7 +30,7 @@ public class FOMSLATranslator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Proposal SLA = new BaseProposal(myTermSet,null,ProposalPerformative.PROPOSAL);
+		Proposal SLA = new BaseProposal(myTermSet,new HashSet<CounterParty>(),ProposalPerformative.PROPOSAL);
 		return SLA;
 	}
 	
@@ -40,32 +40,29 @@ public class FOMSLATranslator {
 		Set<Term> Terms= (HashSet)SLA.getTerms();
 		for(Term term:Terms)
 		{
-			if(term.getCounterParty()==null)
+		
+			Set<Constraint> constraints=(HashSet)term.getConstraints();
+			for(Constraint constraint:constraints)
 			{
-				Set<Constraint> constraints=(HashSet)term.getConstraints();
-				for(Constraint constraint:constraints)
+				if(constraint.getAttribute().getName().equals("Cost"))
 				{
-					if(constraint.getAttribute().getName().equals("Cost"))
+					if(constraint instanceof SimpleConstraint)
 					{
-						if(constraint instanceof SimpleConstraint)
-						{
-							Value valor=((SimpleConstraint)constraint).getValue();
-							agreementCost=((IntegerValue)valor).getValue();
-							result.setCost(agreementCost);
-						}
+						Value valor=((SimpleConstraint)constraint).getValue();
+						agreementCost=((IntegerValue)valor).getValue();
+						result.setCost(agreementCost);
 					}
-					if(constraint.getAttribute().getName().equals("Time"))
+				}
+				if(constraint.getAttribute().getName().equals("Time"))
+				{
+					if(constraint instanceof SimpleConstraint)
 					{
-						if(constraint instanceof SimpleConstraint)
-						{
-							Value valor=((SimpleConstraint)constraint).getValue();
-							agreementTime=((IntegerValue)valor).getValue();
-							result.setTime((int)agreementTime);
-						}
+						Value valor=((SimpleConstraint)constraint).getValue();
+						agreementTime=((IntegerValue)valor).getValue();
+						result.setTime((int)agreementTime);
 					}
 				}
 			}
-
 		}
 		return result;
 	}

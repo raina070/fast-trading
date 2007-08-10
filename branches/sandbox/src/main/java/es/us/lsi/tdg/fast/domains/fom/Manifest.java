@@ -8,8 +8,10 @@ import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanis
 import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
 import es.us.lsi.tdg.fast.core.domainRegistry.BaseDomainRole;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainRole;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking.FOMAgreementMaking;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMTrading.FOMTrading;
 
 public class Manifest implements
@@ -30,6 +32,8 @@ public class Manifest implements
 		components = new HashSet<Component>();
 		components.add(new FOMDiscovery());
 		components.add(new FOMInformation());
+		components.add(new FOMSelection());
+		components.add(new FOMAgreementMaking());
 		components.add(new FOMTrading());
 		
 	}

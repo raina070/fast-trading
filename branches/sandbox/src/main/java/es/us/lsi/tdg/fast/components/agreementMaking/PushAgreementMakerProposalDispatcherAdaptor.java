@@ -14,11 +14,11 @@ import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.agreementMaker.AgreementMakerProposalDispatcherAdaptor;
 
-public class PullAgreementMakerProposalBuilderAdaptor implements
+public class PushAgreementMakerProposalDispatcherAdaptor implements
 		AgreementMakerProposalDispatcherAdaptor {
 	private List<Proposal> proposals;
 	
-	public PullAgreementMakerProposalBuilderAdaptor()
+	public PushAgreementMakerProposalDispatcherAdaptor()
 	{
 		proposals=new LinkedList<Proposal>();
 	}

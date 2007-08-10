@@ -9,6 +9,8 @@ public interface DomainRole {
 
 	public abstract String getName();
 
+	public String toString();
+	
 	public abstract DomainManifest getDomainManifest();
 
 }

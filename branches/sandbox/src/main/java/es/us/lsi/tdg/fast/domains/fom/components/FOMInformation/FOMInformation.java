@@ -2,6 +2,7 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation;
 
 import es.us.lsi.tdg.fast.components.selection.SelectionComponent;
 import es.us.lsi.tdg.fast.core.choreographies.Choreography;
+import es.us.lsi.tdg.fast.core.choreographies.UnknownChoreographyException;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.PotentialCounterPartyNotification;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.NewInformationNotification;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
@@ -57,7 +58,7 @@ public class FOMInformation implements InformationComponent {
 	public ControllableProcess getInformantProcess()
 	{
 		if(informantProcess==null)
-			informantProcess=new FOMInformantProcess();
+			informantProcess=new FOMInformantProcess(this);
 		return informantProcess;
 	}
 	
@@ -69,7 +70,7 @@ public class FOMInformation implements InformationComponent {
 			this.inquirerTrackerAdaptor = ((PotentialCounterPartyNotification) wiringChoreography).getInquirerTrackerAdaptor();
 		else if (woType.equals("NewInformationNotification")){
 			this.inquirerProposalBuilderAdaptor = ((NewInformationNotification) wiringChoreography).getInquirerProposalBuilderAdaptor();
-		}
+		}else throw new UnknownChoreographyException();
 	}
 
 	public void setTradingProcess(TradingProcess tradingProcess) {

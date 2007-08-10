@@ -47,7 +47,7 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 		FOMAssessmentMechanism myAssessmentMechanism = new FOMAssessmentMechanism();
 		AgreementPreferences result = new BaseAgreementPreferences(myAssessmentMechanism);
 		IntegerValue costValue 		= new IntegerValue(50);
-		IntegerValue costValueMin 	= new IntegerValue(-100);
+		IntegerValue costValueMin 	= new IntegerValue(0);
 		BaseAttribute Cost = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
 		
 		try {
@@ -71,18 +71,20 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 	protected  void  run()
 	{
 		Set <CounterPartyKnowledge>	counterPartyKnowledgeSet = inquirer.getInformation();
-		Set <Information> 			infoSet = new HashSet<Information>();
-		for (CounterPartyKnowledge counterPartyKnowledge:counterPartyKnowledgeSet){
-			Information info = counterPartyKnowledge.getServiceInformation();
-			infoSet.add(info);
+		if (counterPartyKnowledgeSet.size() > 0){
+			Set <Information> 			infoSet = new HashSet<Information>();
+			for (CounterPartyKnowledge counterPartyKnowledge:counterPartyKnowledgeSet){
+				Information info = counterPartyKnowledge.getServiceInformation();
+				infoSet.add(info);
+			}
+			Set	<Proposal> ProposalSet = new HashSet<Proposal>();
+			ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet);
+			
+			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FOMAgreementPreferences());
+			
+			this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
 		}
-		Set	<Proposal> ProposalSet = new HashSet<Proposal>();
-		ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet);
-		
-		SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FOMAgreementPreferences());
-		
-		this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
-		stop();	
+	
 	}
 
 }

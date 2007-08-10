@@ -3,6 +3,8 @@
  */
 package es.us.lsi.tdg.fast.core.dataModel.information;
 
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+
 /**
  * 
  * 
@@ -12,7 +14,7 @@ package es.us.lsi.tdg.fast.core.dataModel.information;
  *
  */
 public interface CounterPartyKnowledge {
-	
+	public CounterParty getCounterParty();
 	public Information getCounterPartyInformation();
 	public Information getTradingInformation();
 	public Information getServiceInformation();

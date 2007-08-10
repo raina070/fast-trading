@@ -48,4 +48,9 @@ public class BaseDomainRole implements DomainRole {
 		return domainManifest;
 	}
 	
+	public String toString(){
+		return getName();
+		
+	}
+	
 }

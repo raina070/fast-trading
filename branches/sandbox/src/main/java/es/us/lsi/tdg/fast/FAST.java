@@ -15,6 +15,8 @@ import es.us.lsi.tdg.fast.core.domainRegistry.DomainRegistry;
 import es.us.lsi.tdg.fast.core.domainRegistry.DomainRole;
 import es.us.lsi.tdg.fast.core.preferenceRegistry.BasePreferenceRegistry;
 import es.us.lsi.tdg.fast.core.preferenceRegistry.PreferenceRegistry;
+import es.us.lsi.tdg.fast.core.services.BaseFASTServer;
+import es.us.lsi.tdg.fast.core.services.FASTServer;
 import es.us.lsi.tdg.fast.core.shell.FASTShell;
 import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
 
@@ -29,6 +31,9 @@ public class FAST
 	
 	public static Logger log=Logger.getLogger("FAST");
 	
+	public static FASTServer server=null;
+	public static int serverPort=1607;
+	
 	public static DomainRegistry domainRegistry=null;
 	public static DomainManifest currentDomain=null;
 	public static DomainRole currentDomainRole=null;
@@ -39,11 +44,21 @@ public class FAST
 	
     public static void main( String[] args )
     {
+    	if(args.length>1){
+    		try{
+    			int portCandidate = Integer.parseInt(args[1]);
+    			serverPort = portCandidate;
+    		}catch(NumberFormatException e){
+    		}
+    	}
+    		
 		log.addHandler(new ConsoleHandler());
     	log.setLevel(Level.OFF);
     	
     	shell = new SimpleFASTShell();
 
+    	server = BaseFASTServer.getInstance();
+    	
     	domainRegistry=new BaseDomainRegistry();
 
     	componentFactory= BaseComponentFactory.getInstance();
@@ -52,6 +67,10 @@ public class FAST
         preferenceRegistry=new BasePreferenceRegistry();
         agreementRegistry=new BaseAgreementRegistry();
         shell.run();
-        
+
+        if(server != null){
+        	server.stop();
+        	System.out.println(".");
+        }
     }
 }

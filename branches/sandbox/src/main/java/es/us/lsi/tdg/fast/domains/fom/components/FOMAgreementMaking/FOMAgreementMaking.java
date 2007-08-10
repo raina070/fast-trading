@@ -1,6 +1,7 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking;
 
 import es.us.lsi.tdg.fast.core.choreographies.Choreography;
+import es.us.lsi.tdg.fast.core.choreographies.UnknownChoreographyException;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.ProposalSelectionNotification;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
 import es.us.lsi.tdg.fast.core.component.Component;
@@ -34,7 +35,7 @@ public class FOMAgreementMaking implements Component{
 			if(agreementMaker == null){
 				throw new UnwiredComponent("agreementMakerProposalDispatcherAdaptor");
 			}else
-				this.agreementMakerProcess = new FOMAgreementMakerProcess(this.agreementMaker);			
+				this.agreementMakerProcess = new FOMAgreementMakerProcess(this);			
 			return agreementMakerProcess;
 		}
 
@@ -47,8 +48,7 @@ public class FOMAgreementMaking implements Component{
 			
 			if (woType.equals("ProposalSelectionNotification"))
 				this.agreementMaker = ((ProposalSelectionNotification) wiringChoreography).getAgreementMakerProposalDispatcherAdaptor();
-			
-			// TODO Auto-generated method stub
+			else throw new UnknownChoreographyException();
 		}
 
 		public void setTradingProcess(TradingProcess tradingProcess) {

@@ -4,7 +4,7 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Iterator;
-
+/*
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
@@ -13,7 +13,7 @@ import org.apache.axis2.Constants;
 import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
-
+*/
 import es.us.lsi.tdg.fast.domains.fom.*;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
 
@@ -25,7 +25,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
 
 public class FOMOfferInquirer {
 	
-	
+/*	
 	public static OMElement getOfferInformation() {
 		
         OMFactory fac = OMAbstractFactory.getOMFactory();
@@ -89,5 +89,5 @@ public class FOMOfferInquirer {
 		return FOMInformation;
 	}
 	
-	
+	*/
 }

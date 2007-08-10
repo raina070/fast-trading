@@ -21,13 +21,11 @@ public class BaseTerm implements Term {
 	}
 
 	public Set<Constraint> getConstraints() {
-		// TODO Auto-generated method stub
-		return null;
+		return constraints;
 	}
 
 	public CounterParty getCounterParty() {
-		// TODO Auto-generated method stub
-		return null;
+		return counterParty;
 	}
 
 }

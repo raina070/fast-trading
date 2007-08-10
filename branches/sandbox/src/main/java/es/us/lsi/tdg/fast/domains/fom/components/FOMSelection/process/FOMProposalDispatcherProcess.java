@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.SortedSet;
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
@@ -46,12 +47,15 @@ public class FOMProposalDispatcherProcess extends AbstractControllableProcess {
 	@Override
 	protected  void  run()
 	{
-		SortedSet<Proposal> proposalSet = selectionComponent.getSortedProposalSet();
 		
-		for (Proposal proposal:proposalSet){
-			agreementMaker.createAgreement(proposal);
+		SortedSet<Proposal> proposalSet = selectionComponent.getSortedProposalSet();
+		if(proposalSet.size()>0){
+			for (Proposal proposal:proposalSet){
+				FAST.shell.showMessage("Dispatching offer..."+proposal.getTerms());
+				agreementMaker.createAgreement(proposal);
+			}			
+			proposalSet.clear();
 		}
-		stop();	
 	}
 }
 

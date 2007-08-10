@@ -18,6 +18,8 @@ public class BaseWiringChoreographyFactory implements ChoreographyFactory{
           wiringChoreographyRegistry = new HashMap<String,Class<Choreography>>();
           FAST.shell.showMessage("Loading generic wiring choreographies...");
           loadChoreography("es.us.lsi.tdg.fast.core.choreographies.wiring.PullPotentialCounterPartyNotification");  
+          loadChoreography("es.us.lsi.tdg.fast.core.choreographies.wiring.PushNewInformationNotification");  
+          loadChoreography("es.us.lsi.tdg.fast.core.choreographies.wiring.PushProposalSelectionNotification");  
     }
 		
 	/* (non-Javadoc)

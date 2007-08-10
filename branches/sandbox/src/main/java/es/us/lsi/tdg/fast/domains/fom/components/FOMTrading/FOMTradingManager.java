@@ -14,9 +14,11 @@ public class FOMTradingManager implements TradingManager {
 	
 		TradingOrchestrator orchestrator=null;
 		
-		if (FAST.currentDomainRole.equals("customer"))
+		String domainRoleName = FAST.currentDomainRole.getName();
+		
+		if (domainRoleName.equals("customer"))
 			orchestrator = new FOMCustomerOrchestrator(tradingProcess);
-		else if (FAST.currentDomainRole.equals("provider"))
+		else if (domainRoleName.equals("provider"))
 			orchestrator = new FOMProviderOrchestrator(tradingProcess);
 		else throw new InvalidDomainRoleException();
 

@@ -5,6 +5,7 @@ package es.us.lsi.tdg.fast.domains.fom;
 
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Term;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
@@ -56,13 +57,12 @@ public class FOMAssessmentMechanism implements AssessmentMechanism {
 				{
 					if(c instanceof SortedDomainConstraint)
 					{
-						if(c instanceof SortedDomainConstraint)
-						{
-							Value minTimeValue=((SortedDomainConstraint)c).getMax();
-							Value maxTimeValue=((SortedDomainConstraint)c).getMax();
-							minTime=((IntegerValue)minTimeValue).getValue();
-							maxTime=((IntegerValue)maxTimeValue).getValue();
-						}
+					
+						Value minTimeValue=((SortedDomainConstraint)c).getMin();
+						Value maxTimeValue=((SortedDomainConstraint)c).getMax();
+						minTime=((IntegerValue)minTimeValue).getValue();
+						maxTime=((IntegerValue)maxTimeValue).getValue();
+
 					}
 				}
 			}			
@@ -74,8 +74,8 @@ public class FOMAssessmentMechanism implements AssessmentMechanism {
 		for(Term term:terms)
 		{
 			// TODO We should test if I am not the counterparty of the term 
-			if(term.getCounterParty()==null)
-			{
+			//if(term.getCounterParty()==null)
+			//{
 				Set<Constraint> constraints=term.getConstraints();
 				for(Constraint constraint:constraints)
 				{
@@ -96,9 +96,11 @@ public class FOMAssessmentMechanism implements AssessmentMechanism {
 						}
 					}
 				}
-			}
+			//}
 			
 		}
+		FAST.shell.showMessage("Preferences: c<"+costMax+", t=["+minTime+","+maxTime+"].");
+		FAST.shell.showMessage("AgreementOffer: c="+agreementCost+", t="+agreementTime+".");
 		if(agreementCost<costMax && agreementTime>=minTime && agreementTime<=maxTime )
 		{	
 			value=(costMax/agreementCost)*(maxTime+1)+agreementTime;
