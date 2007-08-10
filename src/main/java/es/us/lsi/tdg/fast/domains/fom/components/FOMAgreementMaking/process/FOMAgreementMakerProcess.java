@@ -181,10 +181,10 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			
 						
 			if(proposal.getPerformative()==ProposalPerformative.COMMIT){
-				FAST.shell.showMessage("ACCEPT over AgreementOffer: c="+cost+", t="+time+".");
+				FAST.shell.showMessage("ACCEPT over AgreementOffer: " + fomOffer);
 				port.accept(Integer.toString(time), Double.toString(cost));
 			}else if(proposal.getPerformative()==ProposalPerformative.PROPOSAL){
-				FAST.shell.showMessage("COMMIT over AgreementOffer: c="+cost+", t="+time+".");
+				FAST.shell.showMessage("COMMIT over AgreementOffer: " + fomOffer);
 				port.commit(Integer.toString(time), Double.toString(cost), myEP);
 			}
 

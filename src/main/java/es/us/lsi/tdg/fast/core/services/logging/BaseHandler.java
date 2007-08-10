@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.core.server.logging;
+package es.us.lsi.tdg.fast.core.services.logging;
 
 
 import java.io.PrintStream;

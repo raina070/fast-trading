@@ -9,6 +9,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformationTranslator;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
+import es.us.lsi.tdg.fast.FAST;
 
 public class FOMProposalOfferAdaptor {
 	public static Set<Proposal>getAgreementSet(Set<Information> infoSet){
@@ -19,10 +20,12 @@ public class FOMProposalOfferAdaptor {
 		for (Information info: infoSet){
 			FOMOfferSet.add(FOMOfferInformationTranslator.getFOMOffer(info));
 		}
-		FOMAgreementSet = Proposer.FOMOfferToAgreement(FOMOfferSet,new FOMOffer(10,40,50));
+		FOMAgreementSet = Proposer.FOMOfferToAgreement(FOMOfferSet,new FOMOffer(15,45,55));
 		for (FOMProposal FOMAgreement: FOMAgreementSet){
+			FAST.shell.showMessage("New Proposal Built: " + FOMAgreement);
 			result.add(FOMSLATranslator.getAgreement(FOMAgreement));
 		}
+		FAST.shell.showMessage("Proposals Ordered");
 		return result;
 	}
 }

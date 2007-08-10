@@ -20,6 +20,7 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMOfferInformationAdaptor;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 import es.us.lsi.tdg.fast.domains.fom.FOMAssessmentMechanism;
+import es.us.lsi.tdg.fast.FAST;
 
 public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 
@@ -46,19 +47,20 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 	public AgreementPreferences FOMAgreementPreferences(){
 		FOMAssessmentMechanism myAssessmentMechanism = new FOMAssessmentMechanism();
 		AgreementPreferences result = new BaseAgreementPreferences(myAssessmentMechanism);
-		IntegerValue costValue 		= new IntegerValue(50);
+		IntegerValue costValue 		= new IntegerValue(55);
 		IntegerValue costValueMin 	= new IntegerValue(0);
 		BaseAttribute Cost = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
 		
 		try {
 			SortedDomainConstraint costConstraint = new BaseSortedDomainConstraint((ComparableValue)costValueMin,(ComparableValue)costValue,Cost,StatementType.SERVICE);
-			IntegerValue timeInitValue = new IntegerValue(10);
-			IntegerValue timeEndValue = new IntegerValue(40);
+			IntegerValue timeInitValue = new IntegerValue(15);
+			IntegerValue timeEndValue = new IntegerValue(45);
 			BaseAttribute time = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
 			SortedDomainConstraint timeConstraint = new BaseSortedDomainConstraint((ComparableValue)timeInitValue,(ComparableValue)timeEndValue, time,StatementType.SERVICE);
 			Set<Statement> requirements = result.getRequirements();
 			requirements.add((Statement)costConstraint);
 			requirements.add((Statement)timeConstraint);
+			
 		} catch (IncompatibleAttributeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,13 +75,16 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 		Set <CounterPartyKnowledge>	counterPartyKnowledgeSet = inquirer.getInformation();
 		if (counterPartyKnowledgeSet.size() > 0){
 			Set <Information> 			infoSet = new HashSet<Information>();
+			
 			for (CounterPartyKnowledge counterPartyKnowledge:counterPartyKnowledgeSet){
 				Information info = counterPartyKnowledge.getServiceInformation();
 				infoSet.add(info);
 			}
+			FAST.shell.showMessage("AgreementPreferences (CostConstraint[0,55] TimeConstraint[15,45])");
+			FAST.shell.showMessage("Launching ProposalBuilder...");
 			Set	<Proposal> ProposalSet = new HashSet<Proposal>();
 			ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet);
-			
+			FAST.shell.showMessage("Sorting Proposals...");
 			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FOMAgreementPreferences());
 			
 			this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
