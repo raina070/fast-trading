@@ -16,6 +16,7 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
 
 /**
  * 
@@ -51,7 +52,7 @@ public class FOMProposalDispatcherProcess extends AbstractControllableProcess {
 		SortedSet<Proposal> proposalSet = selectionComponent.getSortedProposalSet();
 		if(proposalSet.size()>0){
 			for (Proposal proposal:proposalSet){
-				FAST.shell.showMessage("Dispatching offer..."+proposal.getTerms());
+				FAST.shell.showMessage("Dispatching offer... "+FOMSLATranslator.getFOMAgreement(proposal));
 				agreementMaker.createAgreement(proposal);
 			}			
 			proposalSet.clear();

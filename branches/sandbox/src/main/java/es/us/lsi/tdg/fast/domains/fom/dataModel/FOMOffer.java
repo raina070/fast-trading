@@ -43,9 +43,9 @@ public class FOMOffer {
 	
 	public String toString(){
 		String result = "";
-		result = result + "(" + cost + ",";
-		result = result + timeInit + ",";
-		result = result + timeEnd + ")";
+		result = result + "(cost " + cost + ",";
+		result = result + "time[" + timeInit + ",";
+		result = result + timeEnd + "])";
 		return result;
 	}
 }

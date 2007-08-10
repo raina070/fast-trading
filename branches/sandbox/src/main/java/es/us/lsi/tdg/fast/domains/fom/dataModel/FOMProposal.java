@@ -32,8 +32,8 @@ public class FOMProposal {
 	
 	public String toString(){
 		String result = "";
-		result = result + "(" + cost + ",";
-		result = result + time + ")";
+		result = result + "(Cost " + cost + ",";
+		result = result + "Time " + time + ")";
 		return result;
 	}
 }
