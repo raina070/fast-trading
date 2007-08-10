@@ -25,4 +25,7 @@ public class BaseFASTShell implements FASTShell {
 		shellRender.println(message);
 	}
 	
+	public ShellRender getShellRender(){
+		return shellRender;
+	}
 }

@@ -9,5 +9,5 @@ public interface TradingProcess {
 	public String getOrchName();
 
 	void setOrchestrator(TradingOrchestrator customerOrchestrator);
-	
+	public TradingOrchestrator getOrchestrator();
 }

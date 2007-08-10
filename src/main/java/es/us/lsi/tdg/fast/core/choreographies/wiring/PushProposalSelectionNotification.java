@@ -1,6 +1,6 @@
 package es.us.lsi.tdg.fast.core.choreographies.wiring;
 
-import es.us.lsi.tdg.fast.components.agreementMaking.PullAgreementMakerProposalBuilderAdaptor;
+import es.us.lsi.tdg.fast.components.agreementMaking.PushAgreementMakerProposalDispatcherAdaptor;
 import es.us.lsi.tdg.fast.components.selection.proposalDispatcher.PushProposalDispatcherAgreemetMakerAdaptor;
 
 public class PushProposalSelectionNotification extends
@@ -8,7 +8,7 @@ public class PushProposalSelectionNotification extends
 	public PushProposalSelectionNotification()
 	{
 		this.name="PushProposalSelectionNotification";
-		agreementMakerProposalDispatcherAdaptor=new PullAgreementMakerProposalBuilderAdaptor();
+		agreementMakerProposalDispatcherAdaptor=new PushAgreementMakerProposalDispatcherAdaptor();
 		proposalDispatcherAgreemenMakerAdaptor=new PushProposalDispatcherAgreemetMakerAdaptor(agreementMakerProposalDispatcherAdaptor);
 	}
 }

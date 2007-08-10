@@ -55,7 +55,7 @@ public class FOMInquirerProcess extends AbstractControllableProcess {
 			if (cp instanceof FOMCounterParty){
 				Set<Information> information = FOMOfferInformationAdaptor.getInformation(((FOMCounterParty)cp).getInformationEndPoint().toString());
 				for (Information info:information){
-					proposalBuilder.newInformation(new BaseCounterPartyKnowledge(info));
+					proposalBuilder.newInformation(new BaseCounterPartyKnowledge(info,cp));
 				}
 			}
 		}

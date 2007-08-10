@@ -30,15 +30,15 @@ public class BaseTradingProcess implements TradingProcess{
 
 	public void start() {
 		FAST.shell.showMessage("Starting Trading Process...");
-		
-		FAST.log.info("Obtaining Trading Component...");
+	
+		FAST.log.info("  Obtaining Trading Component...");
 		TradingComponent tradingComponent = (TradingComponent) FAST.componentFactory.getByType("Trading");
 		
 		if(tradingComponent != null){
 			
 			TradingManager tradingManager = (TradingManager) tradingComponent.getTradingManager();
 			
-			FAST.shell.showMessage("  -> Geting Orchestrator...");	
+			FAST.shell.showMessage("    Geting Orchestrator...");	
 			TradingOrchestrator tradingOrchestrator = tradingManager.getTradingOrchestrator(this);
 			
 			tradingOrchestrator.start();
@@ -51,6 +51,9 @@ public class BaseTradingProcess implements TradingProcess{
 
 	public void setOrchestrator(TradingOrchestrator orchestrator) {
 		this.orchestrator = orchestrator;
+	}
+	public TradingOrchestrator getOrchestrator() {
+		return this.orchestrator;
 	}
 
 	public void event(String event) {

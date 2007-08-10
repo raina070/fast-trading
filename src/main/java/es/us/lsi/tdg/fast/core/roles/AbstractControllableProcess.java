@@ -59,8 +59,10 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 
 	public synchronized void stop() {
 		controlledThread.interrupt();
+		
 		// We wait the execution thread to stop
 		while(controlledThread.isAlive());
+		
 		controlledThread=null;
 	}
 	

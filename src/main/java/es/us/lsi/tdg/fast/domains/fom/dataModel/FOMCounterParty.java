@@ -12,6 +12,16 @@ public class FOMCounterParty implements CounterParty {
 	private URI SelectionEndPoint;
 	private URI AgreementMakingEndPoint;
 	
+	public FOMCounterParty(){
+		CPID = null;
+		
+		DiscoveryEndPoint = null;
+		InformationEndPoint = null;
+		SelectionEndPoint = null;
+		AgreementMakingEndPoint = null;
+		
+	}
+	
 	public FOMCounterParty(String cpid, URI discoveryEndPoint, URI informationEndPoint,
 			URI selectionEndPoint, URI agreementMakingEndPoint) {
 		super();

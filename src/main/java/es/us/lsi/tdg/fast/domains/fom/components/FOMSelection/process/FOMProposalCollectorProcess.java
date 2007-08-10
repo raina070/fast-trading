@@ -6,11 +6,16 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
 import java.util.Set;
 import java.util.SortedSet;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.ProposalPerformative;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
+import es.us.lsi.tdg.fast.core.services.BaseFASTService;
+import es.us.lsi.tdg.fast.core.services.FASTService;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.services.DiscoveryServiceImplementation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
+import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.services.CollectorServiceImplementation;
 
 /**
  * @author Pablo Fernandez Montes
@@ -36,19 +41,28 @@ public class FOMProposalCollectorProcess extends AbstractControllableProcess {
 	}
 	
 	
+	public  void  start()
+	{
+		@SuppressWarnings("unused")
+		FASTService service = new BaseFASTService(selectionComponent);
+
+		service.setImplementation(CollectorServiceImplementation.class);
+		
+		FAST.server.publishService(service);
+
+		super.start();
+		
+	}
+	
 	@Override
 	protected  void  run()
 	{
-		Set<Proposal> proposals=getUnprocessedProposal();
-		for(Proposal proposal:proposals){
-			proposal.setPerformative(ProposalPerformative.COMMIT);
-			selectionComponent.getSortedProposalSet().add(proposal);
-		}
+//		Set<Proposal> proposals=getUnprocessedProposal();
+//		for(Proposal proposal:proposals){
+//			proposal.setPerformative(ProposalPerformative.COMMIT);
+//			selectionComponent.getSortedProposalSet().add(proposal);
+//		}
 	}
 
-	private Set<Proposal> getUnprocessedProposal() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

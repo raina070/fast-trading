@@ -62,7 +62,7 @@ public class FOMOfferInformant implements Informant{
 		{
 			try {
 				info=FOMOfferInformationTranslator.getInformation(offer);
-				result.add(new BaseCounterPartyKnowledge(info));
+				result.add(new BaseCounterPartyKnowledge(info,counterParty));
 			} catch (IncompatibleAttributeException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

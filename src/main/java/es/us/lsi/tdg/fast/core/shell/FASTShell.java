@@ -6,4 +6,6 @@ public interface FASTShell {
 	
 	public void showMessage(String message);
 	
+	public ShellRender getShellRender();
+	
 }

@@ -22,7 +22,9 @@ public class BaseAssessment implements Assessment {
 		return result;
 	}
 
-	
+	public String toString(){
+		return value.toString();
+	}
 	
 	
 }

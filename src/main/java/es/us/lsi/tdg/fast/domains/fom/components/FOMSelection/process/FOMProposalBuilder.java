@@ -32,7 +32,7 @@ public class FOMProposalBuilder {
 			timeInitPref 	= FOMPreferences.getTimeInit();
 			timeEndPref		= FOMPreferences.getTimeEnd();
 			
-			if (costOffer<=costPref && timeInitOffer<=timeEndPref && timeEndOffer>=timeInitPref){
+			if (costOffer<costPref && timeInitOffer<=timeEndPref && timeEndOffer>=timeInitPref){
 				if (timeInitOffer>=timeInitPref){
 					FOMProposal Agree = new FOMProposal(timeInitOffer,costOffer);
 					result.add(Agree);
@@ -46,7 +46,18 @@ public class FOMProposalBuilder {
 				}else if (timeEndOffer<=timeEndPref){
 					FOMProposal Agree = new FOMProposal(timeEndOffer,costOffer);
 					result.add(Agree);
-				}		
+					if (timeInitPref!=timeEndOffer){
+						FOMProposal Agree2 = new FOMProposal(timeInitPref,costOffer);
+						result.add(Agree2);
+					}
+					
+				}else	{
+					FOMProposal Agree = new FOMProposal(timeEndPref,costOffer);
+					result.add(Agree);
+					FOMProposal Agree2 = new FOMProposal(timeInitPref,costOffer);
+					result.add(Agree2);
+		
+				}
 			}
 		}
 		

@@ -35,4 +35,8 @@ public class SimpleFASTShell implements FASTShell {
 		shell.showMessage(message);
 	}
 
+	public ShellRender getShellRender(){
+		return shell.getShellRender();
+	}
+	
 }

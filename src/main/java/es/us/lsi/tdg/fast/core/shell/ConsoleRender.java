@@ -13,7 +13,7 @@ public class ConsoleRender implements ShellRender {
 
 	private String prompt;
 	private CommandFactory commandFactory;
-	private String wellcomeMessage="=== Wellcome to FAST === (v "+FAST.version+", "+FAST.releaseName+" release)";
+	private String wellcomeMessage="=== Welcome to FAST === (v "+FAST.version+", "+FAST.releaseName+" release)";
 	
 	
 	public ConsoleRender(String prompt, CommandFactory commandFactory) {

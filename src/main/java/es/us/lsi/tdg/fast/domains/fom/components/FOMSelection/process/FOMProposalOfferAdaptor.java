@@ -19,7 +19,7 @@ public class FOMProposalOfferAdaptor {
 		for (Information info: infoSet){
 			FOMOfferSet.add(FOMOfferInformationTranslator.getFOMOffer(info));
 		}
-		FOMAgreementSet = Proposer.FOMOfferToAgreement(FOMOfferSet,new FOMOffer(10,40,60));
+		FOMAgreementSet = Proposer.FOMOfferToAgreement(FOMOfferSet,new FOMOffer(10,40,50));
 		for (FOMProposal FOMAgreement: FOMAgreementSet){
 			result.add(FOMSLATranslator.getAgreement(FOMAgreement));
 		}
