@@ -31,11 +31,13 @@ public class BaseFASTServer implements FASTServer {
 	private Map<String,HttpContext> httpContexts;
 	
 	private BaseFASTServer(){
-		
+		int serverPort = Integer.parseInt((String)FAST.properties.get((String)"serverPort"));
+		FAST.shell.showMessage("Initiating Server on Port " + serverPort+" ... ");
 		try {
-			httpServer = HttpServer.create(new InetSocketAddress(Integer.parseInt((String)FAST.properties.get((String)"serverPort"))), 5);
-			httpServer.start();
 			
+			httpServer = HttpServer.create(new InetSocketAddress(serverPort), 5);
+			httpServer.start();
+			FAST.shell.showMessage("Server Online.");
 			httpContexts = new HashMap<String,HttpContext>();
 			
 			
