@@ -18,12 +18,13 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispat
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreementMakerAdaptor;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalBuilderProcess;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMGenericComparator;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalCollectorProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalDispatcherProcess;
 
 public class FOMSelection implements Component {
 
-	protected SortedSet<Proposal> 		proposalSet;
+	
 	protected String 					name = "FOMSelection";
 	protected String 					type = "Selection";
 	TradingProcess 						tradingProcess = null;
@@ -36,7 +37,8 @@ public class FOMSelection implements Component {
 	
 	protected ProposalBuilderInquirerAdaptor 			proposalBuilder;
 	protected ProposalDispatcherAgreementMakerAdaptor 	proposalDispatcher;
-	
+	protected FOMGenericComparator FOMGenericComparator;
+	protected SortedSet<Proposal> 		proposalSet =new TreeSet<Proposal>(FOMGenericComparator);;
 	public String getName() {
 		return name;
 	}
@@ -47,8 +49,10 @@ public class FOMSelection implements Component {
 
 	
 	
+	
 	public FOMSelection() {
-		this.proposalSet = new TreeSet<Proposal>();
+		FOMGenericComparator FOMComparator = new FOMGenericComparator();
+		this.proposalSet = new TreeSet<Proposal>(FOMComparator);
 	}
 
 	public void setWiringChoreography(Choreography wiringChoreography) {

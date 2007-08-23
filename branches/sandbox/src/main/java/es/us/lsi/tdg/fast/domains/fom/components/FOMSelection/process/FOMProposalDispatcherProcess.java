@@ -52,7 +52,7 @@ public class FOMProposalDispatcherProcess extends AbstractControllableProcess {
 		SortedSet<Proposal> proposalSet = selectionComponent.getSortedProposalSet();
 		if(proposalSet.size()>0){
 			for (Proposal proposal:proposalSet){
-				FAST.shell.showMessage("Dispatching offer... "+FOMProposalTranslator.getFOMProposal(proposal));
+				FAST.shell.showMessage("Dispatching offer... "+FOMProposalTranslator.getFOMProposal(proposal)+ " type " + proposal.getPerformative().toString());
 				agreementMaker.createAgreement(proposal);
 			}			
 			proposalSet.clear();

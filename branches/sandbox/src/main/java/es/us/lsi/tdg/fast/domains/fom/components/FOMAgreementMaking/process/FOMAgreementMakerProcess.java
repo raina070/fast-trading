@@ -64,15 +64,17 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 		//Copy due to comodification errors
 		
 		List<Proposal> originalProposalSet = proposalDispatcher.getProposalsDispatched(agreementMakingComponent.getAgreementMaker());
+		
 		if(originalProposalSet.size()>1){
+			//FAST.shell.showMessage("LISTA NO VACIA");
 			List<Proposal> proposalSet = new LinkedList<Proposal>(originalProposalSet);
 			for(Proposal proposal:proposalSet)
 			{
-				if(proposal.getPerformative()==ProposalPerformative.PROPOSAL)
+				if(proposal.getPerformative()==ProposalPerformative.PROPOSAL && !proposed)
 					commitProposal(proposal);
 				else if(proposal.getPerformative()==ProposalPerformative.COMMIT)
 					acceptProposal(proposal);
-				
+					
 			}	
 			//originalProposalSet.clear();
 		}
@@ -180,7 +182,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			FAST.shell.showMessage("CounterParty Collector EndPoint: " + counterPartyCollectorEndPoint);
 			
 			port.commit(Integer.toString(time), Double.toString(cost), myCollectorEndPoint);
-			
+			proposed = true;
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -227,6 +229,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			
 			port.accept(Integer.toString(time), Double.toString(cost));
 			FAST.shell.showMessage("SLA Reached: " + fomProposal);
+			commited= true;
 			agreementMakingComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
