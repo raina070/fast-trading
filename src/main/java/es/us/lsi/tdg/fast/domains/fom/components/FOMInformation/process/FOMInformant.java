@@ -9,24 +9,17 @@ import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformationTranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMInformationTranslator;
 
 
 
-public class FOMOfferInformant implements Informant{
-	private double 	c1,c2,c3;	
+public class FOMInformant implements Informant{
+	private double 	c1=50,c2=20,c3=10;	
 	
-	public FOMOfferInformant()
+	public Set<FOMOfferInformation> getOffers()
 	{
-		c1=50;
-		c2=20;
-		c3=10;
-	}
-
-	public Set<FOMOffer> getOffers()
-	{
-		Set<FOMOffer> result=new HashSet<FOMOffer>();
+		Set<FOMOfferInformation> result=new HashSet<FOMOfferInformation>();
 		int tInit 	= getTimeInit();
 		int tFull = 60;
 		int tReal = tFull - tInit;
@@ -35,9 +28,9 @@ public class FOMOfferInformant implements Informant{
 		int t1 = tReal/3;
 		int t2 = (2*tReal/3);
 				
-		FOMOffer Offer1 = new FOMOffer(tInit,t1+tInit, factor*this.c1,"INFORMATION");
-		FOMOffer Offer2 = new FOMOffer(t1+tInit+1,t2+tInit, factor*this.c2,"INFORMATION");
-		FOMOffer Offer3 = new FOMOffer(t2+tInit+1,tFull, factor*this.c3,"INFORMATION");
+		FOMOfferInformation Offer1 = new FOMOfferInformation(tInit,t1+tInit, factor*this.c1);
+		FOMOfferInformation Offer2 = new FOMOfferInformation(t1+tInit+1,t2+tInit, factor*this.c2);
+		FOMOfferInformation Offer3 = new FOMOfferInformation(t2+tInit+1,tFull, factor*this.c3);
 	
 		result.add(Offer1);
 		result.add(Offer2);
@@ -49,19 +42,19 @@ public class FOMOfferInformant implements Informant{
 
 
 
-	private int getTimeInit() {
+	private static int getTimeInit() {
 		// TODO Obtain this value form the current SLAs (AgreementRegistry)
 		return 0;
 	}
 
 	public Set<CounterPartyKnowledge> getKnowledge(CounterParty counterParty) {
 		Set<CounterPartyKnowledge> result=new HashSet<CounterPartyKnowledge>();
-		Set<FOMOffer> offers=getOffers();
+		Set<FOMOfferInformation> offers=getOffers();
 		Information info;
-		for(FOMOffer offer:offers)
+		for(FOMOfferInformation offer:offers)
 		{
 			try {
-				info=FOMOfferInformationTranslator.getInformation(offer);
+				info=FOMInformationTranslator.getInformation(offer);
 				result.add(new BaseCounterPartyKnowledge(info,counterParty));
 			} catch (IncompatibleAttributeException e) {
 				// TODO Auto-generated catch block

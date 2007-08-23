@@ -1,33 +1,20 @@
 package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
-public class FOMOffer {
+public class FOMOfferInformation {
 
 	private int timeInit, timeEnd;
 	private double cost;
-	private String counterpartyEndPoint;
 	
-
-	public String getCounterpartyEndPoint() {
-		return counterpartyEndPoint;
-	}
-
-	public void setCounterpartyEndPoint(String counterpartyEndPoint) {
-		this.counterpartyEndPoint = counterpartyEndPoint;
-	}
-
-	public FOMOffer(){
+	public FOMOfferInformation(){
 		this.timeInit 	= 0;
 		this.timeEnd  	= 0;
-		this.cost 		= 0;	
-		this.counterpartyEndPoint 		= null;	
-		
+		this.cost 		= 0;		
 	}
 	
-	public FOMOffer(int timeInit, int timeEnd, double cost, String counterPartyEndPoint){
+	public FOMOfferInformation(int timeInit, int timeEnd, double cost){
 		this.timeInit 	= timeInit;
 		this.timeEnd  	= timeEnd;
-		this.cost 		= cost;	
-		this.counterpartyEndPoint = counterPartyEndPoint; 
+		this.cost 		= cost;	 
 	}
 	
 	public int getTimeInit(){

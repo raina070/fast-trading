@@ -17,14 +17,14 @@ import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscov
 import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.FOMInformant;
 import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.InformantService;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformationTranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMInformationTranslator;
 
-public class FOMOfferInformationAdaptor {
+public class FOMInformationAdaptor {
 
 	public static Set<Information>getInformation(String ep){
 		
-		Set<FOMOffer>FOMOffers = new HashSet<FOMOffer>();
+		Set<FOMOfferInformation>FOMOffers = new HashSet<FOMOfferInformation>();
 		Set<Information> result= new HashSet<Information>();
 		
 		try {
@@ -41,42 +41,33 @@ public class FOMOfferInformationAdaptor {
 			
 			List<String> StringOffers = port.getFOMOffers();
 				
-			FOMOffer o1 = new FOMOffer(
+			FOMOfferInformation o1 = new FOMOfferInformation(
 					Integer.parseInt(StringOffers.get(0)),
 					Integer.parseInt(StringOffers.get(1)),
-					Double.parseDouble(StringOffers.get(2))					
-					,"INFORMATION"); 
-			FOMOffer o2 = new FOMOffer(
+					Double.parseDouble(StringOffers.get(2))); 
+			FOMOfferInformation o2 = new FOMOfferInformation(
 					Integer.parseInt(StringOffers.get(3)),
 					Integer.parseInt(StringOffers.get(4)),
-					Double.parseDouble(StringOffers.get(5))					
-					,"INFORMATION"); 
-			FOMOffer o3 = new FOMOffer(
+					Double.parseDouble(StringOffers.get(5))); 
+			FOMOfferInformation o3 = new FOMOfferInformation(
 					Integer.parseInt(StringOffers.get(6)),
 					Integer.parseInt(StringOffers.get(7)),
-					Double.parseDouble(StringOffers.get(8))					
-					,"INFORMATION"); 
-	
+					Double.parseDouble(StringOffers.get(8))); 
 			FOMOffers.add(o1);
 			FOMOffers.add(o2);
-			FOMOffers.add(o3);
-			
-			
-			
-			for (FOMOffer Offer: FOMOffers){
+			FOMOffers.add(o3);	
+			for (FOMOfferInformation Offer: FOMOffers){
 					try {
 						FAST.shell.showMessage("Obtained offers from "+ep+": "+Offer);
-						result.add(FOMOfferInformationTranslator.getInformation(Offer));
+						result.add(FOMInformationTranslator.getInformation(Offer));
 					} catch (IncompatibleAttributeException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 			}
-			
-			} catch (MalformedURLException e) {
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-	
 		return result;
 	}
 	

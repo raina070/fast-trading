@@ -2,6 +2,8 @@ package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import es.us.lsi.tdg.fast.core.dataModel.statement.*;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
@@ -9,36 +11,46 @@ import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferenc
 import es.us.lsi.tdg.fast.domains.fom.dataModel.*;
 import es.us.lsi.tdg.fast.FAST;
 
-public class FOMSLATranslator {
+public class FOMProposalTranslator {
 	
-	public static Proposal getAgreement(FOMProposal Offer){
+	public static Proposal getAgreement(FOMProposal FOMProposal){
 		
-		CounterParty CT = new FOMCounterParty(null,null,null,null,null);
+		CounterParty counterParty = new FOMCounterParty(null,null,null,null,null);
+		try {
+			((FOMCounterParty)counterParty).setSelectionEndPoint(new URI(FOMProposal.getCounterPartyEndPoint()));
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		Set<Constraint> Constraints = new HashSet<Constraint>();
 		Set<Term> myTermSet = new HashSet<Term>();
-		IntegerValue costValue = new IntegerValue((int)Offer.getCost());
+		IntegerValue costValue = new IntegerValue((int)FOMProposal.getCost());
 		Attribute costAttribute = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
 		SimpleConstraint costConstraint;
 		try {
 			costConstraint = new BaseSimpleConstraint((Value)costValue,costAttribute,StatementType.SERVICE);
 			Constraints.add(costConstraint);	
-			IntegerValue timeValue = new IntegerValue(Offer.getTime());
+			IntegerValue timeValue = new IntegerValue(FOMProposal.getTime());
 			Attribute timeAttribute = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
 			SimpleConstraint timeConstraint = new BaseSimpleConstraint((Value)timeValue,timeAttribute,StatementType.SERVICE);
 			Constraints.add(timeConstraint);
-			Term TermOffer = new BaseTerm(Constraints, CT);
+			Term TermOffer = new BaseTerm(Constraints, counterParty);
 			myTermSet.add(TermOffer);	
 		} catch (IncompatibleAttributeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Proposal SLA = new BaseProposal(myTermSet,new HashSet<CounterParty>(),ProposalPerformative.PROPOSAL);
+		Set<CounterParty> counterPartySet = new HashSet<CounterParty>();
+		counterPartySet.add(counterParty);
+		Proposal SLA = new BaseProposal(myTermSet,counterPartySet,ProposalPerformative.PROPOSAL);
 		return SLA;
 	}
 	
-	public static FOMProposal getFOMAgreement(Proposal SLA){
+	public static FOMProposal getFOMProposal(Proposal SLA){
 		FOMProposal result = new FOMProposal();
 		double agreementCost=0,agreementTime=0;
+		Set<CounterParty> counterPartySet = SLA.getCounterParties();
 		Set<Term> Terms= (HashSet)SLA.getTerms();
 		for(Term term:Terms)
 		{
@@ -66,43 +78,12 @@ public class FOMSLATranslator {
 				}
 			}
 		}
+		for (CounterParty counterParty:counterPartySet){
+			result.setCounterPartyEndPoint(((FOMCounterParty)counterParty).getSelectionEndPoint().toString());
+		}
 		return result;
 	}
 	
-	public static FOMOffer getFOMOfferPreference(AgreementPreferences SLA){
-		FOMOffer result = new FOMOffer();
-		
-		double agreementCost=0,agreementMaxTime=-1,agreementMinTime=-1;
-		Set<Statement> Requirements= SLA.getRequirements();
-		FAST.shell.showMessage("Numero de Preferencias de Acuerdo");
-		FAST.shell.showMessage(Integer.toString(Requirements.size()));
-		for(Statement requirement:Requirements)
-		{
-			if (requirement instanceof SortedDomainConstraint){
-				
-				if(((SortedDomainConstraint)requirement).getAttribute().getName()=="Cost"){
-					//TODO store the minimum value
-					Value valor=((SortedDomainConstraint)requirement).getMax();
-					agreementCost=((IntegerValue)valor).getValue();
-					result.setCost(agreementCost);
-					
-				}else if (((SortedDomainConstraint)requirement).getAttribute().getName()=="InvocationMinDate"){
-						/*
-						 * TODO 
-						 */
-				}else if (((SortedDomainConstraint)requirement).getAttribute().getName()=="Time"){
-						Value maxTimeValue=((SortedDomainConstraint)requirement).getMax();
-						Value minTimeValue=((SortedDomainConstraint)requirement).getMin();
-						agreementMaxTime=((IntegerValue)maxTimeValue).getValue();
-						result.setTimeEnd((int)agreementMaxTime);
-						agreementMinTime=((IntegerValue)minTimeValue).getValue();
-						result.setTimeInit((int)agreementMinTime);						 	
-				}
-			}
-		}
-		
-		
-		return result;
-	}
+	
 	
 }

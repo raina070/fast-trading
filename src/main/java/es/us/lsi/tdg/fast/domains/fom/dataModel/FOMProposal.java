@@ -2,17 +2,20 @@ package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 public class FOMProposal {
 
-	public int time;
-	public double cost;
+	private int time;
+	private double cost;
+	private String counterPartyEndPoint;
 	
 	public FOMProposal(){
 		this.time = 0;
 		this.cost = 0;
+		this.counterPartyEndPoint = "";
 	}
 	
-	public FOMProposal(int time, double cost){
+	public FOMProposal(int time, double cost, String counterPartyEndPoint){
 		this.time	= time;
 		this.cost 	= cost;	
+		this.counterPartyEndPoint = counterPartyEndPoint;
 	}
 
 	public int getTime(){
@@ -32,8 +35,17 @@ public class FOMProposal {
 	
 	public String toString(){
 		String result = "";
-		result = result + "(Cost " + cost + ",";
-		result = result + "Time " + time + ")";
+		result = result + "(Cost " + cost + ", ";
+		result = result + "Time " + time + ", ";
+		result = result + "cpEndPoint " + counterPartyEndPoint + ")";
 		return result;
+	}
+
+	public String getCounterPartyEndPoint() {
+		return counterPartyEndPoint;
+	}
+
+	public void setCounterPartyEndPoint(String counterPartyEndPoint) {
+		this.counterPartyEndPoint = counterPartyEndPoint;
 	}
 }
