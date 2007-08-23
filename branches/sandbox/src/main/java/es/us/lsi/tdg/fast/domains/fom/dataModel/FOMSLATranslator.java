@@ -79,33 +79,30 @@ public class FOMSLATranslator {
 		for(Statement requirement:Requirements)
 		{
 			FAST.shell.showMessage(((SimpleConstraint)requirement).getAttribute().getName());
-		
-			if(requirement instanceof SimpleConstraint)
-			{
-				if (((SimpleConstraint)requirement).getAttribute().getName()=="Cost"){
-					Value valor=((SimpleConstraint)requirement).getValue();
-					agreementCost=((IntegerValue)valor).getValue();
-					result.setCost(agreementCost);
-				}else if (((SimpleConstraint)requirement).getAttribute().getName()=="InvocationMinDate"){
-					Value minTimeValor=((SimpleConstraint)requirement).getValue();
 			
-					agreementMinTime=((IntegerValue)minTimeValor).getValue();
-					if (agreementMaxTime!=-1){
-						agreementMaxTime=agreementMaxTime+agreementMinTime;
-						result.setTimeEnd((int)agreementMaxTime);
-					}
-					
+			if(((SortedDomainConstraint)requirement).getAttribute().getName()=="Cost" &&
+					requirement instanceof SortedDomainConstraint){
+				//TODO store the minimum value
+				Value valor=((SortedDomainConstraint)requirement).getMax();
+				agreementCost=((IntegerValue)valor).getValue();
+				result.setCost(agreementCost);
+				
+			}else if (requirement instanceof SortedDomainConstraint){
+				
+				if (((SortedDomainConstraint)requirement).getAttribute().getName()=="InvocationMinDate")
+				{
+					/*
+					 * TODO 
+					 */
+								
+				}else if (((SortedDomainConstraint)requirement).getAttribute().getName()=="Time"){
+					Value maxTimeValue=((SortedDomainConstraint)requirement).getMax();
+					Value minTimeValue=((SortedDomainConstraint)requirement).getMin();
+					agreementMaxTime=((IntegerValue)maxTimeValue).getValue();
+					result.setTimeEnd((int)agreementMaxTime);
+					agreementMinTime=((IntegerValue)minTimeValue).getValue();
 					result.setTimeInit((int)agreementMinTime);
-						
-				}else if (((SimpleConstraint)requirement).getAttribute().getName()=="Time"){
-					Value maxTimeValor=((SimpleConstraint)requirement).getValue();
-			
-					if (agreementMinTime!=-1){
-						agreementMaxTime=((IntegerValue)maxTimeValor).getValue()+agreementMinTime;
-						result.setTimeEnd((int)agreementMaxTime);
-					}
-					else 
-						agreementMaxTime=((IntegerValue)maxTimeValor).getValue()+agreementMinTime; 	
+					 	
 				}
 			}
 		}

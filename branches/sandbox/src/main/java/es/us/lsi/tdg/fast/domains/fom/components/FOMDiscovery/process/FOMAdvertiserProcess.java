@@ -46,9 +46,9 @@ public class FOMAdvertiserProcess extends AbstractControllableProcess{
 		String domainRoleName = FAST.currentDomainRole.getName();
 		
 		try {
-			URI infoEP = new URI("http://localhost:"+port+"/"+domainRoleName+"/InformantServiceImplementation");
-			URI selEP = new URI("http://localhost:"+port+"/"+domainRoleName+"/CollectorServiceImplementation");
-			URI amEP = new URI("http://localhost:"+port+"/"+domainRoleName+"/AgreementMakingServiceImplementation");
+			URI infoEP = new URI("http://10.100.1.244:"+port+"/"+domainRoleName+"/InformantServiceImplementation");
+			URI selEP = new URI("http://10.100.1.244:"+port+"/"+domainRoleName+"/CollectorServiceImplementation");
+			URI amEP = new URI("http://10.100.1.244:"+port+"/"+domainRoleName+"/AgreementMakingServiceImplementation");
 			provider = new FOMCounterParty("TestProvider",null,infoEP,selEP,amEP); 
 		} catch (URISyntaxException e) {
 			e.printStackTrace();

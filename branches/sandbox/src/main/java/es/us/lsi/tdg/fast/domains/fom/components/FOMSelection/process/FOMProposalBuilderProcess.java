@@ -93,8 +93,8 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 			Set	<Proposal> ProposalSet = new HashSet<Proposal>();
 
 			FOMOffer FOMOfferPreference = FOMSLATranslator.getFOMOfferPreference(FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
-			fixAgreementPreferences(selectionComponent.getTradingProcess().getPID());
-			//ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet,new FOMOffer(15,45,55));
+			//fixAgreementPreferences(selectionComponent.getTradingProcess().getPID());
+			
 			FAST.shell.showMessage("AgreementPreferences...");
 			FAST.shell.showMessage(FOMOfferPreference.toString());
 			
