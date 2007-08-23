@@ -83,26 +83,31 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 		Set <CounterPartyKnowledge>	counterPartyKnowledgeSet = inquirer.getInformation();
 		if (counterPartyKnowledgeSet.size() > 0){
 			Set <Information> 			infoSet = new HashSet<Information>();
+
 			
 			for (CounterPartyKnowledge counterPartyKnowledge:counterPartyKnowledgeSet){
+			
+					
 				Information info = counterPartyKnowledge.getServiceInformation();
-				infoSet.add(info);
+				CounterParty cp = counterPartyKnowledge.getCounterParty();
+				
+				FAST.shell.showMessage("Launching ProposalBuilder...");
+				Set	<Proposal> ProposalSet = new HashSet<Proposal>();
+	
+				FOMOffer FOMOfferPreference = FOMSLATranslator.getFOMOfferPreference(FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
+				
+				FAST.shell.showMessage("AgreementPreferences...");
+				FAST.shell.showMessage(FOMOfferPreference.toString());
+				
+				ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(cp,info,FOMOfferPreference);
+				FAST.shell.showMessage("Sorting Proposals...");
+				SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FAST.preferenceRegistry.getPreferences("1"));
+				
+				this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
+				 
 			}
-			//FAST.shell.showMessage("AgreementPreferences (CostConstraint[0,55] TimeConstraint[15,45])");
-			FAST.shell.showMessage("Launching ProposalBuilder...");
-			Set	<Proposal> ProposalSet = new HashSet<Proposal>();
-
-			FOMOffer FOMOfferPreference = FOMSLATranslator.getFOMOfferPreference(FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
-			//fixAgreementPreferences(selectionComponent.getTradingProcess().getPID());
+				
 			
-			FAST.shell.showMessage("AgreementPreferences...");
-			FAST.shell.showMessage(FOMOfferPreference.toString());
-			
-			ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet,FOMOfferPreference);
-			FAST.shell.showMessage("Sorting Proposals...");
-			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FAST.preferenceRegistry.getPreferences("1"));
-			
-			this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
 		}
 	
 	}
