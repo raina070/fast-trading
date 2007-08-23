@@ -95,21 +95,18 @@ public class FOMCustomerOrchestrator
 	}
 	
 	public void stop(){
-		/*
+	
+		FAST.shell.showMessage("Stoping CustomerOrchestration for PID "+tradingProcess.getPID());
+		ExitCommand exitCommand = new BaseExitCommand();
+		//FAST.server.stop();
+		exitCommand.execute(FAST.shell.getShellRender());
 		discoveryService.stop();
-		advertiser.stop();
 		tracker.stop();
-		informant.stop();
 		inquirer.stop();
 		proposalBuilder.stop();
 		proposalDispatcher.stop();
 		proposalCollector.stop();
 		agreementMaker.stop();
-		*/
-		FAST.shell.showMessage("Stoping CustomerOrchestration for PID "+tradingProcess.getPID());
-		ExitCommand exitCommand = new BaseExitCommand();
-		//FAST.server.stop();
-		exitCommand.execute(FAST.shell.getShellRender());		
 		System.exit(0);
 	}
 	

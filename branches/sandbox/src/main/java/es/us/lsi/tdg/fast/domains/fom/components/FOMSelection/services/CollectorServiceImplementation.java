@@ -17,7 +17,7 @@ import es.us.lsi.tdg.fast.core.services.FASTServiceImplementation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 @WebService(name="FOMCollector", serviceName="CollectorService")
 public class CollectorServiceImplementation implements
@@ -33,8 +33,8 @@ public class CollectorServiceImplementation implements
 	public void commit(String time, String cost, String acceptEP) {
 		  SortedSet<Proposal> proposalSet= selectionComponent.getSortedProposalSet();
 		  
-		  FOMProposal fomProposal = new FOMProposal(Integer.parseInt(time),Double.parseDouble(cost));
-		  Proposal proposal = FOMSLATranslator.getAgreement(fomProposal);
+		  FOMProposal fomProposal = new FOMProposal(Integer.parseInt(time),Double.parseDouble(cost),acceptEP);
+		  Proposal proposal = FOMProposalTranslator.getAgreement(fomProposal);
 		  proposal.setPerformative(ProposalPerformative.COMMIT);
 		  try {
 				URI acceptEPURI = new URI(acceptEP);
@@ -48,12 +48,17 @@ public class CollectorServiceImplementation implements
 		  proposalSet.add(proposal);
 	}
 	
+	/*
+	* We can modify to add the counterparty identification to be stored in the agreement
+	*/
+	
 	@WebMethod(operationName="accept")
 	public void accept(String time, String cost) {
 		  SortedSet<Proposal> proposalSet= selectionComponent.getSortedProposalSet();
 		  
-		  FOMProposal fomProposal = new FOMProposal(Integer.parseInt(time),Double.parseDouble(cost));
-		  Proposal proposal = FOMSLATranslator.getAgreement(fomProposal);
+		  FOMProposal fomProposal = new FOMProposal(Integer.parseInt(time),Double.parseDouble(cost),"");
+		  
+		  Proposal proposal = FOMProposalTranslator.getAgreement(fomProposal);
 		  proposal.setPerformative(ProposalPerformative.ACCEPT);
 
 		  FAST.agreementRegistry.addAgreement(selectionComponent.getTradingProcess().getPID(),proposal);

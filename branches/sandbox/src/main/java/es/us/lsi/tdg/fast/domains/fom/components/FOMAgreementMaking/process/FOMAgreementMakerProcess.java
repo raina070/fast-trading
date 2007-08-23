@@ -25,9 +25,9 @@ import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscov
 import es.us.lsi.tdg.fast.domains.fom.components.fomselection.services.CollectorService;
 import es.us.lsi.tdg.fast.domains.fom.components.fomselection.services.FOMCollector;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 
 public class FOMAgreementMakerProcess extends AbstractControllableProcess {
@@ -140,7 +140,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 	
 	private void commitProposal(Proposal proposal)
 	{
-		FOMProposal fomOffer = FOMSLATranslator.getFOMAgreement(proposal);
+		FOMProposal fomOffer = FOMProposalTranslator.getFOMProposal(proposal);
 		int time= fomOffer.getTime();
 		double cost= fomOffer.getCost();
 	
@@ -189,7 +189,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 	private void acceptProposal(Proposal proposal)
 	{
 
-		FOMProposal fomProposal = FOMSLATranslator.getFOMAgreement(proposal);
+		FOMProposal fomProposal = FOMProposalTranslator.getFOMProposal(proposal);
 		
 		int time= fomProposal.getTime();
 		double cost= fomProposal.getCost();
@@ -224,8 +224,9 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			FAST.shell.showMessage("ACCEPT over AgreementOffer: " + fomProposal);
 			
 			FAST.shell.showMessage("CounterParty Collector EndPoint: " + counterPartyCollectorEndPoint);
-			FAST.shell.showMessage("SLA Reached: " + fomProposal);
+			
 			port.accept(Integer.toString(time), Double.toString(cost));
+			FAST.shell.showMessage("SLA Reached: " + fomProposal);
 			agreementMakingComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

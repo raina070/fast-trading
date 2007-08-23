@@ -15,7 +15,7 @@ import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
 */
 import es.us.lsi.tdg.fast.domains.fom.*;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 
 /**
  * 

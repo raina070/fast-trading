@@ -14,9 +14,9 @@ public class FOMProposalComparator implements Comparator {
 		AssessmentMechanism assessMech = agreePrefs.getAssessmentMechanism();
 		
 		Assessment a1 = assessMech.assess(agreePrefs,(Agreement)o1);
-		FAST.shell.showMessage("Comparing proposal "+FOMSLATranslator.getFOMAgreement((Proposal)o1)+": Assessment Value "+a1);
+		FAST.shell.showMessage("Comparing proposal "+FOMProposalTranslator.getFOMProposal((Proposal)o1)+": Assessment Value "+a1);
 		Assessment a2 = assessMech.assess(agreePrefs,(Agreement)o2);
-		FAST.shell.showMessage("Comparing proposal "+FOMSLATranslator.getFOMAgreement((Proposal)o2)+": Assessment Value "+a2);
+		FAST.shell.showMessage("Comparing proposal "+FOMProposalTranslator.getFOMProposal((Proposal)o2)+": Assessment Value "+a2);
 
 		return a2.compareTo(a1);
 	}

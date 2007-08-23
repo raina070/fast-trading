@@ -2,15 +2,17 @@ package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.core.dataModel.information.*;
 import es.us.lsi.tdg.fast.core.dataModel.statement.*;
 
 
-public class FOMOfferInformationTranslator {
+public class FOMInformationTranslator {
 
 	
-	public static Information getInformation(FOMOffer Offer) throws IncompatibleAttributeException{
+	public static Information getInformation(FOMOfferInformation Offer) throws IncompatibleAttributeException{
 		
 		Information result = new BaseInformation();
 		
@@ -27,12 +29,8 @@ public class FOMOfferInformationTranslator {
 		return result;
 	}
 	
-	public static FOMOffer getFOMOffer(Information offer){
-		return getFOMOffer(offer,null);
-	}
-
-	public static FOMOffer getFOMOffer(Information info, CounterParty cp) {
-		FOMOffer result = new FOMOffer();
+	public static FOMOfferInformation getFOMInformation(Information info) {
+		FOMOfferInformation result = new FOMOfferInformation();
 		double cost=0,maxTime=0,minTime=0;
 		Set<Statement> requirements=info.getRequirements();
 		for(Statement requeriment:requirements)
@@ -65,9 +63,9 @@ public class FOMOfferInformationTranslator {
 				}
 			}			
 		}
-		result.setCounterpartyEndPoint(((FOMCounterParty) cp).getSelectionEndPoint().toString());
-		
 		return result;
 	}
+	
+
 	
 }
