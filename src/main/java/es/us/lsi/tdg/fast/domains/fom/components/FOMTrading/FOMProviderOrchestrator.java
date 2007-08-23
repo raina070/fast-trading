@@ -65,6 +65,8 @@ public class FOMProviderOrchestrator
 			select.setTradingProcess(tradingProcess);
 			am.setTradingProcess(tradingProcess);
 			
+			FAST.componentFactory.bind("PullPotentialCounterPartyNotification", disco, info);
+			FAST.componentFactory.bind("PushNewInformationNotification", info, select);
 			FAST.componentFactory.bind("PushProposalSelectionNotification", select, am);
 
 			

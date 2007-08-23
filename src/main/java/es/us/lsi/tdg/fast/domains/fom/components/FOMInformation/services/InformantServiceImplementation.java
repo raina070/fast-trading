@@ -14,6 +14,7 @@ import es.us.lsi.tdg.fast.core.services.FASTServiceImplementation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMInformant;
+import es.us.lsi.tdg.fast.FAST;
 
 
 @WebService(name="FOMInformant", serviceName="InformantService")
@@ -35,11 +36,12 @@ public class InformantServiceImplementation implements FASTServiceImplementation
 			Offers.add(Integer.toString(FOMInformation.getTimeInit()));
 			Offers.add(Integer.toString(FOMInformation.getTimeEnd()));
 			Offers.add(Double.toString(FOMInformation.getCost()));
-			
+			FAST.shell.showMessage("Sending Offer "+FOMInformation);	
 			//Offers.add("0");
 			//Offers.add("20");
 			//Offers.add("50");	
 		}
+		
 		/**
 		Offers.add("21");
 		Offers.add("40");

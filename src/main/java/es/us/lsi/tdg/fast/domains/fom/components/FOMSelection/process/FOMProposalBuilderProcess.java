@@ -54,27 +54,25 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 	{
 		Set <CounterPartyKnowledge>	counterPartyKnowledgeSet = inquirer.getInformation();
 		if (counterPartyKnowledgeSet.size() > 0){
+			FAST.shell.showMessage("Launching ProposalBuilder...");
+			FOMAgreementPreferences FOMAgreementPreferences = FOMAgreementPreferencesTranslator.getFOMAgreementPreferences(FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
+			FAST.shell.showMessage("AgreementPreferences...");
+			FAST.shell.showMessage(FOMAgreementPreferences.toString());
+
+
 			Set	<Proposal> ProposalSet = new HashSet<Proposal>();
 			for (CounterPartyKnowledge counterPartyKnowledge:counterPartyKnowledgeSet){
 			
 				Information info = counterPartyKnowledge.getServiceInformation();
 				CounterParty cp = counterPartyKnowledge.getCounterParty();
 				
-				FAST.shell.showMessage("Launching ProposalBuilder...");
-				
-	
-				FOMAgreementPreferences FOMAgreementPreferences = FOMAgreementPreferencesTranslator.getFOMAgreementPreferences(FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
-				
-				FAST.shell.showMessage("AgreementPreferences...");
-				FAST.shell.showMessage(FOMAgreementPreferences.toString());
-				
 				ProposalSet.addAll(FOMProposalAdaptor.getAgreementSet(cp,info,FOMAgreementPreferences));
-				FAST.shell.showMessage("Sorting Proposals...");
 								 
 			}
+			FAST.shell.showMessage("Sorting Proposals...");
 			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
 			this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
-				
+			counterPartyKnowledgeSet.clear();	
 			
 		}
 	
