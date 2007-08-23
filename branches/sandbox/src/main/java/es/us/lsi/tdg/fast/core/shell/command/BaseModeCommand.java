@@ -92,6 +92,7 @@ public class BaseModeCommand extends BaseCommand
 		modeInited=true;
 	}
 	
+	
 	protected void closeMode(ShellRender shellRenderer)
 	{
 		for(Command command:subCommands.values())
@@ -170,6 +171,25 @@ public class BaseModeCommand extends BaseCommand
 	{
 		subCommands.put(commandName, command);
 		// TODO should we assign the command factory of this object to the subcommand?
+	}
+	
+	public void loadSubCommand(Command command){
+		commandFactory.loadCommand(command.getName(), this);			
+		try {
+			commandFactory.addCommand(command.getName());
+		} catch (UnknownCommandException e) {}
+	}
+	
+	public void unloadSubCommand(String commandName){
+			try {
+				commandFactory.removeCommand(commandName);
+			} catch (UnknownCommandException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidCommandException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	
 	public void removeSubCommand(String commandName) throws UnknownCommandException

@@ -33,7 +33,7 @@ public class BaseFASTServer implements FASTServer {
 	private BaseFASTServer(){
 		
 		try {
-			httpServer = HttpServer.create(new InetSocketAddress(FAST.serverPort), 5);
+			httpServer = HttpServer.create(new InetSocketAddress(Integer.parseInt((String)FAST.properties.get((String)"serverPort"))), 5);
 			httpServer.start();
 			
 			httpContexts = new HashMap<String,HttpContext>();

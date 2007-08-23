@@ -1,6 +1,5 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMTrading;
 
-import es.us.lsi.tdg.fast.components.information.BaseInformation;
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.component.UnknownComponentException;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
@@ -47,7 +46,7 @@ public class FOMCustomerOrchestrator
 		FAST.shell.showMessage("  Starting CustomerOrchestration for PID "+tradingProcess.getPID());
 		
 		try {
-			
+		
 			FOMDiscovery disco = (FOMDiscovery) FAST.componentFactory.getByName("FOMDiscovery");
 			FOMInformation info = (FOMInformation) FAST.componentFactory.getByName("FOMInformation");
 			FOMSelection select = (FOMSelection) FAST.componentFactory.getByName("FOMSelection");
@@ -63,10 +62,10 @@ public class FOMCustomerOrchestrator
 			FAST.componentFactory.bind("PushProposalSelectionNotification", select, am);
 
 			discoveryService = disco.getDiscoveryServiceProcess();
-			advertiser = disco.getAdvertiserProcess();
+			//advertiser = disco.getAdvertiserProcess();
 			tracker = disco.getTrackerProcess();
 
-			informant = info.getInformantProcess();
+			//informant = info.getInformantProcess();
 			inquirer = info.getInquirerProcess();
 
 			proposalBuilder = select.getProposalBuilderProcess();
@@ -76,10 +75,10 @@ public class FOMCustomerOrchestrator
 			agreementMaker = am.getAgreementMakerProcess();
 	
 			discoveryService.start();
-			advertiser.start();
+			//advertiser.start();
 			tracker.start();
 			
-			informant.start();
+			//informant.start();
 
 			inquirer.start();
 			
