@@ -21,9 +21,7 @@ public class FOMProposalOfferAdaptor {
 		Set<FOMProposal> 	FOMAgreementSet = new HashSet<FOMProposal>();
 		Set<Proposal>		result			= new HashSet<Proposal>();
 
-		FOMOfferSet.add(FOMOfferInformationTranslator.getFOMOffer(info));
-
-		//AÑADIR CP
+		FOMOfferSet.add(FOMOfferInformationTranslator.getFOMOffer(info,cp));
 		
 		FOMAgreementSet = Proposer.FOMOfferToAgreement(FOMOfferSet,OfferPreferences);
 		for (FOMProposal FOMAgreement: FOMAgreementSet){

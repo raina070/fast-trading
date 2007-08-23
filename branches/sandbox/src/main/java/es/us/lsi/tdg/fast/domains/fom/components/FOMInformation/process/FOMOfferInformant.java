@@ -23,7 +23,7 @@ public class FOMOfferInformant implements Informant{
 		c2=20;
 		c3=10;
 	}
-	
+
 	public Set<FOMOffer> getOffers()
 	{
 		Set<FOMOffer> result=new HashSet<FOMOffer>();
@@ -35,14 +35,14 @@ public class FOMOfferInformant implements Informant{
 		int t1 = tReal/3;
 		int t2 = (2*tReal/3);
 				
-		
-		FOMOffer Offer1 = new FOMOffer(tInit,t1+tInit, factor*this.c1);
-		FOMOffer Offer2 = new FOMOffer(t1+tInit+1,t2+tInit, factor*this.c2);
-		FOMOffer Offer3 = new FOMOffer(t2+tInit+1,tFull, factor*this.c3);
-		
+		FOMOffer Offer1 = new FOMOffer(tInit,t1+tInit, factor*this.c1,"INFORMATION");
+		FOMOffer Offer2 = new FOMOffer(t1+tInit+1,t2+tInit, factor*this.c2,"INFORMATION");
+		FOMOffer Offer3 = new FOMOffer(t2+tInit+1,tFull, factor*this.c3,"INFORMATION");
+	
 		result.add(Offer1);
 		result.add(Offer2);
 		result.add(Offer3);
+
 		return result;
 	}
 
