@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
@@ -13,14 +14,17 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
 import es.us.lsi.tdg.fast.FAST;
 
 public class FOMProposalOfferAdaptor {
-	public static Set<Proposal>getAgreementSet(Set<Information> infoSet, FOMOffer OfferPreferences){
+	public static Set<Proposal>getAgreementSet(CounterParty cp, Information info, FOMOffer OfferPreferences){
+		
 		FOMProposalBuilder 	Proposer		= new FOMProposalBuilder();
 		Set<FOMOffer> 		FOMOfferSet 	= new HashSet<FOMOffer>();
 		Set<FOMProposal> 	FOMAgreementSet = new HashSet<FOMProposal>();
 		Set<Proposal>		result			= new HashSet<Proposal>();
-		for (Information info: infoSet){
-			FOMOfferSet.add(FOMOfferInformationTranslator.getFOMOffer(info));
-		}
+
+		FOMOfferSet.add(FOMOfferInformationTranslator.getFOMOffer(info));
+
+		//AÑADIR CP
+		
 		FOMAgreementSet = Proposer.FOMOfferToAgreement(FOMOfferSet,OfferPreferences);
 		for (FOMProposal FOMAgreement: FOMAgreementSet){
 			FAST.shell.showMessage("New Proposal Built: " + FOMAgreement);
@@ -29,9 +33,5 @@ public class FOMProposalOfferAdaptor {
 		FAST.shell.showMessage("Proposals Ordered");
 		return result;
 	}
-	
-	//public static FOMOffer getFOMOfferPreferences(AgreementPreferences agreementPreferences){
-	//	return new FOMOffer(15,45,55);
-	//}
-	
+
 }
