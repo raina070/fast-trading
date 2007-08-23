@@ -57,6 +57,8 @@ public class CollectorServiceImplementation implements
 		  proposal.setPerformative(ProposalPerformative.ACCEPT);
 
 		  FAST.agreementRegistry.addAgreement(selectionComponent.getTradingProcess().getPID(),proposal);
+
+		  FAST.shell.showMessage("SLA Reached: "+fomProposal);
 		  
 		  selectionComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
 		  

@@ -116,7 +116,7 @@ public class FOMCustomerOrchestrator
 	public void event(String event) {
 		
 		if(event.equals("SLA_REACHED")){
-			FAST.shell.showMessage("SLA Reached.");
+			FAST.shell.showMessage("Stoping Trading Process.");
 			stop();
 		}
 	}
