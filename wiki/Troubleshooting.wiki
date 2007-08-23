@@ -1,0 +1,11 @@
+== Web Services don't work ==
+
+=== Description ===
+When manually calling the wsdl, browser shows:
+{{{
+404 Not Found
+No context found for request
+}}}
+
+=== Solution ===
+You should remove AXIS as reference for the project to build it.
