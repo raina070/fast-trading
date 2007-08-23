@@ -29,7 +29,7 @@ import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
 public class FAST 
 {
 	
-	public static String version = "0.1";
+	public static String version = "0.2";
 	public static String releaseName = "Bilbo";
 	
 	public static Logger log=Logger.getLogger("FAST");
