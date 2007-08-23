@@ -22,7 +22,7 @@ public class FOMProviderOrchestrator
 	ControllableProcess informant;
 	
 
-	ControllableProcess proposalBuilder;
+	
 	ControllableProcess proposalDispatcher;
 	ControllableProcess proposalCollector;
 	
@@ -44,6 +44,10 @@ public class FOMProviderOrchestrator
 
 	public void event(String event) {
 		// TODO Auto-generated method stub
+		if (event.equals("SLA_REACHED")){
+			FAST.shell.showMessage("Stoping Trading Process.");
+			stop();
+		}
 		
 	}
 
@@ -61,8 +65,6 @@ public class FOMProviderOrchestrator
 			select.setTradingProcess(tradingProcess);
 			am.setTradingProcess(tradingProcess);
 			
-			FAST.componentFactory.bind("PullPotentialCounterPartyNotification", disco, info);
-			FAST.componentFactory.bind("PushNewInformationNotification", info, select);
 			FAST.componentFactory.bind("PushProposalSelectionNotification", select, am);
 
 			
@@ -72,7 +74,7 @@ public class FOMProviderOrchestrator
 			informant = info.getInformantProcess();
 			
 
-			proposalBuilder = select.getProposalBuilderProcess();
+			
 			proposalDispatcher = select.getProposalDispatcherProcess();
 			proposalCollector = select.getProposalCollectorProcess();
 			
@@ -83,7 +85,6 @@ public class FOMProviderOrchestrator
 						
 			informant.start();
 
-			proposalBuilder.start();
 			proposalDispatcher.start();
 
 			proposalCollector.start();

@@ -68,7 +68,11 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			List<Proposal> proposalSet = new LinkedList<Proposal>(originalProposalSet);
 			for(Proposal proposal:proposalSet)
 			{
-				processProposal(proposal);
+				if(proposal.getPerformative()==ProposalPerformative.PROPOSAL)
+					commitProposal(proposal);
+				else if(proposal.getPerformative()==ProposalPerformative.COMMIT)
+					acceptProposal(proposal);
+				
 			}	
 			//originalProposalSet.clear();
 		}
@@ -104,7 +108,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 	}
 	*/
 	
-	
+	/*
 	private void processCommitProposal(Proposal proposal)
 	{
 		if (commited==false) {
@@ -117,7 +121,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			proposal.setPerformative(ProposalPerformative.REJECT);
 		}
 		
-	}
+	}*/
 	
 	private String getPID()
 	{
@@ -125,51 +129,43 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 		return PID;
 	}
 	
+	/*
 	private void processAcceptProposal(Proposal proposal)
 	{
 		Agreement agreement=new BaseAgreement(proposal.getTerms(),proposal.getCounterParties());
 		String PID=getPID();
 		FAST.agreementRegistry.addAgreement(PID, agreement);
 		stop();
-	}
+	}*/
 	
-	private void processProposal(Proposal proposal)
+	private void commitProposal(Proposal proposal)
 	{
-
+		FOMProposal fomOffer = FOMSLATranslator.getFOMAgreement(proposal);
+		int time= fomOffer.getTime();
+		double cost= fomOffer.getCost();
+	
 		Set<CounterParty> counterParties = proposal.getCounterParties();
-		FOMCounterParty counterParty;
-		
 		int myServerPort = Integer.parseInt(FAST.properties.get("serverPort"));
 		String myDomainRoleName = FAST.currentDomainRole.getName();
 		
-		String myEP = "http://localhost:"+myServerPort+"/"+myDomainRoleName+"/CollectorServiceImplementation";
-
-		String selEP;
+		String myCollectorEndPoint = "http://"+FAST.properties.get("serverIP")+":"+myServerPort+"/"+myDomainRoleName+"/CollectorServiceImplementation";
+		String counterPartyCollectorEndPoint=null;
 		
-		//CounterParty[] aCP = (CounterParty[]) counterParties.toArray();
-		
-		selEP = myEP;
-		/*
-		if(aCP.){
-			counterParty = (FOMCounterParty) i.next();
-			selEP = counterParty.getSelectionEndPoint().toString();
-		}else{
-			//If multiples instances of FASTwe should deal with this:
-			//throw new UnknownCounterPartyException();
-			selEP = myEP;
+		if (counterParties==null){
+			throw new UnknownCounterParty();
 		}
-		*/
 		
+		for (CounterParty counterParty:counterParties){
+			counterPartyCollectorEndPoint = ((FOMCounterParty)counterParty).getSelectionEndPoint().toString();
+		}
 		
-		
-		FOMProposal fomOffer = FOMSLATranslator.getFOMAgreement(proposal);
-		
-
-		int time= fomOffer.getTime();
-		double cost= fomOffer.getCost();
-		
+		if ( counterPartyCollectorEndPoint == null){
+			throw new UnknownEndPoint("Collector EndPoint is missing");
+		}
+			
 		try {
-			URL url = new URL(selEP+"?wsdl");
+			
+			URL url = new URL(counterPartyCollectorEndPoint+"?wsdl");
 			QName qname = new QName("http://services.FOMSelection.components.fom.domains.fast.tdg.lsi.us.es/", "CollectorService");
 				
 			CollectorService service;
@@ -178,22 +174,62 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			service = new CollectorService(url,qname);
 			
 			port = service.getFOMCollectorPort();
+					
+			FAST.shell.showMessage("COMMIT over AgreementOffer: " + fomOffer);
+			FAST.shell.showMessage("My Collector EndPoint: " + myCollectorEndPoint);
+			FAST.shell.showMessage("CounterParty Collector EndPoint: " + counterPartyCollectorEndPoint);
 			
-						
-			if(proposal.getPerformative()==ProposalPerformative.COMMIT){
-				FAST.shell.showMessage("ACCEPT over AgreementOffer: " + fomOffer);
-				port.accept(Integer.toString(time), Double.toString(cost));
-			}else if(proposal.getPerformative()==ProposalPerformative.PROPOSAL){
-				FAST.shell.showMessage("COMMIT over AgreementOffer: " + fomOffer);
-				port.commit(Integer.toString(time), Double.toString(cost), myEP);
-			}
-
+			port.commit(Integer.toString(time), Double.toString(cost), myCollectorEndPoint);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void acceptProposal(Proposal proposal)
+	{
 
+		FOMProposal fomProposal = FOMSLATranslator.getFOMAgreement(proposal);
 		
+		int time= fomProposal.getTime();
+		double cost= fomProposal.getCost();
+	
+		Set<CounterParty> counterParties = proposal.getCounterParties();
+		String counterPartyCollectorEndPoint=null;
+		
+		if (counterParties==null){
+			throw new UnknownCounterParty();
+		}
+		
+		for (CounterParty counterParty:counterParties){
+			counterPartyCollectorEndPoint = ((FOMCounterParty)counterParty).getSelectionEndPoint().toString();
+		}
+		
+		if ( counterPartyCollectorEndPoint == null){
+			throw new UnknownEndPoint("Collector EndPoint is missing");
+		}
+			
+		try {
+			
+			URL url = new URL(counterPartyCollectorEndPoint+"?wsdl");
+			QName qname = new QName("http://services.FOMSelection.components.fom.domains.fast.tdg.lsi.us.es/", "CollectorService");
+				
+			CollectorService service;
+			FOMCollector port;
+			
+			service = new CollectorService(url,qname);
+			
+			port = service.getFOMCollectorPort();
+					
+			FAST.shell.showMessage("ACCEPT over AgreementOffer: " + fomProposal);
+			
+			FAST.shell.showMessage("CounterParty Collector EndPoint: " + counterPartyCollectorEndPoint);
+			FAST.shell.showMessage("SLA Reached: " + fomProposal);
+			port.accept(Integer.toString(time), Double.toString(cost));
+			agreementMakingComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}		
 		
 	}
 	

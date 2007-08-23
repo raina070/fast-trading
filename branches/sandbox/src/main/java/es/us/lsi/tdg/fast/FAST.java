@@ -36,6 +36,7 @@ public class FAST
 	
 	public static FASTServer server=null;
 	public final static int DEFAULT_PORT=1607;
+	public final static String DEFAULT_IP="localhost";
 	public static Map<String,String>properties = new HashMap<String,String>();
 	
 	public static DomainRegistry domainRegistry=null;
@@ -49,9 +50,10 @@ public class FAST
     public static void main( String[] args )
     {
     	properties.put("serverPort", Integer.toString(DEFAULT_PORT));
-    	if(args.length>1){
+    	properties.put("serverIP", DEFAULT_IP);
+    	if(args.length>0){
     		try{
-    			int portCandidate = Integer.parseInt(args[1]);
+    			int portCandidate = Integer.parseInt(args[0]);
     			FAST.properties.put("serverPort", Integer.toString(portCandidate));
     			
     		}catch(NumberFormatException e){
