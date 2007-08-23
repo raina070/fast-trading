@@ -62,8 +62,10 @@ public class FOMInquirerProcess extends AbstractControllableProcess {
 			
 		}
 		for (CounterParty cp:FOMProviders){
-			FAST.shell.showMessage("Recibiendo Ofertas");
+
 			if (cp instanceof FOMCounterParty){
+				FAST.shell.showMessage("Getting Offers from provider "+((FOMCounterParty)cp).getCPID());
+
 				Set<Information> information = FOMOfferInformationAdaptor.getInformation(((FOMCounterParty)cp).getInformationEndPoint().toString());
 				for (Information info:information){
 					proposalBuilder.newInformation(new BaseCounterPartyKnowledge(info,cp));
