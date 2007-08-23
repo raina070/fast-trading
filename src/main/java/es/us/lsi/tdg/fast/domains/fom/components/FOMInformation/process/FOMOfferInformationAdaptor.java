@@ -45,17 +45,17 @@ public class FOMOfferInformationAdaptor {
 					Integer.parseInt(StringOffers.get(0)),
 					Integer.parseInt(StringOffers.get(1)),
 					Double.parseDouble(StringOffers.get(2))					
-					); 
+					,"INFORMATION"); 
 			FOMOffer o2 = new FOMOffer(
 					Integer.parseInt(StringOffers.get(3)),
 					Integer.parseInt(StringOffers.get(4)),
 					Double.parseDouble(StringOffers.get(5))					
-					); 
+					,"INFORMATION"); 
 			FOMOffer o3 = new FOMOffer(
 					Integer.parseInt(StringOffers.get(6)),
 					Integer.parseInt(StringOffers.get(7)),
 					Double.parseDouble(StringOffers.get(8))					
-					); 
+					,"INFORMATION"); 
 	
 			FOMOffers.add(o1);
 			FOMOffers.add(o2);

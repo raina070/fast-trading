@@ -2,6 +2,7 @@ package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.information.*;
 import es.us.lsi.tdg.fast.core.dataModel.statement.*;
 
@@ -26,10 +27,14 @@ public class FOMOfferInformationTranslator {
 		return result;
 	}
 	
-	public static FOMOffer getFOMOffer(Information Offer){
+	public static FOMOffer getFOMOffer(Information offer){
+		return getFOMOffer(offer,null);
+	}
+
+	public static FOMOffer getFOMOffer(Information info, CounterParty cp) {
 		FOMOffer result = new FOMOffer();
 		double cost=0,maxTime=0,minTime=0;
-		Set<Statement> requirements=Offer.getRequirements();
+		Set<Statement> requirements=info.getRequirements();
 		for(Statement requeriment:requirements)
 		{
 			if(requeriment instanceof Constraint)
@@ -60,6 +65,8 @@ public class FOMOfferInformationTranslator {
 				}
 			}			
 		}
+		result.setCounterpartyEndPoint(((FOMCounterParty) cp).getSelectionEndPoint().toString());
+		
 		return result;
 	}
 	
