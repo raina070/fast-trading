@@ -1,6 +1,7 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 
 import java.net.URI;
+import es.us.lsi.tdg.fast.FAST;
 import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
@@ -46,12 +47,22 @@ public class FOMInquirerProcess extends AbstractControllableProcess {
 		this.informationComponent = informationComponent;
 	}
 	
+	//public void start(){
+	//	FOMProviders = tracker.getPotentialCounterParties();
+	//}
+	
 	
 	@Override
 	protected  void  run()
 	{
-		FOMProviders= tracker.getPotentialCounterParties();
+		if (FOMProviders == null){
+			FOMProviders = tracker.getPotentialCounterParties();
+		}else{
+			FOMProviders = tracker.getNewCounterParties();
+			
+		}
 		for (CounterParty cp:FOMProviders){
+			FAST.shell.showMessage("Recibiendo Ofertas");
 			if (cp instanceof FOMCounterParty){
 				Set<Information> information = FOMOfferInformationAdaptor.getInformation(((FOMCounterParty)cp).getInformationEndPoint().toString());
 				for (Information info:information){
@@ -59,6 +70,7 @@ public class FOMInquirerProcess extends AbstractControllableProcess {
 				}
 			}
 		}
-		stop();	
+		//FAST.shell.showMessage("ESO");
+		//stop();	
 	}
 }

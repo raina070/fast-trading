@@ -52,6 +52,15 @@ public class LoadDomainCommand extends BaseCommand {
 				if(selectedRole!=null){
 					FAST.currentDomain = domainManifest;
 					FAST.currentDomainRole = selectedRole;
+					/**
+					 * <PROPERTIES>
+					 */
+					Command propertiesCommand=new BaseDomainPropertiesCommand();
+					propertiesCommand.setCommandFactory(commandFactory);
+					commandFactory.loadCommand(propertiesCommand.getName(), propertiesCommand);
+					/**
+					 * </PROPERTIES>
+					 */
 					
 					AttributeCatalog acatalog = FAST.currentDomain.getAttributeCatalog();
 					Command preferencesCommand=new BaseDomainPreferencesCommand(acatalog);
@@ -66,6 +75,9 @@ public class LoadDomainCommand extends BaseCommand {
 					
 					try {
 						commandFactory.addCommand(preferencesCommand.getName());
+					} catch (UnknownCommandException e) {}
+					try {
+						commandFactory.addCommand(propertiesCommand.getName());
 					} catch (UnknownCommandException e) {}
 					shellRenderer.setPrompt(domainRole+"@"+domain+"-"+shellRenderer.getPrompt());
 					

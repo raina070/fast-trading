@@ -3,6 +3,8 @@ package es.us.lsi.tdg.fast;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Map;
+import java.util.HashMap;
 
 import es.us.lsi.tdg.fast.components.GenericComponentsLoader;
 import es.us.lsi.tdg.fast.core.agreementRegistry.AgreementRegistry;
@@ -26,13 +28,15 @@ import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
  */
 public class FAST 
 {
+	
 	public static String version = "0.1";
 	public static String releaseName = "Bilbo";
 	
 	public static Logger log=Logger.getLogger("FAST");
 	
 	public static FASTServer server=null;
-	public static int serverPort=1607;
+	public final static int DEFAULT_PORT=1607;
+	public static Map<String,String>properties = new HashMap<String,String>();
 	
 	public static DomainRegistry domainRegistry=null;
 	public static DomainManifest currentDomain=null;
@@ -44,19 +48,27 @@ public class FAST
 	
     public static void main( String[] args )
     {
+    	properties.put("serverPort", Integer.toString(DEFAULT_PORT));
     	if(args.length>1){
     		try{
     			int portCandidate = Integer.parseInt(args[1]);
-    			serverPort = portCandidate;
+    			FAST.properties.put("serverPort", Integer.toString(portCandidate));
+    			
     		}catch(NumberFormatException e){
     		}
     	}
-    		
+    	
+    	
+    	/*
+    	 * This should be moved to the domain load
+    	 */
+    	properties.put("discoveryEndPoint", "http://localhost:1607/customer/DiscoveryServiceImplementation?wsdl");	
+    	
 		log.addHandler(new ConsoleHandler());
     	log.setLevel(Level.OFF);
     	
     	shell = new SimpleFASTShell();
-
+    	
     	server = BaseFASTServer.getInstance();
     	
     	domainRegistry=new BaseDomainRegistry();
@@ -66,8 +78,10 @@ public class FAST
         
         preferenceRegistry=new BasePreferenceRegistry();
         agreementRegistry=new BaseAgreementRegistry();
-        shell.run();
 
+        shell.run();
+        
+        
         if(server != null){
         	server.stop();
         	System.out.println(".");

@@ -42,7 +42,7 @@ public class FOMAdvertiserProcess extends AbstractControllableProcess{
 	
 	private FOMCounterParty providerEPs(){
 		FOMCounterParty provider = null;
-		int port = FAST.serverPort;
+		int port = Integer.parseInt(FAST.properties.get("serverPort"));
 		String domainRoleName = FAST.currentDomainRole.getName();
 		
 		try {
@@ -59,7 +59,7 @@ public class FOMAdvertiserProcess extends AbstractControllableProcess{
 	public  void  start()
 	{
 		try {
-			URL url = new URL("http://localhost:1607/customer/DiscoveryServiceImplementation?wsdl");
+			URL url = new URL(FAST.properties.get("discoveryEndPoint"));
 			QName qname = new QName("http://services.FOMDiscovery.components.fom.domains.fast.tdg.lsi.us.es/", "FOMDiscoveryService");
 				
 			FOMDiscoveryService service;

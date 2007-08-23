@@ -5,7 +5,9 @@ import java.util.HashSet;
 
 import es.us.lsi.tdg.fast.core.dataModel.statement.*;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.*;
+import es.us.lsi.tdg.fast.FAST;
 
 public class FOMSLATranslator {
 	
@@ -66,4 +68,50 @@ public class FOMSLATranslator {
 		}
 		return result;
 	}
+	
+	public static FOMOffer getFOMOfferPreference(AgreementPreferences SLA){
+		FOMOffer result = new FOMOffer();
+		
+		double agreementCost=0,agreementMaxTime=-1,agreementMinTime=-1;
+		Set<Statement> Requirements= SLA.getRequirements();
+		FAST.shell.showMessage("Numero de Preferencias de Acuerdo");
+		FAST.shell.showMessage(Integer.toString(Requirements.size()));
+		for(Statement requirement:Requirements)
+		{
+			FAST.shell.showMessage(((SimpleConstraint)requirement).getAttribute().getName());
+		
+			if(requirement instanceof SimpleConstraint)
+			{
+				if (((SimpleConstraint)requirement).getAttribute().getName()=="Cost"){
+					Value valor=((SimpleConstraint)requirement).getValue();
+					agreementCost=((IntegerValue)valor).getValue();
+					result.setCost(agreementCost);
+				}else if (((SimpleConstraint)requirement).getAttribute().getName()=="InvocationMinDate"){
+					Value minTimeValor=((SimpleConstraint)requirement).getValue();
+			
+					agreementMinTime=((IntegerValue)minTimeValor).getValue();
+					if (agreementMaxTime!=-1){
+						agreementMaxTime=agreementMaxTime+agreementMinTime;
+						result.setTimeEnd((int)agreementMaxTime);
+					}
+					
+					result.setTimeInit((int)agreementMinTime);
+						
+				}else if (((SimpleConstraint)requirement).getAttribute().getName()=="Time"){
+					Value maxTimeValor=((SimpleConstraint)requirement).getValue();
+			
+					if (agreementMinTime!=-1){
+						agreementMaxTime=((IntegerValue)maxTimeValor).getValue()+agreementMinTime;
+						result.setTimeEnd((int)agreementMaxTime);
+					}
+					else 
+						agreementMaxTime=((IntegerValue)maxTimeValor).getValue()+agreementMinTime; 	
+				}
+			}
+		}
+		
+		
+		return result;
+	}
+	
 }

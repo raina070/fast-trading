@@ -19,6 +19,8 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process.FOMOfferInformationAdaptor;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOffer;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMSLATranslator;
 import es.us.lsi.tdg.fast.domains.fom.FOMAssessmentMechanism;
 import es.us.lsi.tdg.fast.FAST;
 
@@ -44,29 +46,35 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 		this.selectionComponent = selectionComponent;
 	}
 
-	public AgreementPreferences FOMAgreementPreferences(){
-		FOMAssessmentMechanism myAssessmentMechanism = new FOMAssessmentMechanism();
-		AgreementPreferences result = new BaseAgreementPreferences(myAssessmentMechanism);
-		IntegerValue costValue 		= new IntegerValue(55);
-		IntegerValue costValueMin 	= new IntegerValue(0);
-		BaseAttribute Cost = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
+	public AgreementPreferences FOMAgreementPreferences(String PID){
 		
+		//FOMAssessmentMechanism myAssessmentMechanism = new FOMAssessmentMechanism();
+		AgreementPreferences result = FAST.preferenceRegistry.getPreferences(PID);
+		
+		
+		return result;
+	}
+	
+	public void fixAgreementPreferences(String PID){
+		AgreementPreferences result = FAST.preferenceRegistry.getPreferences(PID);
+		FOMOffer resultaux = FOMSLATranslator.getFOMOfferPreference(result);		
 		try {
+			BaseAttribute Cost = new BaseAttribute("Cost",IntegerDomain.getInstance(), "price per time unit");
+			IntegerValue costValue 		= new IntegerValue((int)resultaux.getCost());
+			IntegerValue costValueMin 	= new IntegerValue(0);
 			SortedDomainConstraint costConstraint = new BaseSortedDomainConstraint((ComparableValue)costValueMin,(ComparableValue)costValue,Cost,StatementType.SERVICE);
-			IntegerValue timeInitValue = new IntegerValue(15);
-			IntegerValue timeEndValue = new IntegerValue(45);
+			IntegerValue timeInitValue = new IntegerValue(resultaux.getTimeInit());
+			IntegerValue timeEndValue = new IntegerValue(resultaux.getTimeEnd());
 			BaseAttribute time = new BaseAttribute("Time",IntegerDomain.getInstance(), "offer time");
 			SortedDomainConstraint timeConstraint = new BaseSortedDomainConstraint((ComparableValue)timeInitValue,(ComparableValue)timeEndValue, time,StatementType.SERVICE);
 			Set<Statement> requirements = result.getRequirements();
+			requirements.clear();
 			requirements.add((Statement)costConstraint);
-			requirements.add((Statement)timeConstraint);
-			
+			requirements.add((Statement)timeConstraint);	
 		} catch (IncompatibleAttributeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return result;
 	}
 	
 	@Override
@@ -80,12 +88,19 @@ public class FOMProposalBuilderProcess extends AbstractControllableProcess{
 				Information info = counterPartyKnowledge.getServiceInformation();
 				infoSet.add(info);
 			}
-			FAST.shell.showMessage("AgreementPreferences (CostConstraint[0,55] TimeConstraint[15,45])");
+			//FAST.shell.showMessage("AgreementPreferences (CostConstraint[0,55] TimeConstraint[15,45])");
 			FAST.shell.showMessage("Launching ProposalBuilder...");
 			Set	<Proposal> ProposalSet = new HashSet<Proposal>();
-			ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet);
+
+			FOMOffer FOMOfferPreference = FOMSLATranslator.getFOMOfferPreference(FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
+			fixAgreementPreferences(selectionComponent.getTradingProcess().getPID());
+			//ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet,new FOMOffer(15,45,55));
+			FAST.shell.showMessage("AgreementPreferences...");
+			FAST.shell.showMessage(FOMOfferPreference.toString());
+			
+			ProposalSet = FOMProposalOfferAdaptor.getAgreementSet(infoSet,FOMOfferPreference);
 			FAST.shell.showMessage("Sorting Proposals...");
-			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FOMAgreementPreferences());
+			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FAST.preferenceRegistry.getPreferences("1"));
 			
 			this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
 		}

@@ -22,7 +22,7 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 	private String PID;			
 	private AttributeCatalog attributeCatalog;
 	public BaseDomainPreferencesCommand(AttributeCatalog attributeCatalog) {
-		super("preferences","Definition of trading preferences for a pecific domain. Type \"preferencesmodehelp\" in preferences mode for domain specific information.");
+		super("preferences","Definition of trading preferences for a specific domain. Type \"preferencesmodehelp\" in preferences mode for domain specific information.");
 		this.attributeCatalog=attributeCatalog;
 		Command clearCommand=new BaseCommand("clearall","Remove all actual client preferences"){
 			public void execute(ShellRender shellRenderer){
@@ -52,7 +52,8 @@ public class BaseDomainPreferencesCommand extends BaseModeCommand implements
 	}
 	
 	public void execute(ShellRender shellRenderer)
-	{		
+	{	
+		
 		if(arguments[0].equals(getName()))
 		{
 			if(arguments.length>1){

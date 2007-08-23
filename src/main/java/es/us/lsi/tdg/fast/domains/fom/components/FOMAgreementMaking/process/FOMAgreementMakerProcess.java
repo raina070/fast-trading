@@ -139,7 +139,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 		Set<CounterParty> counterParties = proposal.getCounterParties();
 		FOMCounterParty counterParty;
 		
-		int myServerPort = FAST.serverPort;
+		int myServerPort = Integer.parseInt(FAST.properties.get("serverPort"));
 		String myDomainRoleName = FAST.currentDomainRole.getName();
 		
 		String myEP = "http://localhost:"+myServerPort+"/"+myDomainRoleName+"/CollectorServiceImplementation";
