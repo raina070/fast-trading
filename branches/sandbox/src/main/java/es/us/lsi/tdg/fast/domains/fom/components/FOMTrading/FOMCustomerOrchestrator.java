@@ -20,7 +20,7 @@ public class FOMCustomerOrchestrator
 			implements TradingOrchestrator {
 
 	protected TradingProcess tradingProcess;
-
+	
 	ControllableProcess discoveryService;
 	ControllableProcess advertiser;
 	ControllableProcess tracker;
@@ -99,7 +99,7 @@ public class FOMCustomerOrchestrator
 		FAST.shell.showMessage("Stoping CustomerOrchestration for PID "+tradingProcess.getPID());
 		ExitCommand exitCommand = new BaseExitCommand();
 		//FAST.server.stop();
-		exitCommand.execute(FAST.shell.getShellRender());
+		
 		discoveryService.stop();
 		tracker.stop();
 		inquirer.stop();
@@ -107,19 +107,21 @@ public class FOMCustomerOrchestrator
 		proposalDispatcher.stop();
 		proposalCollector.stop();
 		agreementMaker.stop();
+		exitCommand.execute(FAST.shell.getShellRender());
 		System.exit(0);
 	}
 	
 	public void event(String event) {
-		
 		if(event.equals("SLA_REACHED")){
 			FAST.shell.showMessage("Stoping Trading Process.");
 			stop();
 		}
+		
 	}
-
-	@Override
-	protected void run() {
+	
+	protected void run(){
+		
 	}
+	
 
 }

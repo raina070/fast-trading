@@ -58,5 +58,5 @@ import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
  */
 public interface ProposalDispatcher {	
 	public void dispatch(List<Proposal> proposals);
-	public List<Proposal> getProposalsDispatched(AgreementMaker agreementMaker);
+	public List<Proposal> getProposalsDispatched();
 }

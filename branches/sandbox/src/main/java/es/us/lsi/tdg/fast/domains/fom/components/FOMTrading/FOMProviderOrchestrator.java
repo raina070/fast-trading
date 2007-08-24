@@ -4,6 +4,8 @@ import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.component.UnknownComponentException;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
+import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
 import es.us.lsi.tdg.fast.core.trading.TradingOrchestrator;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking.FOMAgreementMaking;
@@ -50,6 +52,19 @@ public class FOMProviderOrchestrator
 		}
 		
 	}
+	
+	public void stop(){
+		FAST.shell.showMessage("Stoping ProviderOrchestration for PID "+tradingProcess.getPID());
+		ExitCommand exitCommand = new BaseExitCommand();
+		//FAST.server.stop();
+		informant.stop();
+		advertiser.stop();
+		proposalDispatcher.stop();
+		proposalCollector.stop();
+		agreementMaker.stop();
+		exitCommand.execute(FAST.shell.getShellRender());
+		System.exit(0);
+	}
 
 	public void start(){
 
@@ -65,24 +80,17 @@ public class FOMProviderOrchestrator
 			select.setTradingProcess(tradingProcess);
 			am.setTradingProcess(tradingProcess);
 			
-			FAST.componentFactory.bind("PullPotentialCounterPartyNotification", disco, info);
-			FAST.componentFactory.bind("PushNewInformationNotification", info, select);
 			FAST.componentFactory.bind("PushProposalSelectionNotification", select, am);
 
-			
 			advertiser = disco.getAdvertiserProcess();
 			
-
 			informant = info.getInformantProcess();
-			
-
-			
+		
 			proposalDispatcher = select.getProposalDispatcherProcess();
 			proposalCollector = select.getProposalCollectorProcess();
 			
 			agreementMaker = am.getAgreementMakerProcess();
-
-			
+	
 			advertiser.start();
 						
 			informant.start();
