@@ -61,7 +61,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 	@Override
 	protected  void  run()
 	{
-		//Copy due to comodification errors
+
 		
 		List<Proposal> originalProposalSet = proposalDispatcher.getProposalsDispatched();
 		
@@ -75,7 +75,6 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 					acceptProposal(proposal);
 					
 			}	
-			//originalProposalSet.clear();
 		}
 	}
 
