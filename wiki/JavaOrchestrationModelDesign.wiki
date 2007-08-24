@@ -1,0 +1,60 @@
+Implementation:
+{{{
+    -  External process control through Orchestrator. (via Events raised by process)
+    -  Event types:
+           - Trading (SLA_REACHED(...), NEW_PROVIDER(...),...)
+
+           - Coordination (FINISHED(p), PAUSED(p),...) raised mainly by component process
+
+           - Control (STOP(p), SHOW_ALL, SHOW_INFO(p)...)  raised mainly by user
+
+
+    - Create an BaseOrchestrator with a common template of event handling
+}}}
+    - Wiring coding idea
+
+     {{{
+    ORCHESTRATOR:
+      ... created components c1 c2...
+     CF.bind(WiringChoreoName, c1, c2); --> A (Register Orchestrator as event observer)
+
+     OPTIONAL: wc.setAutoSync(c1,c2) --> B (Create a Processlauncher)
+
+     }}}
+
+     {{{
+    (Inside bind(wcname,c1,c2))
+       wc = WCFact.get(wcname)
+       c1.setWC(wc);
+       c2.setWC(wc);
+       wc.setOrchestrator(c1.getTradProcess().getOrchestrator());
+     }}}
+
+     {{{
+    (Inside setOrchestrator(orch))
+       //obtain the process p somehow
+
+       EventHanler.subscribe(p,orchestator)
+
+     }}}
+
+     Autosync idea:
+     {{{
+      EventHandler.subscribe(p1, new ProcessLauncher(p1));
+     }}}
+
+
+    == Modifications == 
+{{{
+    - Data structures of adaptors must be sychronized-aware to avoid problems in concurrent access
+
+    - processes must be refactorized to...
+              - allow observer/observable pattern
+              - use yield to be "fair"
+        
+}}}
+
+
+
+
+
