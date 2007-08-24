@@ -24,7 +24,7 @@ public class PushProposalDispatcherAgreemetMakerAdaptor implements
 
 	}
 
-	public List<Proposal> getProposalsDispatched(AgreementMaker agreementMaker) {
+	public List<Proposal> getProposalsDispatched() {
 		throw new IllegalChoreographyMethodCallException();
 	}
 

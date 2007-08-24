@@ -63,16 +63,15 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 	{
 		//Copy due to comodification errors
 		
-		List<Proposal> originalProposalSet = proposalDispatcher.getProposalsDispatched(agreementMakingComponent.getAgreementMaker());
+		List<Proposal> originalProposalSet = proposalDispatcher.getProposalsDispatched();
 		
-		if(originalProposalSet.size()>1){
-			//FAST.shell.showMessage("LISTA NO VACIA");
-			List<Proposal> proposalSet = new LinkedList<Proposal>(originalProposalSet);
-			for(Proposal proposal:proposalSet)
+		if(originalProposalSet.size()>0){
+			
+			for(Proposal proposal:originalProposalSet)
 			{
 				if(proposal.getPerformative()==ProposalPerformative.PROPOSAL && !proposed)
 					commitProposal(proposal);
-				else if(proposal.getPerformative()==ProposalPerformative.COMMIT)
+				else if(proposal.getPerformative()==ProposalPerformative.COMMIT && !commited)
 					acceptProposal(proposal);
 					
 			}	
