@@ -29,7 +29,7 @@ public class InformantServiceImplementation implements FASTServiceImplementation
 	@WebMethod(operationName="getFOMOffers")
 	public List<String> getFOMOffers(){
 		FOMInformant FOMInformant = new FOMInformant();
-		Set<FOMOfferInformation> FOMOffers = FOMInformant.getOffers();
+		Set<FOMOfferInformation> FOMOffers = FOMInformant.getOffers(informationComponent.getName());
 		List<String> Offers = new LinkedList<String>();
 		for (FOMOfferInformation FOMInformation:FOMOffers){
 			
