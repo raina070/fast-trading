@@ -57,7 +57,7 @@ public class FOMInformant implements Informant{
 				
 		FOMOfferInformation Offer1 = new FOMOfferInformation(0,t1, factor*this.c1);
 		FOMOfferInformation Offer2 = new FOMOfferInformation(t1+1,t2, factor*this.c2);
-		FOMOfferInformation Offer3 = new FOMOfferInformation(t2+1,tFull-tInit, factor*this.c3);
+		FOMOfferInformation Offer3 = new FOMOfferInformation(t2+1,tReal, factor*this.c3);
 	
 		result.add(Offer1);
 		result.add(Offer2);
