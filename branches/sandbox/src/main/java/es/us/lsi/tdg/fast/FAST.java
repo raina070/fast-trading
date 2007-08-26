@@ -21,6 +21,8 @@ import es.us.lsi.tdg.fast.core.services.BaseFASTServer;
 import es.us.lsi.tdg.fast.core.services.FASTServer;
 import es.us.lsi.tdg.fast.core.shell.FASTShell;
 import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 /**
  * Hello world!
@@ -59,12 +61,13 @@ public class FAST
     		}catch(NumberFormatException e){
     		}
     	}
-    	
+    	FAST.properties.put("testslatime", Integer.toString(10));
     	
     	/*
     	 * This should be moved to the domain load
     	 */
     	properties.put("discoveryEndPoint", "http://localhost:1607/customer/DiscoveryServiceImplementation?wsdl");	
+    	properties.put("fullTime", "60");
     	
 		log.addHandler(new ConsoleHandler());
     	log.setLevel(Level.OFF);

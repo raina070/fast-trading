@@ -228,6 +228,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			port.accept(Integer.toString(time), Double.toString(cost));
 			FAST.shell.showMessage("SLA Reached: " + fomProposal);
 			commited= true;
+			FAST.agreementRegistry.addAgreement(getPID(), FOMProposalTranslator.getAgreement(new FOMProposal(time,cost, counterPartyCollectorEndPoint)));
 			agreementMakingComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

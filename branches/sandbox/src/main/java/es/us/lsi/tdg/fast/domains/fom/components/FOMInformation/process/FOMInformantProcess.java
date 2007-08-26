@@ -10,6 +10,8 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.services.DiscoveryServiceImplementation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.services.InformantServiceImplementation;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 public class FOMInformantProcess extends AbstractControllableProcess {
 
@@ -23,7 +25,11 @@ public class FOMInformantProcess extends AbstractControllableProcess {
 
 	@Override
 	public void start() {
-			
+		
+		/** TEST PRE-AGREEMENT 
+		 *  DELETE WHEN EVERYTHING IS OK
+		 */
+		FAST.agreementRegistry.addAgreement(informationComponent.getName(), FOMProposalTranslator.getAgreement(new FOMProposal(Integer.parseInt(FAST.properties.get("testslatime")),10, "")));
 		FASTService service = new BaseFASTService(informationComponent);
 
 		service.setImplementation(InformantServiceImplementation.class);
