@@ -36,7 +36,7 @@ public class ServiceInvoker {
 					service = serviceConstructor.newInstance(initargs);
 					
 				
-				}catch(RuntimeException e){
+				}catch(Exception e){
 					FAST.shell.showMessage("Endpoint not ready");				
 					errCount++;
 					try {
@@ -45,19 +45,8 @@ public class ServiceInvoker {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				} catch (NoSuchMethodException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
+		
 			}
 			
 			
