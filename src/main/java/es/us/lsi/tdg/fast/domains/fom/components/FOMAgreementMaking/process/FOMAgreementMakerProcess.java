@@ -19,9 +19,12 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.ProposalPerformative;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcher;
+import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking.FOMAgreementMaking;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscoveryService;
+import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.FOMInformant;
+import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.InformantService;
 import es.us.lsi.tdg.fast.domains.fom.components.fomselection.services.CollectorService;
 import es.us.lsi.tdg.fast.domains.fom.components.fomselection.services.FOMCollector;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
@@ -165,13 +168,15 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			
 		try {
 			
+			
 			URL url = new URL(counterPartyCollectorEndPoint+"?wsdl");
 			QName qname = new QName("http://services.FOMSelection.components.fom.domains.fast.tdg.lsi.us.es/", "CollectorService");
 				
 			CollectorService service;
 			FOMCollector port;
 			
-			service = new CollectorService(url,qname);
+			service = (CollectorService) ServiceInvoker.getService(url,qname,CollectorService.class);
+			
 			
 			port = service.getFOMCollectorPort();
 					
@@ -217,7 +222,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			CollectorService service;
 			FOMCollector port;
 			
-			service = new CollectorService(url,qname);
+			service = (CollectorService) ServiceInvoker.getService(url,qname,CollectorService.class);
 			
 			port = service.getFOMCollectorPort();
 					

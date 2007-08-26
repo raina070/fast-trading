@@ -9,6 +9,7 @@ import javax.xml.namespace.QName;
 
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscoveryService;
@@ -59,14 +60,15 @@ public class FOMAdvertiserProcess extends AbstractControllableProcess{
 	public  void  start()
 	{
 		try {
+			
 			URL url = new URL(FAST.properties.get("discoveryEndPoint"));
 			QName qname = new QName("http://services.FOMDiscovery.components.fom.domains.fast.tdg.lsi.us.es/", "FOMDiscoveryService");
-				
+
 			FOMDiscoveryService service;
 			DiscoveryEP port;
-			
-			service = new FOMDiscoveryService(url,qname);
-			
+	
+			service = (FOMDiscoveryService) ServiceInvoker.getService(url,qname,FOMDiscoveryService.class);
+				
 			port = service.getDiscoveryEPPort();
 			
 			FOMCounterParty provider = providerEPs();

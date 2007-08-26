@@ -2,18 +2,17 @@ package es.us.lsi.tdg.fast.core.services;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.namespace.QName;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.InformantService;
 
 public class ServiceInvoker {
 
 	
 	
+	@SuppressWarnings("unchecked")
 	public static Object getService(URL url,QName qname,Class serviceClass){
 			
 			Object service=null;
