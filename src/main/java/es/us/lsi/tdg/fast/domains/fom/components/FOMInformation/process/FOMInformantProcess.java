@@ -29,7 +29,7 @@ public class FOMInformantProcess extends AbstractControllableProcess {
 		/** TEST PRE-AGREEMENT 
 		 *  DELETE WHEN EVERYTHING IS OK
 		 */
-		FAST.agreementRegistry.addAgreement(informationComponent.getName(), FOMProposalTranslator.getAgreement(new FOMProposal(Integer.parseInt(FAST.properties.get("testslatime")),10, "")));
+		FAST.agreementRegistry.addAgreement(informationComponent.getTradingProcess().getPID(), FOMProposalTranslator.getAgreement(new FOMProposal(Integer.parseInt(FAST.properties.get("testslatime")),10, "")));
 		FASTService service = new BaseFASTService(informationComponent);
 
 		service.setImplementation(InformantServiceImplementation.class);
