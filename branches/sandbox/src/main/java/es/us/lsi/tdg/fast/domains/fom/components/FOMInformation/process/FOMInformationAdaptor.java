@@ -1,6 +1,5 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 
-import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
@@ -13,14 +12,10 @@ import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
 import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
-
-import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
-import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscoveryService;
 import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.FOMInformant;
 import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.InformantService;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMInformationTranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 
 public class FOMInformationAdaptor {
 
@@ -38,37 +33,6 @@ public class FOMInformationAdaptor {
 		
 			InformantService service = (InformantService) ServiceInvoker.getService(url,qname,InformantService.class);
 			FOMInformant port= service.getFOMInformantPort();
-
-		
-		/*
-		
-			
-			int errCount = 1;
-			
-			while((errCount<10) && (service==null)){
-				FAST.shell.showMessage("Accessing endpoint <"+ep+">(attempt number "+errCount+")");				
-				try{
-					url = new URL(ep+"?wsdl");
-					qname = new QName("http://services.FOMInformation.components.fom.domains.fast.tdg.lsi.us.es/", "InformantService");
-
-					service = new InformantService(url,qname);
-					
-					port = service.getFOMInformantPort();
-
-					
-				
-				}catch(RuntimeException e){
-					FAST.shell.showMessage("Endpoint not ready");				
-					errCount++;
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-		 **/				
 				
 			List<String> StringOffers = port.getFOMOffers();
 				
