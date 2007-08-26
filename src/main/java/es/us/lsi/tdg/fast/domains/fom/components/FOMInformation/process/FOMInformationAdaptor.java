@@ -1,5 +1,6 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import javax.xml.namespace.QName;
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
+import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscoveryService;
@@ -23,22 +25,51 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMInformationTranslator;
 public class FOMInformationAdaptor {
 
 	public static Set<Information>getInformation(String ep){
-		
+
+	
+
 		Set<FOMOfferInformation>FOMOffers = new HashSet<FOMOfferInformation>();
 		Set<Information> result= new HashSet<Information>();
 		
 		try {
-		
+			
 			URL url = new URL(ep+"?wsdl");
 			QName qname = new QName("http://services.FOMInformation.components.fom.domains.fast.tdg.lsi.us.es/", "InformantService");
+		
+			InformantService service = (InformantService) ServiceInvoker.getService(url,qname,InformantService.class);
+			FOMInformant port= service.getFOMInformantPort();
 
-			InformantService service;
-			FOMInformant port;
+		
+		/*
+		
 			
-			service = new InformantService(url,qname);
+			int errCount = 1;
 			
-			port = service.getFOMInformantPort();
-			
+			while((errCount<10) && (service==null)){
+				FAST.shell.showMessage("Accessing endpoint <"+ep+">(attempt number "+errCount+")");				
+				try{
+					url = new URL(ep+"?wsdl");
+					qname = new QName("http://services.FOMInformation.components.fom.domains.fast.tdg.lsi.us.es/", "InformantService");
+
+					service = new InformantService(url,qname);
+					
+					port = service.getFOMInformantPort();
+
+					
+				
+				}catch(RuntimeException e){
+					FAST.shell.showMessage("Endpoint not ready");				
+					errCount++;
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		 **/				
+				
 			List<String> StringOffers = port.getFOMOffers();
 				
 			FOMOfferInformation o1 = new FOMOfferInformation(
