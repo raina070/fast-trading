@@ -41,7 +41,7 @@ public class FOMInformant implements Informant{
 		{
 			if (requirement instanceof SimpleConstraint){
 				
-				if(((SimpleConstraint)requirement).getAttribute().getName()=="factorCost"){
+				if(((SimpleConstraint)requirement).getAttribute().getName()=="CostFactor"){
 					//TODO store the minimum value
 					Value valor=((SimpleConstraint)requirement).getValue();
 					factorAux=((IntegerValue)valor).getValue();
@@ -55,9 +55,9 @@ public class FOMInformant implements Informant{
 		int t1 = tReal/3;
 		int t2 = (2*tReal/3);
 				
-		FOMOfferInformation Offer1 = new FOMOfferInformation(tInit,t1+tInit, factor*this.c1);
-		FOMOfferInformation Offer2 = new FOMOfferInformation(t1+tInit+1,t2+tInit, factor*this.c2);
-		FOMOfferInformation Offer3 = new FOMOfferInformation(t2+tInit+1,tFull, factor*this.c3);
+		FOMOfferInformation Offer1 = new FOMOfferInformation(0,t1, factor*this.c1);
+		FOMOfferInformation Offer2 = new FOMOfferInformation(t1+1,t2, factor*this.c2);
+		FOMOfferInformation Offer3 = new FOMOfferInformation(t2+1,tFull-tInit, factor*this.c3);
 	
 		result.add(Offer1);
 		result.add(Offer2);
