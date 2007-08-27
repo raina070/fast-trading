@@ -3,6 +3,8 @@
  */
 package es.us.lsi.tdg.fast.components.information.inquirer;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +46,13 @@ public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 
 	public Set<CounterParty> getNewCounterParties() {
 		updateFromTracker();
-		return unprocessedCounterPartySet;
+		Set<CounterParty> result;
+		synchronized(unprocessedCounterPartySet)
+		{
+			result=new HashSet<CounterParty>(unprocessedCounterPartySet);
+			unprocessedCounterPartySet.clear();
+		}		
+		return result;
 	}
 
 	public Set<CounterParty> getPotentialCounterParties() {
@@ -55,13 +63,14 @@ public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 	private void updateFromTracker()
 	{
 		
-		Set<CounterParty> totalTracked=tracker.getPotentialCounterParties();
+		Set<CounterParty> totalTracked=tracker.getPotentialCounterParties();		
 		Set<CounterParty> newUnprocessed=new HashSet<CounterParty>();
-		unprocessedCounterPartySet.clear();
-		newUnprocessed.addAll(totalTracked);
-		newUnprocessed.removeAll(detectedCounterPartySet);
-		detectedCounterPartySet.addAll(totalTracked);
-		unprocessedCounterPartySet.addAll(newUnprocessed);
+		synchronized(unprocessedCounterPartySet){			
+			newUnprocessed.addAll(totalTracked);
+			newUnprocessed.removeAll(detectedCounterPartySet);
+			detectedCounterPartySet.addAll(totalTracked);
+			unprocessedCounterPartySet.addAll(newUnprocessed);
+		}
 		
 	}
 

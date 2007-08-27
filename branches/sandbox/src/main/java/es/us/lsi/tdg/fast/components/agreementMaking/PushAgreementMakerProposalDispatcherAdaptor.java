@@ -3,6 +3,7 @@
  */
 package es.us.lsi.tdg.fast.components.agreementMaking;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +31,10 @@ public class PushAgreementMakerProposalDispatcherAdaptor implements
 	}
 
 	public void createAgreement(Proposal proposal) {
-		proposals.add(proposal);
+		synchronized(proposals)
+		{
+			proposals.add(proposal);
+		}
 	}
 
 	public Set<Agreement> createdAgreements() {
@@ -43,6 +47,11 @@ public class PushAgreementMakerProposalDispatcherAdaptor implements
 	}
 
 	public List<Proposal> getProposalsDispatched() {
-		return proposals;
+		List<Proposal> result;
+		synchronized (proposals) {
+			result=new LinkedList<Proposal>(proposals);
+			proposals.clear();
+		}
+		return result;
 	}
 }

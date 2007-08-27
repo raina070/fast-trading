@@ -10,6 +10,7 @@ import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallExcep
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.roles.InteractionModel;
+import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderInquirerAdaptor;
 
@@ -21,17 +22,16 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderIn
 public class PullProposalBuilderInquirerAdaptor implements
 		ProposalBuilderInquirerAdaptor {
 	
-	private Set<CounterPartyKnowledge> information;
+	private Inquirer inquirer;
 	
 	public PullProposalBuilderInquirerAdaptor()
-	{	
-		information = new HashSet<CounterPartyKnowledge>();
+	{			
 	}
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder#newInformation(es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge)
 	 */
 	public void newInformation(CounterPartyKnowledge info) {		
-		information.add(info);
+		throw new IllegalChoreographyMethodCallException();
 	}
 	
 	
@@ -42,10 +42,10 @@ public class PullProposalBuilderInquirerAdaptor implements
 		return InteractionModel.PULL;
 	}
 	public Set<CounterPartyKnowledge> getInformation() {
-		return information;
+		return inquirer.getInformation();		
 	}
 	public void potentialCounterParties(Set<CounterParty> counterParties) {
-		throw new IllegalChoreographyMethodCallException();		
+		inquirer.potentialCounterParties(counterParties);		
 	}
 
 }

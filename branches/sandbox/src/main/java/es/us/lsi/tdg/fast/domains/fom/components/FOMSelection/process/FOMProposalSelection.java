@@ -10,12 +10,12 @@ import java.util.TreeSet;
 
 public class FOMProposalSelection {
 
-	public static SortedSet<Proposal> FOMSortAgreement(Set<Proposal> myAgreements, AgreementPreferences agreePrefs){
+	public static SortedSet<Proposal> FOMSortAgreement(Set<Proposal> proposals, AgreementPreferences agreePrefs){
 		FOMProposalComparator FOMComparator = new FOMProposalComparator(agreePrefs);
 		SortedSet<Proposal> result = new TreeSet<Proposal>(FOMComparator);
-		for (Proposal agree:myAgreements){
+		for (Proposal proposal:proposals){
 			
-			result.add(agree);
+			result.add(proposal);
 		}
 		return result;
 	}

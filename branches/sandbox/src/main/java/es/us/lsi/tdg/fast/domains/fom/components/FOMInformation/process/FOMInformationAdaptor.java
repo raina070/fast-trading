@@ -50,7 +50,7 @@ public class FOMInformationAdaptor {
 					Double.parseDouble(StringOffers.get(8))); 
 			FOMOffers.add(o1);
 			FOMOffers.add(o2);
-			FOMOffers.add(o3);	
+			FOMOffers.add(o3);			
 			for (FOMOfferInformation Offer: FOMOffers){
 					try {
 						FAST.shell.showMessage("Obtained offers from "+ep+": "+Offer);

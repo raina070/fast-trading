@@ -35,13 +35,15 @@ public class InquirerProcess extends OLDAbstractControllableProcess{
 		
 	protected  void  run()
 	{
-		Set<CounterParty> counterParties=tracker.getNewCounterParties();
+		Set<CounterParty> counterParties=tracker.getNewCounterParties();		
 		for(CounterParty counterParty:counterParties)
 		{
 			Set<CounterPartyKnowledge> knoledges=informant.getKnowledge(counterParty);
 			for(CounterPartyKnowledge knoledge:knoledges)
 				proposalBuilder.newInformation(knoledge);
 		}
+		counterParties.clear();
+		
 		
 	}
 }

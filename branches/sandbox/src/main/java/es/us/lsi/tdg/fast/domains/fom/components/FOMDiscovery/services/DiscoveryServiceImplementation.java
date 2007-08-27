@@ -29,12 +29,13 @@ public class DiscoveryServiceImplementation implements FASTServiceImplementation
 		  
 		  
 		  try {
-			providers.add(new FOMCounterParty(CPID
+			 synchronized(providers){
+				 providers.add(new FOMCounterParty(CPID
 											  	,new URI("")
 									  			,new URI(infoEP)
 									  			,new URI(selEP)
 									  			,new URI(amEP)));
-			
+			 }
 			FAST.shell.showMessage("New provider "+CPID+" at "+infoEP);
 			
 		} catch (URISyntaxException e) {
