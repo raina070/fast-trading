@@ -34,13 +34,12 @@ public class ServiceInvoker {
 					initargs[0] = url;
 					initargs[1] = qname;
 					service = serviceConstructor.newInstance(initargs);
-					
-				
+									
 				}catch(Exception e){
 					FAST.shell.showMessage("Endpoint not ready");				
 					errCount++;
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(2000);
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
