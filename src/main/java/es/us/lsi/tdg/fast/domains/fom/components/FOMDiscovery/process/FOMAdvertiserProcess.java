@@ -8,7 +8,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
@@ -22,7 +22,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
  * @author José Antonio Parejo Maestre
  *
  */
-public class FOMAdvertiserProcess extends AbstractControllableProcess{
+public class FOMAdvertiserProcess extends OLDAbstractControllableProcess{
 	
 	
 	private FOMDiscovery discoveryComponent;

@@ -1,7 +1,11 @@
 /**
  * 
  */
-package es.us.lsi.tdg.fast.core.roles;
+package es.us.lsi.tdg.fast.core.process;
+
+import es.us.lsi.tdg.fast.core.process.event.EventBroker;
+import es.us.lsi.tdg.fast.core.process.event.FASTProcessEvent;
+import es.us.lsi.tdg.fast.core.process.event.FASTProcessEventType;
 
 
 
@@ -15,6 +19,8 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 	private Thread controlledThread;
 	private boolean pauseSignal;
 	private String threadName;
+	private ProcessTerminator terminator;
+	private boolean clean;
 	
 	public AbstractControllableProcess()
 	{
@@ -42,7 +48,22 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 		notify();
 	}
 
+	public void start(ProcessTerminator terminator) {
+		this.terminator = terminator;
+		start();
+	}
+
+	public void start(ProcessModel model) {
+		this.terminator = model.getTerminator();
+		start();
+		
+	}
+	
 	public synchronized void start() {
+		
+		if(terminator==null)
+			start(ProcessModel.SINGLE);
+			
 		if(!controlledThread.isAlive())
 		{
 			if(controlledThread==null){			
@@ -59,31 +80,43 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 
 	public synchronized void stop() {
 		controlledThread.interrupt();
-		
+				
 		// We wait the execution thread to stop
 		while(controlledThread.isAlive());
 		
+		if(!clean){
+			cleanUp();
+			clean = true;
+		}
+		
 		controlledThread=null;
+		
+		EventBroker.event(new FASTProcessEvent(FASTProcessEventType.STOPED,this));
+		
 	}
 	
 	private void execute()
 	{
-		try {
-			while(true)
-			{
-				if(pauseSignal)
-					wait();			
-				run();
-			}
-		}catch (InterruptedException e) {
-		}					
+	
+		setUp();
+		clean = false;
+		EventBroker.event(new FASTProcessEvent(FASTProcessEventType.STARTED,this));
+		
+		do {
+			run();
+			controlledThread.yield();
+		} while(!terminator.terminate());
+		
+		cleanUp();
+		clean=true;
+		EventBroker.event(new FASTProcessEvent(FASTProcessEventType.TASK_DONE,this));
+			
 	}
 	
 	protected abstract void  run();
-
-	public boolean isPaused() {
-		return pauseSignal;
-	}
+	
+	protected void cleanUp(){};
+	protected void setUp(){};
 	
 
 }

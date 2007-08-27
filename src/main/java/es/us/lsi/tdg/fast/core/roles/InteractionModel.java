@@ -8,4 +8,4 @@ package es.us.lsi.tdg.fast.core.roles;
  * @author José Antonio Parejo Maestre
  *
  */
-public enum ProcessingModel {PUSH,PULL}
+public enum InteractionModel {PUSH,PULL}

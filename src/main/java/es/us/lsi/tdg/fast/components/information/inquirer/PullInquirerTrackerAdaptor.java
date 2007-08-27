@@ -8,7 +8,7 @@ import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.roles.IllegalAdapterMethodCall;
-import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
+import es.us.lsi.tdg.fast.core.roles.InteractionModel;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
 import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;
@@ -38,8 +38,8 @@ public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 		sizeCP = 0;
 	}
 	 
-	 public ProcessingModel getProcessingModel() {		
-		return ProcessingModel.PULL;
+	 public InteractionModel getInteractionModel() {		
+		return InteractionModel.PULL;
 	}
 
 	public Set<CounterParty> getNewCounterParties() {

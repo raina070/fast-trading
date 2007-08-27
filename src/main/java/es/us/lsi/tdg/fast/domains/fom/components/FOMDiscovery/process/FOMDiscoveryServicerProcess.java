@@ -5,7 +5,12 @@ import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ProcessModel;
+import es.us.lsi.tdg.fast.core.process.event.EventBroker;
+import es.us.lsi.tdg.fast.core.process.event.FASTProcessEvent;
+import es.us.lsi.tdg.fast.core.process.event.FASTProcessEventType;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.services.BaseFASTService;
 import es.us.lsi.tdg.fast.core.services.FASTService;
@@ -19,46 +24,40 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.services.Discovery
  *
  */
 public class FOMDiscoveryServicerProcess extends AbstractControllableProcess{
-	
+	FASTService service;
 	private Inquirer inquirer;
 	
 	private FOMDiscovery discoveryComponent;
 	
-	public FOMDiscoveryServicerProcess(Inquirer inquirer) {
-		this("FOMTracker",inquirer);				
+	public FOMDiscoveryServicerProcess() {
+		this("FOMDiscoveryService");				
 	}
 
-	public FOMDiscoveryServicerProcess(String threadName,Inquirer inquirer)
+	public FOMDiscoveryServicerProcess(String threadName)
 	{
 		super(threadName);
-		this.inquirer = inquirer;
 	}
 		
 	public FOMDiscoveryServicerProcess(FOMDiscovery discoveryComponent) {
-		this((Inquirer) discoveryComponent.getTracker());
+		this("FOMDiscoveryService");
 		this.discoveryComponent = discoveryComponent;
-	}
-
-	
-	
-	public  void  start()
-	{
-		@SuppressWarnings("unused")
 		
-		FASTService service = new BaseFASTService(discoveryComponent);
-
+		service =  new BaseFASTService(discoveryComponent);
 		service.setImplementation(DiscoveryServiceImplementation.class);
 		
+	}
+	
+	public  void  setUp(){
 		FAST.server.publishService(service);
+	}	
 
-		super.start();
-		
+	protected void cleanUp(){
+		FAST.server.unpublishService(service);
+	}
+
+	@Override
+	protected void run() {
+		// EMPTY because is a "service only" process
 	}
 	
-	
-	
-	protected  void  run()
-	{
-						
-	}
 }

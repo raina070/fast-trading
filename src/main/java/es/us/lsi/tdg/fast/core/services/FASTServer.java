@@ -8,4 +8,6 @@ public interface FASTServer {
 
 	public void stop();
 
+	public void unpublishService(FASTService service);
+
 }

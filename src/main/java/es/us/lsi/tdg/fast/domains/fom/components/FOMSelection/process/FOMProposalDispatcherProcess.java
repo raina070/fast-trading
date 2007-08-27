@@ -9,7 +9,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 
@@ -23,7 +23,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
  * @author Antonio Manuel Gutierrez Fernandez
  *
  */
-public class FOMProposalDispatcherProcess extends AbstractControllableProcess {
+public class FOMProposalDispatcherProcess extends OLDAbstractControllableProcess {
 	
 	private AgreementMaker 	agreementMaker;
 

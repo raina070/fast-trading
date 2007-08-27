@@ -6,7 +6,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
-import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
+import es.us.lsi.tdg.fast.core.roles.InteractionModel;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcherAgreementMakerAdaptor;
 
@@ -36,8 +36,8 @@ public class PushProposalDispatcherAgreemetMakerAdaptor implements
 		return agreementMaker.createdAgreements();
 	}
 
-	public ProcessingModel getProcessingModel() {
-		return ProcessingModel.PUSH;
+	public InteractionModel getInteractionModel() {
+		return InteractionModel.PUSH;
 	}
 
 }

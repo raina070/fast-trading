@@ -9,7 +9,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
-import es.us.lsi.tdg.fast.core.roles.ProcessingModel;
+import es.us.lsi.tdg.fast.core.roles.InteractionModel;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderInquirerAdaptor;
 
@@ -38,8 +38,8 @@ public class PushProposalBuilderInquirerAdaptor implements
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.roles.RoleAdaptor#getProcessingModel()
 	 */
-	public ProcessingModel getProcessingModel() {
-		return ProcessingModel.PUSH;
+	public InteractionModel getInteractionModel() {
+		return InteractionModel.PUSH;
 	}
 	
 	public Set<CounterPartyKnowledge> getInformation() {

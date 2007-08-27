@@ -5,7 +5,7 @@ import es.us.lsi.tdg.fast.core.choreographies.UnknownChoreographyException;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.ProposalSelectionNotification;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
 import es.us.lsi.tdg.fast.core.component.Component;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 import es.us.lsi.tdg.fast.core.roles.agreementMaking.agreementMaker.AgreementMakerProposalDispatcherAdaptor;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
