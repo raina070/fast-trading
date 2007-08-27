@@ -71,7 +71,10 @@ public class FOMProposalBuilderProcess extends OLDAbstractControllableProcess{
 			}
 			FAST.shell.showMessage("Sorting Proposals...");
 			SortedSet<Proposal> ProposalSortedSet = FOMProposalSelection.FOMSortAgreement(ProposalSet,FAST.preferenceRegistry.getPreferences(selectionComponent.getTradingProcess().getPID()));
-			this.selectionComponent.setSortedProposalSet(ProposalSortedSet);
+			SortedSet<Proposal> currentProposalSortedSet=this.selectionComponent.getSortedProposalSet();
+			synchronized(currentProposalSortedSet){
+				currentProposalSortedSet.addAll(ProposalSortedSet);				
+			}
 			counterPartyKnowledgeSet.clear();	
 			
 		}

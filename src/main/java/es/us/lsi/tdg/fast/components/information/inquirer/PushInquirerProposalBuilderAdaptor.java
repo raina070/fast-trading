@@ -20,12 +20,10 @@ import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
  */
 public class PushInquirerProposalBuilderAdaptor implements  InquirerProposalBuilderAdaptor {
 
-	protected ProposalBuilder 				proposalBuilder;
-	private   Set<CounterPartyKnowledge> 	counterPartyKnowledgeSet;
+	protected ProposalBuilder 				proposalBuilder;	
 	public PushInquirerProposalBuilderAdaptor(ProposalBuilder proposalBuilder)
 	{
-		this.proposalBuilder=proposalBuilder;
-		this.counterPartyKnowledgeSet=new HashSet<CounterPartyKnowledge>();
+		this.proposalBuilder=proposalBuilder;		
 	}
 	
 	public void setProposalBuilder(ProposalBuilder proposalBuilder)
@@ -38,9 +36,9 @@ public class PushInquirerProposalBuilderAdaptor implements  InquirerProposalBuil
 		proposalBuilder.newInformation(info);		
 	}
 	
-	public Set<CounterPartyKnowledge> getInformation() {
-		return counterPartyKnowledgeSet;
-		//proposalBuilder.newInformation(info);		
+	public Set<CounterPartyKnowledge> getInformation() {		
+		//proposalBuilder.newInformation(info);
+		throw new IllegalChoreographyMethodCallException();		
 	}
 	
 	public void potentialCounterParties(Set<CounterParty> counterPartySet){

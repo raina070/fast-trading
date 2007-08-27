@@ -30,8 +30,10 @@ public class PushProposalBuilderInquirerAdaptor implements
 	/* (non-Javadoc)
 	 * @see es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder#newInformation(es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge)
 	 */
-	public void newInformation(CounterPartyKnowledge info) {		
-		information.add(info);
+	public void newInformation(CounterPartyKnowledge info) {
+		synchronized(information){
+			information.add(info);
+		}
 	}
 	
 	
@@ -43,8 +45,11 @@ public class PushProposalBuilderInquirerAdaptor implements
 	}
 	
 	public Set<CounterPartyKnowledge> getInformation() {
-		Set<CounterPartyKnowledge> result = new HashSet<CounterPartyKnowledge>(information);
-		information.clear();
+		Set<CounterPartyKnowledge> result;
+		synchronized(information){
+			result = new HashSet<CounterPartyKnowledge>(information);
+			information.clear();
+		}
 		return result;
 	}
 	

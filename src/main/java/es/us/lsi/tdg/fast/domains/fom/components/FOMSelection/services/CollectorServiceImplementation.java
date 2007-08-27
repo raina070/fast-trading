@@ -44,8 +44,9 @@ public class CollectorServiceImplementation implements
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
-		  
-		  proposalSet.add(proposal);
+		  synchronized(proposalSet){
+			  proposalSet.add(proposal);
+		  }
 	}
 	
 	/*
@@ -53,8 +54,7 @@ public class CollectorServiceImplementation implements
 	*/
 	
 	@WebMethod(operationName="accept")
-	public void accept(String time, String cost) {
-		  SortedSet<Proposal> proposalSet= selectionComponent.getSortedProposalSet();
+	public void accept(String time, String cost) {		  		
 		  
 		  FOMProposal fomProposal = new FOMProposal(Integer.parseInt(time),Double.parseDouble(cost),"");
 		  

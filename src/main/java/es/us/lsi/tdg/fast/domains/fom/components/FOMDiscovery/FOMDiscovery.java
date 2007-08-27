@@ -37,7 +37,12 @@ public class FOMDiscovery implements Component {
 	}
 	
 	public Set<CounterParty> getFOMProviders() {
-		return FOMProviders;
+		Set<CounterParty> providers;
+		synchronized(FOMProviders){
+			providers=new HashSet<CounterParty>(FOMProviders);
+			FOMProviders.clear();
+		}
+		return providers;
 	}
 
 	public String getName() {
