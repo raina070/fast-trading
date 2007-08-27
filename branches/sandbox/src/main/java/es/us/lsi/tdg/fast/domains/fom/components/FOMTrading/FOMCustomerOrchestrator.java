@@ -2,8 +2,10 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMTrading;
 
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.component.UnknownComponentException;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ProcessModel;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
 import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
 import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
@@ -16,14 +18,14 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.FAST;
 
 public class FOMCustomerOrchestrator 
-			extends AbstractControllableProcess 
+			extends OLDAbstractControllableProcess 
 			implements TradingOrchestrator {
 
 	protected TradingProcess tradingProcess;
 	
-	ControllableProcess discoveryService;
+	AbstractControllableProcess discoveryService;
 	ControllableProcess advertiser;
-	ControllableProcess tracker;
+	AbstractControllableProcess tracker;
 
 	ControllableProcess informant;
 	ControllableProcess inquirer;
@@ -39,7 +41,6 @@ public class FOMCustomerOrchestrator
 		super("FOMCustomerOrchestrator");
 		this.tradingProcess = tradingProcess;
 		this.tradingProcess.setOrchestrator(this);
-		// TODO Instantiate Components and Wire them
 	}
 
 	public void start(){
@@ -74,9 +75,11 @@ public class FOMCustomerOrchestrator
 			
 			agreementMaker = am.getAgreementMakerProcess();
 	
-			discoveryService.start();
+			discoveryService.start(ProcessModel.CONTINOUS);
+			
+			
 			//advertiser.start();
-			tracker.start();
+			tracker.start(ProcessModel.SINGLE);
 			
 			//informant.start();
 

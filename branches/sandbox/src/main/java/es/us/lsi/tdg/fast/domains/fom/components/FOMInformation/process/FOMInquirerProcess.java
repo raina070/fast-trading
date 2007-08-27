@@ -9,7 +9,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.information.BaseCounterPartyKnowledge;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 //import es.us.lsi.tdg.fast.core.roles.information.Informant;
 
@@ -22,7 +22,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
  * @author Antonio Manuel Gutierrez Fernandez
  *
  */
-public class FOMInquirerProcess extends AbstractControllableProcess {
+public class FOMInquirerProcess extends OLDAbstractControllableProcess {
 	
 	private Tracker 		tracker;
 	private ProposalBuilder proposalBuilder;

@@ -8,7 +8,8 @@ import es.us.lsi.tdg.fast.core.choreographies.wiring.PotentialCounterPartyNotifi
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.discovery.tracker.TrackerInquirerAdaptor;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
@@ -22,8 +23,8 @@ public class FOMDiscovery implements Component {
 	protected TrackerInquirerAdaptor trackerInquirerAdaptor=null;
 	
 	// Processes associated to the offered roles:
-	protected ControllableProcess trackerProcess=null;
-	protected ControllableProcess discoveryServiceProcess=null;
+	protected AbstractControllableProcess trackerProcess=null;
+	protected AbstractControllableProcess discoveryServiceProcess=null;
 	protected ControllableProcess advertiserProcess=null;
 	
 	private String name="FOMDiscovery";
@@ -47,7 +48,7 @@ public class FOMDiscovery implements Component {
 		return trackerInquirerAdaptor;
 	}
 
-	public ControllableProcess getDiscoveryServiceProcess() {
+	public AbstractControllableProcess getDiscoveryServiceProcess() {
 		if(discoveryServiceProcess == null)
 			discoveryServiceProcess = new FOMDiscoveryServicerProcess(this);
 			
@@ -55,7 +56,7 @@ public class FOMDiscovery implements Component {
 		
 	}
 	
-	public ControllableProcess getTrackerProcess() {
+	public AbstractControllableProcess getTrackerProcess() {
 		
 		if(trackerInquirerAdaptor == null){
 			throw new UnwiredComponent("trackerInquirerAdaptor");

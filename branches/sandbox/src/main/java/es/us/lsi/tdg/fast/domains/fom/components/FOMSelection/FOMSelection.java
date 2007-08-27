@@ -11,7 +11,7 @@ import es.us.lsi.tdg.fast.core.choreographies.wiring.ProposalSelectionNotificati
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilderInquirerAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcher;

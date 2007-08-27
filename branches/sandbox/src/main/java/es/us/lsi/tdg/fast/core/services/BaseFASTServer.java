@@ -12,6 +12,9 @@ import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.process.event.EventBroker;
+import es.us.lsi.tdg.fast.core.process.event.FASTEventType;
+import es.us.lsi.tdg.fast.core.process.event.GenericFASTEvent;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public class BaseFASTServer implements FASTServer {
@@ -29,6 +32,7 @@ public class BaseFASTServer implements FASTServer {
 	
 	private HttpServer httpServer;
 	private Map<String,HttpContext> httpContexts;
+	private Map<HttpContext,Endpoint> publishedEndpoints;
 	
 	private BaseFASTServer(){
 		int serverPort = Integer.parseInt((String)FAST.properties.get((String)"serverPort"));
@@ -75,9 +79,30 @@ public class BaseFASTServer implements FASTServer {
 		String serviceClassName = serviceCanonicalClassName.substring(lastPoint+1);
 		
 		String contextName = generateBaseContextName(service.getTradingProcess())+"/"+serviceClassName;
-		
+		HttpContext context;
 		//EnvelopeLoggingSOAPHandler logger = new EnvelopeLoggingSOAPHandler();
 		//logger.bind(endpoint);
+		if(httpContexts.containsKey(contextName)){
+			context = httpContexts.get("contextName");
+		}else{
+			context = httpServer.createContext(contextName);
+			httpContexts.put(contextName, context);
+		}
+		endpoint.publish(context);
+
+		EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,endpoint,"Endpoint <"+contextName+"> published"));
+	}
+
+	public void unpublishService(FASTService service){
+		/*Endpoint endpoint = service.getEndpoint();
+		Class serviceClass = service.getServiceClass();
+		
+		String serviceCanonicalClassName = serviceClass.getName(); 
+		int lastPoint = serviceCanonicalClassName.lastIndexOf('.');
+		String serviceClassName = serviceCanonicalClassName.substring(lastPoint+1);
+		
+		String contextName = generateBaseContextName(service.getTradingProcess())+"/"+serviceClassName;
+		
 		if(httpContexts.containsKey(contextName)){
 			HttpContext context = httpContexts.get("contextName");
 			endpoint.publish(context);
@@ -87,10 +112,11 @@ public class BaseFASTServer implements FASTServer {
 			endpoint.publish(context);
 		}
 
-	   
-	 
+		EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,endpoint,"Endpoint <"+contextName+"> published"));
+		*/
+		EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,service,"Endpoint unpublished"));
 	}
-
+	
 	public void stop() {
 		httpServer.stop(0);
 	}

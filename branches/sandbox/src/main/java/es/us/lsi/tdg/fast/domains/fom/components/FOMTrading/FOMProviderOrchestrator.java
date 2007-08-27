@@ -2,8 +2,8 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMTrading;
 
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.component.UnknownComponentException;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
 import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
 import es.us.lsi.tdg.fast.core.trading.TradingOrchestrator;
@@ -14,7 +14,7 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 
 public class FOMProviderOrchestrator 
-			extends AbstractControllableProcess 
+			extends OLDAbstractControllableProcess 
 			implements TradingOrchestrator {
 
 	TradingProcess tradingProcess;

@@ -1,7 +1,7 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.services.BaseFASTService;
@@ -13,7 +13,7 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.services.Informa
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
-public class FOMInformantProcess extends AbstractControllableProcess {
+public class FOMInformantProcess extends OLDAbstractControllableProcess {
 
 	private FOMInformation informationComponent;
 	

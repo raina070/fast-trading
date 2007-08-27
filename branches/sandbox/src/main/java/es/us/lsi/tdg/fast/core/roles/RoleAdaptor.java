@@ -10,5 +10,5 @@ package es.us.lsi.tdg.fast.core.roles;
  *
  */
 public interface RoleAdaptor {
-	public ProcessingModel getProcessingModel();
+	public InteractionModel getInteractionModel();
 }

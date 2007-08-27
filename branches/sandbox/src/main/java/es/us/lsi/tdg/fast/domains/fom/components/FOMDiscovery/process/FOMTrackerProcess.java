@@ -7,7 +7,8 @@ import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.roles.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
@@ -57,7 +58,6 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 	{
 		
 		inquirer.potentialCounterParties(discoveryComponent.getFOMProviders());
-		//stop();
 		
 	}
 }

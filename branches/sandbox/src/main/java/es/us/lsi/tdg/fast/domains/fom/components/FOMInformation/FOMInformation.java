@@ -7,7 +7,7 @@ import es.us.lsi.tdg.fast.core.choreographies.wiring.PotentialCounterPartyNotifi
 import es.us.lsi.tdg.fast.core.choreographies.wiring.NewInformationNotification;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
 import es.us.lsi.tdg.fast.core.component.information.InformationComponent;
-import es.us.lsi.tdg.fast.core.roles.ControllableProcess;
+import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;

@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.core.roles;
+package es.us.lsi.tdg.fast.core.process;
 /**
  * @author Pablo Fernandez Montes
  * @author José Antonio Parejo Maestre
@@ -6,7 +6,5 @@ package es.us.lsi.tdg.fast.core.roles;
 
 public interface ControllableProcess {
 	public void start();
-	public void pause();
-	public void resume();
 	public void stop();
 }
