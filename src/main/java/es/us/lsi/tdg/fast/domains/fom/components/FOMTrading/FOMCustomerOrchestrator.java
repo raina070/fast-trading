@@ -6,6 +6,8 @@ import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.process.ProcessModel;
+import es.us.lsi.tdg.fast.core.process.terminator.ProcessTerminator;
+import es.us.lsi.tdg.fast.core.process.terminator.TimeOutTerminator;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
 import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
 import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
@@ -18,24 +20,15 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.FAST;
 
 public class FOMCustomerOrchestrator 
-			extends OLDAbstractControllableProcess 
+			extends AbstractControllableProcess 
 			implements TradingOrchestrator {
 
-	protected TradingProcess tradingProcess;
+	TradingProcess tradingProcess;
 	
-	AbstractControllableProcess discoveryService;
-	ControllableProcess advertiser;
-	AbstractControllableProcess tracker;
-
-	ControllableProcess informant;
-	ControllableProcess inquirer;
-
-	ControllableProcess proposalBuilder;
-	ControllableProcess proposalDispatcher;
-	ControllableProcess proposalCollector;
-	
-	ControllableProcess agreementMaker;
-
+	FOMDiscovery disco;
+	FOMInformation info;
+	FOMSelection select;
+	FOMAgreementMaking am;
 	
 	public FOMCustomerOrchestrator(TradingProcess tradingProcess) {
 		super("FOMCustomerOrchestrator");
@@ -43,88 +36,62 @@ public class FOMCustomerOrchestrator
 		this.tradingProcess.setOrchestrator(this);
 	}
 
-	public void start(){
+	public void run(){
 		FAST.shell.showMessage("  Starting CustomerOrchestration for PID "+tradingProcess.getPID());
 		
 		try {
 		
-			FOMDiscovery disco = (FOMDiscovery) FAST.componentFactory.getByName("FOMDiscovery");
-			FOMInformation info = (FOMInformation) FAST.componentFactory.getByName("FOMInformation");
-			FOMSelection select = (FOMSelection) FAST.componentFactory.getByName("FOMSelection");
-			FOMAgreementMaking am = (FOMAgreementMaking) FAST.componentFactory.getByName("FOMAgreementMaking");
-
-			disco.setTradingProcess(tradingProcess);
-			info.setTradingProcess(tradingProcess);
-			select.setTradingProcess(tradingProcess);
-			am.setTradingProcess(tradingProcess);
+			disco = (FOMDiscovery) FAST.componentFactory.getByName("FOMDiscovery",tradingProcess);
+			info = (FOMInformation) FAST.componentFactory.getByName("FOMInformation",tradingProcess);
+			select = (FOMSelection) FAST.componentFactory.getByName("FOMSelection",tradingProcess);
+			am = (FOMAgreementMaking) FAST.componentFactory.getByName("FOMAgreementMaking",tradingProcess);
 			
 			FAST.componentFactory.bind("PullPotentialCounterPartyNotification", disco, info);
 			FAST.componentFactory.bind("PushNewInformationNotification", info, select);
 			FAST.componentFactory.bind("PushProposalSelectionNotification", select, am);
-
-			discoveryService = disco.getDiscoveryServiceProcess();
-			//advertiser = disco.getAdvertiserProcess();
-			tracker = disco.getTrackerProcess();
-
-			//informant = info.getInformantProcess();
-			inquirer = info.getInquirerProcess();
-
-			proposalBuilder = select.getProposalBuilderProcess();
-			proposalDispatcher = select.getProposalDispatcherProcess();
-			proposalCollector = select.getProposalCollectorProcess();
-			
-			agreementMaker = am.getAgreementMakerProcess();
-	
-			discoveryService.start(ProcessModel.CONTINOUS);
 			
 			
-			//advertiser.start();
-			tracker.start(ProcessModel.SINGLE);
+			ProcessTerminator timeOut = new TimeOutTerminator(100000);
 			
-			//informant.start();
-
-			inquirer.start();
+			disco.getDiscoveryServiceProcess().start(timeOut);
+			disco.getTrackerProcess().start(timeOut);
 			
-			proposalBuilder.start();
-			proposalDispatcher.start();
+			Thread.sleep(20000);		
 
-			proposalCollector.start();
+			info.getInquirerProcess().start(timeOut);
+			
+			select.getProposalBuilderProcess().start(timeOut);
+			select.getProposalDispatcherProcess().start(timeOut);;
 
-			agreementMaker.start();
-					
+			am.getAgreementMakerProcess().start(timeOut);
+			
+			Thread.sleep(80000);			
+			
 		} catch (UnknownComponentException e) {
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			FAST.shell.showMessage(" CustomerOrchestration for PID "+tradingProcess.getPID()+" INTERRUPTED.");					
 		}
+	
 	}
 	
 	public void stop(){
 	
 		FAST.shell.showMessage("Stoping CustomerOrchestration for PID "+tradingProcess.getPID());
-		ExitCommand exitCommand = new BaseExitCommand();
-		//FAST.server.stop();
-		
-		discoveryService.stop();
-		tracker.stop();
-		inquirer.stop();
-		proposalBuilder.stop();
-		proposalDispatcher.stop();
-		proposalCollector.stop();
-		agreementMaker.stop();
-		exitCommand.execute(FAST.shell.getShellRender());
-		System.exit(0);
+/*	Only necessary if interrupted or sla_reached **	
+		info.getInquirerProcess().stop();
+		select.getProposalBuilderProcess().stop();
+		select.getProposalDispatcherProcess().stop();
+		am.getAgreementMakerProcess().stop();
+*/		
 	}
 	
-	public void event(String event) {
+	public void OLD_event(String event) {
 		if(event.equals("SLA_REACHED")){
-			FAST.shell.showMessage("Stoping Trading Process.");
 			stop();
-		}
-		
+		}	
 	}
-	
-	protected void run(){
-		
-	}
+
 	
 
 }

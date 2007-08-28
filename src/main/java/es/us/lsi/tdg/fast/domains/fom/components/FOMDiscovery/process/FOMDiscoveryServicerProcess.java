@@ -24,22 +24,15 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.services.Discovery
  *
  */
 public class FOMDiscoveryServicerProcess extends AbstractControllableProcess{
-	FASTService service;
-	private Inquirer inquirer;
 	
 	private FOMDiscovery discoveryComponent;
 	
-	public FOMDiscoveryServicerProcess() {
-		this("FOMDiscoveryService");				
-	}
-
-	public FOMDiscoveryServicerProcess(String threadName)
-	{
-		super(threadName);
-	}
-		
+	private FASTService service;
+	
 	public FOMDiscoveryServicerProcess(FOMDiscovery discoveryComponent) {
-		this("FOMDiscoveryService");
+		
+		super("FOMDiscoveryService");
+		
 		this.discoveryComponent = discoveryComponent;
 		
 		service =  new BaseFASTService(discoveryComponent);

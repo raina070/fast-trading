@@ -21,6 +21,8 @@ import es.us.lsi.tdg.fast.core.services.BaseFASTServer;
 import es.us.lsi.tdg.fast.core.services.FASTServer;
 import es.us.lsi.tdg.fast.core.shell.FASTShell;
 import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
+import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
+import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
@@ -48,6 +50,19 @@ public class FAST
 	public static PreferenceRegistry preferenceRegistry=null;
 	public static AgreementRegistry agreementRegistry=null;
 	public static FASTShell shell = null;
+	
+	public static void exit(String goodbyeMessage){
+		
+		if(!goodbyeMessage.isEmpty())
+			shell.showMessage(goodbyeMessage);
+		   
+        if(server != null){
+        	server.stop();
+        	System.out.println(".");
+        }
+        
+		System.exit(0);
+	}
 	
     public static void main( String[] args )
     {
@@ -85,11 +100,7 @@ public class FAST
         agreementRegistry=new BaseAgreementRegistry();
 
         shell.run();
-        
-        
-        if(server != null){
-        	server.stop();
-        	System.out.println(".");
-        }
+     
+        exit("");
     }
 }

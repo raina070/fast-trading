@@ -46,12 +46,13 @@ public class FOMInformation implements InformationComponent {
 		
 		if(inquirerTrackerAdaptor == null){
 			throw new UnwiredComponent("trackerInquirerAdaptor");
-		}else
+		}else{
 			if(inquirerProposalBuilderAdaptor == null){
 				throw new UnwiredComponent("inquirerProposalBuilderInquirerAdaptor");
 			}else {
-				this.inquirerProcess = new FOMInquirerProcess(this.inquirerTrackerAdaptor,this.inquirerProposalBuilderAdaptor);
+				this.inquirerProcess = new FOMInquirerProcess(this);
 			}
+		}
 		return inquirerProcess;
 	}
 	

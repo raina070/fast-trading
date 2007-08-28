@@ -1,6 +1,7 @@
 package es.us.lsi.tdg.fast.core.services;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,8 @@ import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.process.event.EventBroker;
 import es.us.lsi.tdg.fast.core.process.event.FASTEventType;
 import es.us.lsi.tdg.fast.core.process.event.GenericFASTEvent;
+import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
+import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public class BaseFASTServer implements FASTServer {
@@ -32,7 +35,7 @@ public class BaseFASTServer implements FASTServer {
 	
 	private HttpServer httpServer;
 	private Map<String,HttpContext> httpContexts;
-	private Map<HttpContext,Endpoint> publishedEndpoints;
+//	private Map<HttpContext,Endpoint> publishedEndpoints;
 	
 	private BaseFASTServer(){
 		int serverPort = Integer.parseInt((String)FAST.properties.get((String)"serverPort"));
@@ -43,10 +46,10 @@ public class BaseFASTServer implements FASTServer {
 			httpServer.start();
 			FAST.shell.showMessage("Server Online.");
 			httpContexts = new HashMap<String,HttpContext>();
-			
-			
+				
+		} catch (BindException e) {
+			FAST.exit("ERROR: Port "+serverPort+" already in use.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -94,7 +97,7 @@ public class BaseFASTServer implements FASTServer {
 	}
 
 	public void unpublishService(FASTService service){
-		/*Endpoint endpoint = service.getEndpoint();
+		Endpoint endpoint = service.getEndpoint();
 		Class serviceClass = service.getServiceClass();
 		
 		String serviceCanonicalClassName = serviceClass.getName(); 
@@ -103,18 +106,20 @@ public class BaseFASTServer implements FASTServer {
 		
 		String contextName = generateBaseContextName(service.getTradingProcess())+"/"+serviceClassName;
 		
-		if(httpContexts.containsKey(contextName)){
+		
+		if(httpContexts.containsKey(contextName) && endpoint.isPublished()){
 			HttpContext context = httpContexts.get("contextName");
-			endpoint.publish(context);
-		}else{
-			HttpContext context = httpServer.createContext(contextName);
-			httpContexts.put(contextName, context);
-			endpoint.publish(context);
+
+			endpoint.stop();
+
+			// not necessary
+			// httpServer.removeContext(contextName);
+			// httpContexts.remove(contextName);
+			
+			EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,service,"Endpoint unpublished"));
+			
 		}
 
-		EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,endpoint,"Endpoint <"+contextName+"> published"));
-		*/
-		EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,service,"Endpoint unpublished"));
 	}
 	
 	public void stop() {

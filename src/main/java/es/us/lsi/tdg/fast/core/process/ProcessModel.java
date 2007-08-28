@@ -1,9 +1,13 @@
 package es.us.lsi.tdg.fast.core.process;
 
+import es.us.lsi.tdg.fast.core.process.terminator.ConstantTerminator;
+import es.us.lsi.tdg.fast.core.process.terminator.ProcessTerminator;
+
 public enum ProcessModel {
 	SINGLE(new ConstantTerminator(true)),
 	CONTINOUS(new ConstantTerminator(false)),
 	CUSTOM(new ConstantTerminator(true));
+	
 	private ProcessTerminator terminator;
 	
 

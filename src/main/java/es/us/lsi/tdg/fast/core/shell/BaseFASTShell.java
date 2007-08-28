@@ -22,7 +22,7 @@ public class BaseFASTShell implements FASTShell {
 	}
 
 	public void showMessage(String message) {
-		shellRender.println(message);
+		shellRender.showMessage(message);
 	}
 	
 	public ShellRender getShellRender(){

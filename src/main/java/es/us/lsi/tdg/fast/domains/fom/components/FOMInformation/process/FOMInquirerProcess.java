@@ -9,6 +9,7 @@ import java.util.Set;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.information.BaseCounterPartyKnowledge;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 //import es.us.lsi.tdg.fast.core.roles.information.Informant;
@@ -22,34 +23,22 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
  * @author Antonio Manuel Gutierrez Fernandez
  *
  */
-public class FOMInquirerProcess extends OLDAbstractControllableProcess {
+public class FOMInquirerProcess extends AbstractControllableProcess {
 	
 	private Tracker 		tracker;
 	private ProposalBuilder proposalBuilder;
 	
-	Set<CounterParty> 		FOMProviders;
 	private FOMInformation 	informationComponent;
 	
-	public FOMInquirerProcess(Tracker tracker, ProposalBuilder proposalBuilder) {
-		this("FOMInquirer",tracker, proposalBuilder);				
-	}
-
-	public FOMInquirerProcess(String threadName,Tracker tracker, ProposalBuilder proposalBuilder)
-	{
-		super(threadName);
-		this.tracker 			= tracker;
-		this.proposalBuilder 	= proposalBuilder;
-
-	}
+	Set<CounterParty> 		FOMProviders;
+	
 		
 	public FOMInquirerProcess(FOMInformation informationComponent) {
-		this((Tracker) informationComponent.getInquirer(Tracker.class), (ProposalBuilder)informationComponent.getInquirer(ProposalBuilder.class));
+		super("FOMInquirer");
+		this.tracker = (Tracker) informationComponent.getInquirer(Tracker.class);
+		this.proposalBuilder = (ProposalBuilder) informationComponent.getInquirer(ProposalBuilder.class);
 		this.informationComponent = informationComponent;
 	}
-	
-	//public void start(){
-	//	FOMProviders = tracker.getPotentialCounterParties();
-	//}
 	
 	
 	@Override
@@ -70,7 +59,5 @@ public class FOMInquirerProcess extends OLDAbstractControllableProcess {
 					}				
 			}
 		}
-
-		//stop();	
 	}
 }

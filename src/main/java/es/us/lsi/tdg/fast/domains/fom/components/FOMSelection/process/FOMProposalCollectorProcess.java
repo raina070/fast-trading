@@ -3,17 +3,10 @@
  */
 package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
 
-import java.util.Set;
-import java.util.SortedSet;
-
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.ProposalPerformative;
-import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.services.BaseFASTService;
 import es.us.lsi.tdg.fast.core.services.FASTService;
-import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.services.DiscoveryServiceImplementation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.services.CollectorServiceImplementation;
 
@@ -23,46 +16,34 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.services.Collector
  * @author Antonio Manuel Gutierrez Fernandez
  *
  */
-public class FOMProposalCollectorProcess extends OLDAbstractControllableProcess {
-	private FOMSelection 	selectionComponent;
-	
-	public FOMProposalCollectorProcess() {
-		this("FOMProposalCollector");				
-	}
+public class FOMProposalCollectorProcess extends AbstractControllableProcess {
 
-	public FOMProposalCollectorProcess(String threadName)
-	{
-		super(threadName);		
-	}
-		
+	private FOMSelection selectionComponent;
+	
+	private FASTService service;
+	
 	public FOMProposalCollectorProcess(FOMSelection selectionComponent) {
+		
 		super("FOMProposalCollector");
+		
 		this.selectionComponent = selectionComponent;
-	}
-	
-	
-	public  void  start()
-	{
-		@SuppressWarnings("unused")
-		FASTService service = new BaseFASTService(selectionComponent);
-
+		
+		service = new BaseFASTService(selectionComponent);
 		service.setImplementation(CollectorServiceImplementation.class);
-		
-		FAST.server.publishService(service);
-
-		super.start();
-		
 	}
 	
-	@Override
-	protected  void  run()
-	{
-//		Set<Proposal> proposals=getUnprocessedProposal();
-//		for(Proposal proposal:proposals){
-//			proposal.setPerformative(ProposalPerformative.COMMIT);
-//			selectionComponent.getSortedProposalSet().add(proposal);
-//		}
+	public  void  setUp(){
+		FAST.server.publishService(service);
+	}	
+
+	protected void cleanUp(){
+		FAST.server.unpublishService(service);
 	}
 
+	@Override
+	protected void run() {
+		// EMPTY because is a "service only" process
+	}
+	
 
 }

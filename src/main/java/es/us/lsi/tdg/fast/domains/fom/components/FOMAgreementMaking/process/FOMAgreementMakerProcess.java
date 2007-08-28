@@ -17,6 +17,7 @@ import es.us.lsi.tdg.fast.core.dataModel.agreement.BaseAgreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.ProposalPerformative;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcher;
 import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
@@ -33,7 +34,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 
-public class FOMAgreementMakerProcess extends OLDAbstractControllableProcess {
+public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 	private ProposalDispatcher	proposalDispatcher;
 	private boolean proposed;
 	private boolean commited;
@@ -41,22 +42,9 @@ public class FOMAgreementMakerProcess extends OLDAbstractControllableProcess {
 	
 	private FOMAgreementMaking	agreementMakingComponent;
 	
-	public FOMAgreementMakerProcess(ProposalDispatcher proposalDispatcher) {
-		this("FOMAgreementMaker",proposalDispatcher);
-		proposed=false;
-		commited=false;
-	}
-
-	public FOMAgreementMakerProcess(String threadName, ProposalDispatcher proposalDispatcher)
-	{
-		super(threadName);
-		this.proposalDispatcher 	= proposalDispatcher;
-		commited=false;
-		proposed=false;
-	}
-		
 	public FOMAgreementMakerProcess(FOMAgreementMaking agreementMakingComponent) {
-		this((ProposalDispatcher) agreementMakingComponent.getAgreementMaker());
+		super("FOMAgreementMaker");
+		this.proposalDispatcher = (ProposalDispatcher) agreementMakingComponent.getAgreementMaker();
 		this.agreementMakingComponent = agreementMakingComponent;		
 	}
 	
@@ -234,16 +222,11 @@ public class FOMAgreementMakerProcess extends OLDAbstractControllableProcess {
 			FAST.shell.showMessage("SLA Reached: " + fomProposal);
 			commited= true;
 			FAST.agreementRegistry.addAgreement(getPID(), FOMProposalTranslator.getAgreement(new FOMProposal(time,cost, counterPartyCollectorEndPoint)));
-			agreementMakingComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
+			agreementMakingComponent.getTradingProcess().getOrchestrator().OLD_event("SLA_REACHED");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}		
 		
-	}
-	
-	private boolean compatible(Proposal commited,Proposal toCommit)
-	{
-		return false;
 	}
 	
 }

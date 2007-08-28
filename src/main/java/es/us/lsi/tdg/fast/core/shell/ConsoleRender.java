@@ -151,4 +151,10 @@ public class ConsoleRender implements ShellRender {
 		
 	}
 
+	public void showMessage(String message) {
+		//println("");
+		println(message);
+		//printPrompt();
+	}
+
 }
