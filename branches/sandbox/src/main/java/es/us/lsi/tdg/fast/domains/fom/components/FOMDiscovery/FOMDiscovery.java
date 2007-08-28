@@ -23,8 +23,8 @@ public class FOMDiscovery implements Component {
 	protected TrackerInquirerAdaptor trackerInquirerAdaptor=null;
 	
 	// Processes associated to the offered roles:
-	protected AbstractControllableProcess trackerProcess=null;
-	protected AbstractControllableProcess discoveryServiceProcess=null;
+	protected ControllableProcess trackerProcess=null;
+	protected ControllableProcess discoveryServiceProcess=null;
 	protected ControllableProcess advertiserProcess=null;
 	
 	private String name="FOMDiscovery";
@@ -53,7 +53,7 @@ public class FOMDiscovery implements Component {
 		return trackerInquirerAdaptor;
 	}
 
-	public AbstractControllableProcess getDiscoveryServiceProcess() {
+	public ControllableProcess getDiscoveryServiceProcess() {
 		if(discoveryServiceProcess == null)
 			discoveryServiceProcess = new FOMDiscoveryServicerProcess(this);
 			
@@ -61,7 +61,7 @@ public class FOMDiscovery implements Component {
 		
 	}
 	
-	public AbstractControllableProcess getTrackerProcess() {
+	public ControllableProcess getTrackerProcess() {
 		
 		if(trackerInquirerAdaptor == null){
 			throw new UnwiredComponent("trackerInquirerAdaptor");

@@ -6,6 +6,7 @@ package es.us.lsi.tdg.fast.core.process;
 import es.us.lsi.tdg.fast.core.process.event.EventBroker;
 import es.us.lsi.tdg.fast.core.process.event.FASTProcessEvent;
 import es.us.lsi.tdg.fast.core.process.event.FASTProcessEventType;
+import es.us.lsi.tdg.fast.core.process.terminator.ProcessTerminator;
 
 
 

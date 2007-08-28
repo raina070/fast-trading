@@ -8,6 +8,7 @@ import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.choreographies.Choreography;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.BaseWiringChoreographyFactory;
 import es.us.lsi.tdg.fast.core.choreographies.wiring.ChoreographyFactory;
+import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 
 public class BaseComponentFactory implements ComponentFactory {
@@ -101,6 +102,17 @@ public class BaseComponentFactory implements ComponentFactory {
 		return null;
 	}
 
+	
+	public Component getByName(String componentName,TradingProcess tradingProcess) 
+		throws UnknownComponentException{
+	
+		Component component = getByName(componentName);	
+		component.setTradingProcess(tradingProcess);
+		
+		return component;
+	}
+
+	
 	public static ComponentFactory getInstance() {
 		if(instance==null){
 			instance = new BaseComponentFactory();

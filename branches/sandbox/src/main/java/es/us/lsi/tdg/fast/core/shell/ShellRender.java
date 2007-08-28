@@ -16,4 +16,6 @@ public interface ShellRender {
 
 	public void printWellcome();
 
+	public void showMessage(String message);
+
 }

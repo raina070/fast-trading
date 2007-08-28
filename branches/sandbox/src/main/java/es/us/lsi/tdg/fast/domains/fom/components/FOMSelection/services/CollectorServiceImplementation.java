@@ -65,7 +65,7 @@ public class CollectorServiceImplementation implements
 
 		  FAST.shell.showMessage("SLA Reached: "+fomProposal);
 		  
-		  selectionComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
+		  selectionComponent.getTradingProcess().getOrchestrator().OLD_event("SLA_REACHED");
 		  
 	}
 	

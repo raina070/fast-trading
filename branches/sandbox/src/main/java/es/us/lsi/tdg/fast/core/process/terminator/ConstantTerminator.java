@@ -1,4 +1,4 @@
-package es.us.lsi.tdg.fast.core.process;
+package es.us.lsi.tdg.fast.core.process.terminator;
 
 public class ConstantTerminator implements ProcessTerminator {
 

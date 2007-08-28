@@ -8,6 +8,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
@@ -22,21 +23,14 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
  * @author José Antonio Parejo Maestre
  *
  */
-public class FOMAdvertiserProcess extends OLDAbstractControllableProcess{
+public class FOMAdvertiserProcess extends AbstractControllableProcess{
 	
 	
 	private FOMDiscovery discoveryComponent;
 	
-	public FOMAdvertiserProcess() {
-		this("FOMTracker");				
-	}
-
-	public FOMAdvertiserProcess(String threadName)
-	{
-		super(threadName);
-	}
 		
 	public FOMAdvertiserProcess(FOMDiscovery discoveryComponent) {
+		super("FOMTracker");
 		this.discoveryComponent = discoveryComponent;
 	}
 
@@ -57,7 +51,7 @@ public class FOMAdvertiserProcess extends OLDAbstractControllableProcess{
 		return provider;
 	}
 	
-	public  void  start()
+	public  void  run()
 	{
 		try {
 			
@@ -82,14 +76,6 @@ public class FOMAdvertiserProcess extends OLDAbstractControllableProcess{
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-
-		super.start();
-		
-	}
-
-	@Override
-	protected void run() {
-		// TODO Auto-generated method stub
 		
 	}
 	

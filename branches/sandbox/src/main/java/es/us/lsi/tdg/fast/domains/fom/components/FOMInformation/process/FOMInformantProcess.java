@@ -1,6 +1,7 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
 import es.us.lsi.tdg.fast.core.roles.information.Inquirer;
@@ -13,37 +14,31 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.services.Informa
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
-public class FOMInformantProcess extends OLDAbstractControllableProcess {
+public class FOMInformantProcess extends AbstractControllableProcess {
 
 	private FOMInformation informationComponent;
 	
+	private FASTService service;
+	
 	public FOMInformantProcess(FOMInformation informationComponent) {
-		super();
+		super("FOMInformantProcess");
 		this.informationComponent = informationComponent;
-	}
-
-
-	@Override
-	public void start() {
-		
-		/** TEST PRE-AGREEMENT 
-		 *  DELETE WHEN EVERYTHING IS OK
-		 */
-		FAST.agreementRegistry.addAgreement(informationComponent.getTradingProcess().getPID(), FOMProposalTranslator.getAgreement(new FOMProposal(Integer.parseInt(FAST.properties.get("testslatime")),10, "")));
-		FASTService service = new BaseFASTService(informationComponent);
-
+	
+		service =  new BaseFASTService(informationComponent);
 		service.setImplementation(InformantServiceImplementation.class);
 		
-		FAST.server.publishService(service);
-
-		super.start();
-		
 	}
-
+	
+	public  void  setUp(){
+		FAST.server.publishService(service);
+	}	
+	
+	protected void cleanUp(){
+		FAST.server.unpublishService(service);
+	}
 	
 	@Override
 	protected void run() {
-		stop();	
+		// EMPTY because is a "service only" process
 	}
-
 }

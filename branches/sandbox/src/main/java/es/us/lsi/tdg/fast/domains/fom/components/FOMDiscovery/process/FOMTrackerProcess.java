@@ -40,24 +40,8 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 		this.discoveryComponent = discoveryComponent;
 	}
 
-	
-	private FOMCounterParty testProvider(){
-		FOMCounterParty provider = null;
-		try {
-			URI infoEP = new URI("http://localhost:8080/FOMProviderTrader/Information/Informant");
-			URI selEP = new URI("http://localhost:8080/FOMProviderTrader/Selection/Collector");
-			URI amEP = new URI("http://localhost:8080/FOMProviderTrader/AgreementMaking/AgreementHandler");
-			provider = new FOMCounterParty("TestProvider",null,infoEP,selEP,amEP); 
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return provider;
-	}
-	
 	protected  void  run()
 	{
-		
-		inquirer.potentialCounterParties(discoveryComponent.getFOMProviders());
-		
+		inquirer.potentialCounterParties(discoveryComponent.getFOMProviders());	
 	}
 }

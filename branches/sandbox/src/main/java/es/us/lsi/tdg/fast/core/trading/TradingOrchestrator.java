@@ -4,6 +4,6 @@ import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 
 public interface TradingOrchestrator extends ControllableProcess{
 
-	void event(String event);
+	void OLD_event(String event);
 	
 }
