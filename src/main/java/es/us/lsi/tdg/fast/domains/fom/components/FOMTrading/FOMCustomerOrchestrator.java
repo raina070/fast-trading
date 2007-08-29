@@ -61,7 +61,8 @@ public class FOMCustomerOrchestrator
 			info.getInquirerProcess().start(timeOut);
 			
 			select.getProposalBuilderProcess().start(timeOut);
-			select.getProposalDispatcherProcess().start(timeOut);;
+			select.getProposalDispatcherProcess().start(timeOut);
+			select.getProposalCollectorProcess().start(timeOut);
 
 			am.getAgreementMakerProcess().start(timeOut);
 			
@@ -75,15 +76,15 @@ public class FOMCustomerOrchestrator
 	
 	}
 	
-	public void stop(){
+	public void cleanUp(){
 	
 		FAST.shell.showMessage("Stoping CustomerOrchestration for PID "+tradingProcess.getPID());
-/*	Only necessary if interrupted or sla_reached **	
 		info.getInquirerProcess().stop();
 		select.getProposalBuilderProcess().stop();
 		select.getProposalDispatcherProcess().stop();
+		select.getProposalCollectorProcess().stop();
 		am.getAgreementMakerProcess().stop();
-*/		
+
 	}
 	
 	public void OLD_event(String event) {

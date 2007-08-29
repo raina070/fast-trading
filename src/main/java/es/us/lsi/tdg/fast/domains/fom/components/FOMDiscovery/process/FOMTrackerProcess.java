@@ -42,6 +42,15 @@ public class FOMTrackerProcess extends AbstractControllableProcess{
 
 	protected  void  run()
 	{
-		inquirer.potentialCounterParties(discoveryComponent.getFOMProviders());	
+		
+		Set<CounterParty> providers = discoveryComponent.getFOMProviders();
+		Set<CounterParty> providersToBeSent;
+		
+		synchronized(providers){
+			providersToBeSent=new HashSet<CounterParty>(providers);
+			providers.clear();
+		}
+		
+		inquirer.potentialCounterParties(providersToBeSent);	
 	}
 }
