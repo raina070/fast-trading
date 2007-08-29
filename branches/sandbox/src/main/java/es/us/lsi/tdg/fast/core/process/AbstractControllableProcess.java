@@ -39,6 +39,19 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 		};
 		controlledThread=new Thread(myRunnable,threadName);
 	}
+
+	public AbstractControllableProcess(ProcessTerminator terminator)
+	{
+		this("");
+		this.terminator = terminator;
+	}
+
+	public AbstractControllableProcess(String threadName, ProcessTerminator terminator)
+	{
+		this(threadName);
+		this.terminator = terminator;
+	}
+
 	
 	public synchronized void pause() {
 		pauseSignal=true;		

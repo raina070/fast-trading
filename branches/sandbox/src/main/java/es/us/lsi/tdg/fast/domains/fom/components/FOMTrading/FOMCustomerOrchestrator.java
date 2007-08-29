@@ -36,6 +36,14 @@ public class FOMCustomerOrchestrator
 		this.tradingProcess.setOrchestrator(this);
 	}
 
+	public FOMCustomerOrchestrator(TradingProcess tradingProcess,
+			ProcessModel model) {
+		super("FOMCustomerOrchestrator",model.getTerminator());
+		this.tradingProcess = tradingProcess;
+		this.tradingProcess.setOrchestrator(this);
+		
+	}
+
 	public void run(){
 		FAST.shell.showMessage("  Starting CustomerOrchestration for PID "+tradingProcess.getPID());
 		
