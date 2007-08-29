@@ -3,7 +3,6 @@
  */
 package es.us.lsi.tdg.fast.components.information.inquirer;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;

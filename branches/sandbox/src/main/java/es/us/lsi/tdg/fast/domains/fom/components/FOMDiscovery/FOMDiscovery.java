@@ -8,7 +8,6 @@ import es.us.lsi.tdg.fast.core.choreographies.wiring.PotentialCounterPartyNotifi
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.component.UnwiredComponent;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.discovery.tracker.TrackerInquirerAdaptor;

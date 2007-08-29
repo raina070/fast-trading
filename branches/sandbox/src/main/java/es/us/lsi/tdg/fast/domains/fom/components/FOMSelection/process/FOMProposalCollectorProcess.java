@@ -18,6 +18,7 @@ import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.services.Collector
  */
 public class FOMProposalCollectorProcess extends AbstractControllableProcess {
 
+	@SuppressWarnings("unused")
 	private FOMSelection selectionComponent;
 	
 	private FASTService service;

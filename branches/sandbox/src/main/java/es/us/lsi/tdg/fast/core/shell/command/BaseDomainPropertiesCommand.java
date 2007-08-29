@@ -1,19 +1,12 @@
 package es.us.lsi.tdg.fast.core.shell.command;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.component.Component;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.BaseAgreementPreferences;
-import es.us.lsi.tdg.fast.core.dataModel.statement.Attribute;
-import es.us.lsi.tdg.fast.core.dataModel.statement.AttributeCatalog;
-import es.us.lsi.tdg.fast.core.domainRegistry.DomainManifest;
-import es.us.lsi.tdg.fast.core.domainRegistry.DomainRole;
 import es.us.lsi.tdg.fast.core.shell.ShellRender;
-import es.us.lsi.tdg.fast.core.shell.UnknownCommandException;
 import es.us.lsi.tdg.fast.core.shell.SystemPropertiesCommand;
+import es.us.lsi.tdg.fast.core.shell.UnknownCommandException;
 
 public class BaseDomainPropertiesCommand extends BaseModeCommand implements SystemPropertiesCommand {
 

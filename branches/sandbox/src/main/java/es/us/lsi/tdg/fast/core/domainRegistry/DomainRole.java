@@ -1,7 +1,6 @@
 package es.us.lsi.tdg.fast.core.domainRegistry;
 
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
-import es.us.lsi.tdg.fast.domains.fom.Manifest;
 
 public interface DomainRole {
 

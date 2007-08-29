@@ -1,7 +1,6 @@
 package es.us.lsi.tdg.fast.core.services;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
 import javax.xml.namespace.QName;

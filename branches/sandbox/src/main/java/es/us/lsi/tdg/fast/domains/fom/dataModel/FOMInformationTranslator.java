@@ -2,11 +2,22 @@ package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Set;
 
-import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
-import es.us.lsi.tdg.fast.core.dataModel.information.*;
-import es.us.lsi.tdg.fast.core.dataModel.statement.*;
+import es.us.lsi.tdg.fast.core.dataModel.information.BaseInformation;
+import es.us.lsi.tdg.fast.core.dataModel.information.Information;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Attribute;
+import es.us.lsi.tdg.fast.core.dataModel.statement.BaseAttribute;
+import es.us.lsi.tdg.fast.core.dataModel.statement.BaseSimpleConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.BaseSortedDomainConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.ComparableValue;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerDomain;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
+import es.us.lsi.tdg.fast.core.dataModel.statement.SimpleConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.SortedDomainConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Statement;
+import es.us.lsi.tdg.fast.core.dataModel.statement.StatementType;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Value;
 
 
 public class FOMInformationTranslator {

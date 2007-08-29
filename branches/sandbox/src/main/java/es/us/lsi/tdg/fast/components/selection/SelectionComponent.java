@@ -7,7 +7,6 @@ package es.us.lsi.tdg.fast.components.selection;
 import es.us.lsi.tdg.fast.core.choreographies.Choreography;
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.process.ControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.selection.ProposalFilter;
 import es.us.lsi.tdg.fast.core.roles.selection.Proponent.ProponentAgreementMakerAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.Proponent.ProponentProposalCollectorAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;

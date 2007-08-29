@@ -1,22 +1,12 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashSet;
 import java.util.SortedSet;
-import java.util.Set;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-
-import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
-
-import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
+import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
+import es.us.lsi.tdg.fast.core.roles.agreementMaking.AgreementMaker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 /**

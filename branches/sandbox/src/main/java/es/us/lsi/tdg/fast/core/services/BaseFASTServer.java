@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.xml.ws.Endpoint;
 
-
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 
@@ -16,8 +15,6 @@ import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.process.event.EventBroker;
 import es.us.lsi.tdg.fast.core.process.event.FASTEventType;
 import es.us.lsi.tdg.fast.core.process.event.GenericFASTEvent;
-import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
-import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public class BaseFASTServer implements FASTServer {
@@ -73,6 +70,7 @@ public class BaseFASTServer implements FASTServer {
 	}
 */
 	
+	@SuppressWarnings("unchecked")
 	public void publishService(FASTService service){
 		Endpoint endpoint = service.getEndpoint();
 		Class serviceClass = service.getServiceClass();
@@ -96,6 +94,7 @@ public class BaseFASTServer implements FASTServer {
 		EventBroker.event(new GenericFASTEvent(FASTEventType.OTHER,endpoint,"Endpoint <"+contextName+"> published"));
 	}
 
+	@SuppressWarnings("unchecked")
 	public void unpublishService(FASTService service){
 		Endpoint endpoint = service.getEndpoint();
 		Class serviceClass = service.getServiceClass();
@@ -108,11 +107,12 @@ public class BaseFASTServer implements FASTServer {
 		
 		
 		if(httpContexts.containsKey(contextName) && endpoint.isPublished()){
-			HttpContext context = httpContexts.get("contextName");
+			
 
 			endpoint.stop();
 
 			// not necessary
+			// HttpContext context = httpContexts.get("contextName");
 			// httpServer.removeContext(contextName);
 			// httpContexts.remove(contextName);
 			

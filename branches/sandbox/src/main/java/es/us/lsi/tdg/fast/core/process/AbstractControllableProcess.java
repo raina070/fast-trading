@@ -18,7 +18,6 @@ import es.us.lsi.tdg.fast.core.process.terminator.ProcessTerminator;
 public abstract class AbstractControllableProcess implements ControllableProcess {
 
 	private Thread controlledThread;
-	private boolean pauseSignal;
 	private String threadName;
 	private ProcessTerminator terminator;
 	private boolean clean;
@@ -30,7 +29,6 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 	
 	public AbstractControllableProcess(String threadName)
 	{
-		pauseSignal=false;
 		this.threadName=threadName;
 		Runnable myRunnable=new Runnable() {
 			public void run() {
@@ -52,15 +50,6 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 		this.terminator = terminator;
 	}
 
-	
-	public synchronized void pause() {
-		pauseSignal=true;		
-	}
-
-	public synchronized void resume() { 
-		pauseSignal=false;
-		notify();
-	}
 
 	public void start(ProcessTerminator terminator) {
 		this.terminator = terminator;
@@ -113,6 +102,7 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 		
 	}
 	
+	@SuppressWarnings("static-access")
 	private void execute()
 	{
 	
@@ -122,7 +112,7 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 		
 		do {
 			run();
-			controlledThread.yield();
+			Thread.yield();
 		} while(!terminator.terminate());
 		
 		synchronized(this){

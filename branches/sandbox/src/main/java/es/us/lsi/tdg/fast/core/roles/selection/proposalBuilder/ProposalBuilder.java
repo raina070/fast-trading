@@ -3,7 +3,6 @@
  */
 package es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
-import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 /**
  * 
  * This interface has the responsibility of create the best possible 

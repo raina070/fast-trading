@@ -1,19 +1,13 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 
-import java.net.URI;
-import es.us.lsi.tdg.fast.FAST;
-import java.net.URISyntaxException;
-import java.util.HashSet;
 import java.util.Set;
 
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.information.BaseCounterPartyKnowledge;
+import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
-//import es.us.lsi.tdg.fast.core.roles.information.Informant;
-
 import es.us.lsi.tdg.fast.core.roles.selection.proposalBuilder.ProposalBuilder;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
@@ -28,6 +22,7 @@ public class FOMInquirerProcess extends AbstractControllableProcess {
 	private Tracker 		tracker;
 	private ProposalBuilder proposalBuilder;
 	
+	@SuppressWarnings("unused")
 	private FOMInformation 	informationComponent;
 	
 	Set<CounterParty> 		FOMProviders;

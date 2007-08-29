@@ -57,7 +57,7 @@ public class BaseTradingProcess implements TradingProcess{
 	}
 
 	public void event(String event) {
-		this.orchestrator.OLD_event(event);
+		this.orchestrator.event(event);
 	}
 
 }

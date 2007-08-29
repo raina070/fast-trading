@@ -1,6 +1,5 @@
 package es.us.lsi.tdg.fast.core.services;
 
-import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
 public interface FASTServer {
 

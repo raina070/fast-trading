@@ -61,6 +61,7 @@ public class EnvelopeLoggingSOAPHandler extends BaseHandler<SOAPMessageContext> 
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void bind(Endpoint endpoint){
 		Binding binding = endpoint.getBinding();
 	    List<Handler> handlerChain = new LinkedList<Handler>();

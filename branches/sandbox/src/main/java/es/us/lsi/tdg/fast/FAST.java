@@ -1,10 +1,10 @@
 package es.us.lsi.tdg.fast;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.Map;
-import java.util.HashMap;
 
 import es.us.lsi.tdg.fast.components.GenericComponentsLoader;
 import es.us.lsi.tdg.fast.core.agreementRegistry.AgreementRegistry;
@@ -21,10 +21,6 @@ import es.us.lsi.tdg.fast.core.services.BaseFASTServer;
 import es.us.lsi.tdg.fast.core.services.FASTServer;
 import es.us.lsi.tdg.fast.core.shell.FASTShell;
 import es.us.lsi.tdg.fast.core.shell.SimpleFASTShell;
-import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
-import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 /**
  * Hello world!

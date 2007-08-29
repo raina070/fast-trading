@@ -9,7 +9,6 @@ import javax.xml.namespace.QName;
 
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
@@ -26,6 +25,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 public class FOMAdvertiserProcess extends AbstractControllableProcess{
 	
 	
+	@SuppressWarnings("unused")
 	private FOMDiscovery discoveryComponent;
 	
 		

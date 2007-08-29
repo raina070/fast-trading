@@ -1,15 +1,26 @@
 package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
-import java.util.Set;
-import java.util.HashSet;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
+import java.util.Set;
 
-import es.us.lsi.tdg.fast.core.dataModel.statement.*;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.*;
-import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.BaseProposal;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.BaseTerm;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.ProposalPerformative;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Term;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Attribute;
+import es.us.lsi.tdg.fast.core.dataModel.statement.BaseAttribute;
+import es.us.lsi.tdg.fast.core.dataModel.statement.BaseSimpleConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Constraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerDomain;
+import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
+import es.us.lsi.tdg.fast.core.dataModel.statement.SimpleConstraint;
+import es.us.lsi.tdg.fast.core.dataModel.statement.StatementType;
+import es.us.lsi.tdg.fast.core.dataModel.statement.Value;
 
 public class FOMProposalTranslator {
 	
@@ -47,6 +58,7 @@ public class FOMProposalTranslator {
 		return SLA;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static FOMProposal getFOMProposal(Proposal SLA){
 		FOMProposal result = new FOMProposal();
 		double agreementCost=0,agreementTime=0;
