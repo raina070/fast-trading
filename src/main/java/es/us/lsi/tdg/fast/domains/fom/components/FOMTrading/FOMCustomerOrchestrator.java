@@ -64,7 +64,7 @@ public class FOMCustomerOrchestrator
 			disco.getDiscoveryServiceProcess().start(timeOut);
 			disco.getTrackerProcess().start(timeOut);
 			
-			Thread.sleep(20000);		
+			Thread.sleep(10000);		
 
 			info.getInquirerProcess().start(timeOut);
 			
@@ -74,7 +74,7 @@ public class FOMCustomerOrchestrator
 
 			am.getAgreementMakerProcess().start(timeOut);
 			
-			Thread.sleep(80000);			
+			Thread.sleep(90000);			
 			
 		} catch (UnknownComponentException e) {
 			e.printStackTrace();
