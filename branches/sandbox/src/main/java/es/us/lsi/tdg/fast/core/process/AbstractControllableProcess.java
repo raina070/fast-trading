@@ -81,14 +81,18 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 
 	public synchronized void stop() {
 		controlledThread.interrupt();
-				
+
+		synchronized(this){
+			if(!clean){
+				cleanUp();
+				clean = true;
+			}
+		}
+		
 		// We wait the execution thread to stop
 		while(controlledThread.isAlive());
 		
-		if(!clean){
-			cleanUp();
-			clean = true;
-		}
+		
 		
 		controlledThread=null;
 		
@@ -108,8 +112,13 @@ public abstract class AbstractControllableProcess implements ControllableProcess
 			controlledThread.yield();
 		} while(!terminator.terminate());
 		
-		cleanUp();
-		clean=true;
+		synchronized(this){
+			if(!clean){
+				cleanUp();
+				clean=true;
+			}
+		}
+		
 		EventBroker.event(new FASTProcessEvent(FASTProcessEventType.TASK_DONE,this));
 			
 	}

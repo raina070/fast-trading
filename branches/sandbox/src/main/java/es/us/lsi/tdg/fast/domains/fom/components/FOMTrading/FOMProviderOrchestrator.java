@@ -76,9 +76,16 @@ public class FOMProviderOrchestrator
 		}
 		
 	}
-	
-	public void stop(){
+	public void cleanUp(){
+		
 		FAST.shell.showMessage("Stoping ProviderOrchestration for PID "+tradingProcess.getPID());
+
+		disco.getAdvertiserProcess().stop();
+		info.getInformantProcess().stop();
+		select.getProposalDispatcherProcess().stop();
+		select.getProposalCollectorProcess().stop();
+		
+		
 	}
 
 
