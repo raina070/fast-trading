@@ -3,21 +3,15 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMTrading;
 import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.component.UnknownComponentException;
 import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.process.ControllableProcess;
 import es.us.lsi.tdg.fast.core.process.ProcessModel;
 import es.us.lsi.tdg.fast.core.process.terminator.ProcessTerminator;
 import es.us.lsi.tdg.fast.core.process.terminator.TimeOutTerminator;
-import es.us.lsi.tdg.fast.core.shell.command.BaseExitCommand;
-import es.us.lsi.tdg.fast.core.shell.command.ExitCommand;
 import es.us.lsi.tdg.fast.core.trading.TradingOrchestrator;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking.FOMAgreementMaking;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMDiscovery.FOMDiscovery;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.FOMInformation;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.FOMSelection;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
 public class FOMProviderOrchestrator 
 			extends AbstractControllableProcess 
@@ -77,7 +71,7 @@ public class FOMProviderOrchestrator
 		}		
 	}
 
-	public void OLD_event(String event) {
+	public void event(String event) {
 		if (event.equals("SLA_REACHED")){
 			stop();
 		}

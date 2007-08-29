@@ -3,19 +3,16 @@
  */
 package es.us.lsi.tdg.fast.components.information.inquirer;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
+import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.roles.IllegalAdapterMethodCall;
 import es.us.lsi.tdg.fast.core.roles.InteractionModel;
 import es.us.lsi.tdg.fast.core.roles.discovery.Tracker;
 import es.us.lsi.tdg.fast.core.roles.information.inquirer.InquirerTrackerAdaptor;
-import es.us.lsi.tdg.fast.core.choreographies.IllegalChoreographyMethodCallException;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 
 
 
@@ -30,14 +27,12 @@ public class PullInquirerTrackerAdaptor implements InquirerTrackerAdaptor
 	 private Set<CounterParty> detectedCounterPartySet;
 	 private Set<CounterParty> unprocessedCounterPartySet;
 	 private Tracker tracker;
-	 private int	 sizeCP;
 	 	
 	public PullInquirerTrackerAdaptor(Tracker tracker)
 	{
 		this.tracker=tracker;
 		detectedCounterPartySet=new HashSet<CounterParty>();
 		unprocessedCounterPartySet=new HashSet<CounterParty>();
-		sizeCP = 0;
 	}
 	 
 	 public InteractionModel getInteractionModel() {		

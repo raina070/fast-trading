@@ -1,35 +1,23 @@
 package es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking.process;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import javax.xml.namespace.QName;
 
 import es.us.lsi.tdg.fast.FAST;
-import es.us.lsi.tdg.fast.core.dataModel.UnknownCounterPartyException;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.BaseAgreement;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.ProposalPerformative;
 import es.us.lsi.tdg.fast.core.process.AbstractControllableProcess;
-import es.us.lsi.tdg.fast.core.process.OLDAbstractControllableProcess;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalDispatcher.ProposalDispatcher;
 import es.us.lsi.tdg.fast.core.services.ServiceInvoker;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMAgreementMaking.FOMAgreementMaking;
-import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.DiscoveryEP;
-import es.us.lsi.tdg.fast.domains.fom.components.fomdiscovery.services.FOMDiscoveryService;
-import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.FOMInformant;
-import es.us.lsi.tdg.fast.domains.fom.components.fominformation.services.InformantService;
 import es.us.lsi.tdg.fast.domains.fom.components.fomselection.services.CollectorService;
 import es.us.lsi.tdg.fast.domains.fom.components.fomselection.services.FOMCollector;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposal;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
 
@@ -222,7 +210,7 @@ public class FOMAgreementMakerProcess extends AbstractControllableProcess {
 			FAST.shell.showMessage("SLA Reached: " + fomProposal);
 			commited= true;
 			FAST.agreementRegistry.addAgreement(getPID(), FOMProposalTranslator.getAgreement(new FOMProposal(time,cost, counterPartyCollectorEndPoint)));
-			agreementMakingComponent.getTradingProcess().getOrchestrator().OLD_event("SLA_REACHED");
+			agreementMakingComponent.getTradingProcess().getOrchestrator().event("SLA_REACHED");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}		

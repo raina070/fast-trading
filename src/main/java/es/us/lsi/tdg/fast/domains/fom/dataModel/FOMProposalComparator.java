@@ -1,11 +1,16 @@
 package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Comparator;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.*;
-import es.us.lsi.tdg.fast.core.dataModel.agreement.*;
+
 import es.us.lsi.tdg.fast.FAST;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.Assessment;
+import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AssessmentMechanism;
 
 
+@SuppressWarnings("unchecked")
 public class FOMProposalComparator implements Comparator {
 
 	private AgreementPreferences agreePrefs;

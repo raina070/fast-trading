@@ -2,7 +2,6 @@ package es.us.lsi.tdg.fast.domains.fom.dataModel;
 
 import java.util.Set;
 
-import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
 import es.us.lsi.tdg.fast.core.dataModel.statement.SortedDomainConstraint;

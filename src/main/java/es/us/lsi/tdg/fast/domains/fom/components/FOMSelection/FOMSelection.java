@@ -22,6 +22,7 @@ import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMGenericComparator;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalCollectorProcess;
 import es.us.lsi.tdg.fast.domains.fom.components.FOMSelection.process.FOMProposalDispatcherProcess;
 
+@SuppressWarnings("unchecked")
 public class FOMSelection implements Component {
 
 	
@@ -38,7 +39,9 @@ public class FOMSelection implements Component {
 	protected ProposalBuilderInquirerAdaptor 			proposalBuilder;
 	protected ProposalDispatcherAgreementMakerAdaptor 	proposalDispatcher;
 	protected FOMGenericComparator FOMGenericComparator;
-	protected SortedSet<Proposal> 		proposalSet =new TreeSet<Proposal>(FOMGenericComparator);;
+
+	protected SortedSet<Proposal> 		proposalSet =new TreeSet<Proposal>(FOMGenericComparator);
+	
 	public String getName() {
 		return name;
 	}
@@ -46,9 +49,6 @@ public class FOMSelection implements Component {
 	public String getType() {
 		return type;
 	}
-
-	
-	
 	
 	public FOMSelection() {
 		FOMGenericComparator FOMComparator = new FOMGenericComparator();

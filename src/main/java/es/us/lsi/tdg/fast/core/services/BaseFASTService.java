@@ -5,12 +5,13 @@ import javax.xml.ws.Endpoint;
 import es.us.lsi.tdg.fast.core.component.Component;
 import es.us.lsi.tdg.fast.core.trading.TradingProcess;
 
-
+@SuppressWarnings("unchecked")
 public class BaseFASTService implements FASTService{
 		
 	private TradingProcess tradingProcess = null;
 	private Component component = null;
 	private Endpoint endpoint = null;
+	
 	private Class serviceClass = null;
 
 	public BaseFASTService(Component component) {

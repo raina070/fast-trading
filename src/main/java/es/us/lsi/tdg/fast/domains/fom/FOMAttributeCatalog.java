@@ -7,10 +7,9 @@ import java.util.HashSet;
 
 import es.us.lsi.tdg.fast.core.dataModel.statement.Attribute;
 import es.us.lsi.tdg.fast.core.dataModel.statement.BaseAttribute;
-import es.us.lsi.tdg.fast.core.dataModel.statement.DateDomain;
+import es.us.lsi.tdg.fast.core.dataModel.statement.BaseAttributeCatalog;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Domain;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerDomain;
-import es.us.lsi.tdg.fast.core.dataModel.statement.BaseAttributeCatalog;
 
 /**
  * @author Pablo Fernandez Montes

@@ -5,7 +5,6 @@ package es.us.lsi.tdg.fast.core.roles.selection.Proponent;
 
 import es.us.lsi.tdg.fast.core.roles.RoleAdaptor;
 import es.us.lsi.tdg.fast.core.roles.selection.proposalCollector.ProposalCollector;
-import es.us.lsi.tdg.fast.core.roles.selection.proposalCollector.ProposalCollectorProponentAdaptor;
 
 /**
  * 

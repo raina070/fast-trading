@@ -3,25 +3,23 @@ package es.us.lsi.tdg.fast.domains.fom.components.FOMInformation.process;
 import java.util.HashSet;
 import java.util.Set;
 
-import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
-import es.us.lsi.tdg.fast.core.dataModel.agreementPreferences.AgreementPreferences;
+import es.us.lsi.tdg.fast.FAST;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Agreement;
+import es.us.lsi.tdg.fast.core.dataModel.agreement.CounterParty;
 import es.us.lsi.tdg.fast.core.dataModel.agreement.Proposal;
 import es.us.lsi.tdg.fast.core.dataModel.information.BaseCounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.dataModel.information.CounterPartyKnowledge;
 import es.us.lsi.tdg.fast.core.dataModel.information.Information;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IncompatibleAttributeException;
 import es.us.lsi.tdg.fast.core.dataModel.statement.IntegerValue;
-import es.us.lsi.tdg.fast.core.dataModel.statement.SortedDomainConstraint;
 import es.us.lsi.tdg.fast.core.dataModel.statement.SimpleConstraint;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Statement;
 import es.us.lsi.tdg.fast.core.dataModel.statement.Value;
 import es.us.lsi.tdg.fast.core.roles.information.Informant;
-import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMCounterParty;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMInformationTranslator;
+import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMOfferInformation;
 import es.us.lsi.tdg.fast.domains.fom.dataModel.FOMProposalTranslator;
-import es.us.lsi.tdg.fast.FAST;
 
 
 
