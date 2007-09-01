@@ -34,20 +34,10 @@ public class InformantServiceImplementation implements FASTServiceImplementation
 			Offers.add(Integer.toString(FOMInformation.getTimeInit()));
 			Offers.add(Integer.toString(FOMInformation.getTimeEnd()));
 			Offers.add(Double.toString(FOMInformation.getCost()));
-			FAST.shell.showMessage("Sending Offer "+FOMInformation);	
-			//Offers.add("0");
-			//Offers.add("20");
-			//Offers.add("50");	
+			FAST.shell.showMessage("Sending Offer "+FOMInformation);
 		}
 		
-		/**
-		Offers.add("21");
-		Offers.add("40");
-		Offers.add("20");
-		Offers.add("41");
-		Offers.add("60");
-		Offers.add("10");
-		*/
+		
 		return Offers;
 	}
 	
