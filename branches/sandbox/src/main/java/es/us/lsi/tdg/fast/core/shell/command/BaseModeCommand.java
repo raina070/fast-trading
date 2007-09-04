@@ -41,7 +41,7 @@ public class BaseModeCommand extends BaseCommand
 		modeInited=false;
 		preservedCommands.add("exit");
 		preservedCommands.add("help");
-		Command endmodeCommand=new BaseCommand("close"+name+"mode","Closes the "+name+" mode")
+		Command endmodeCommand=new BaseCommand("close","Closes the "+name+" mode")
 		{
 			public void execute(ShellRender shellRenderer){
 				closeMode(shellRenderer);
@@ -71,7 +71,7 @@ public class BaseModeCommand extends BaseCommand
 		for(String command:activeCommansdBackup){
 			if(!preservedCommands.contains(command))
 				try {
-					commandFactory.removeCommand(command);
+					commandFactory.removeCommand(command,false);
 				} catch (UnknownCommandException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -98,7 +98,7 @@ public class BaseModeCommand extends BaseCommand
 		for(Command command:subCommands.values())
 		{			
 			try {
-				commandFactory.removeCommand(command.getName());
+				commandFactory.removeCommand(command.getName(),false);
 			} 
 			catch (UnknownCommandException e) {} 
 			catch (InvalidCommandException e) {}
@@ -126,7 +126,7 @@ public class BaseModeCommand extends BaseCommand
 				initMode(shellRenderer);
 			else
 				shellRenderer.println(canNotInitModeMessage);
-		}else if(arguments[0].equals("close"+getName()+"mode"))
+		}else if(arguments[0].equals("close"))
 		{
 			if(canCloseMode())
 				closeMode(shellRenderer);
@@ -154,7 +154,7 @@ public class BaseModeCommand extends BaseCommand
 		{
 			shellRenderer.println("  - "+command.getName()+": "+command.getHelp());			
 		}
-		shellRenderer.println(" - close"+getName()+"mode: Closes the actual shell mode.");
+		shellRenderer.println(" - close: Closes the actual shell mode.");
 	}
 	
 	protected boolean canCloseMode()
@@ -182,7 +182,7 @@ public class BaseModeCommand extends BaseCommand
 	
 	public void unloadSubCommand(String commandName){
 			try {
-				commandFactory.removeCommand(commandName);
+				commandFactory.removeCommand(commandName,true);
 			} catch (UnknownCommandException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
