@@ -88,11 +88,12 @@ public class CommandFactory {
 		}else throw new UnknownCommandException();
 	}
 
-	public void removeCommand(String commandName) throws UnknownCommandException,InvalidCommandException  {
+	public void removeCommand(String commandName,boolean removeinstances) throws UnknownCommandException,InvalidCommandException  {
 		if (commandRegistry.containsKey(commandName) || commandInstances.containsKey(commandName)){
 			if (activeCommands.contains(commandName)){
 				activeCommands.remove(commandName);
-				commandInstances.remove(commandName);				
+				if(removeinstances)
+					commandInstances.remove(commandName);
 			}else throw new InvalidCommandException();
 		}else throw new UnknownCommandException();
 	}
@@ -107,9 +108,9 @@ public class CommandFactory {
 					
 		if (activeCommands.contains(commandName)){
 			if (commandRegistry.containsKey(commandName)){		
-				if(commandInstances.containsKey(commandName))
+				if(commandInstances.containsKey(commandName)){
 					command=commandInstances.get(commandName);
-				else{								
+				}else{								
 					Class commandClass = commandRegistry.get(commandName);
 					
 					try{					 					
@@ -121,8 +122,7 @@ public class CommandFactory {
 					}catch(InstantiationException e){
 						e.printStackTrace();
 					}
-				}
-			
+				}			
 			}else throw new UnknownCommandException();
 		}else throw new InvalidCommandException();
 		if(command!=null)
