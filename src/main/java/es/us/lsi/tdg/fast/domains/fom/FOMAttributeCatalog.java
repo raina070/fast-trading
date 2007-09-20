@@ -24,8 +24,6 @@ public class FOMAttributeCatalog extends BaseAttributeCatalog {
 		getAttributes().add(attribute);
 		attribute=new BaseAttribute("Cost",domain,"Total cost of the optimization time in €.");
 		getAttributes().add(attribute);
-		//domain=DateDomain.getInstance();
-		//attribute=new BaseAttribute("InvocationMinDate",domain,"Stabilish a minimum time when the service can be invoked, expressed as time and date.");
 		attribute=new BaseAttribute("InvocationMinDate",domain,"Stabilish a minimum time when the service can be invoked, expressed as time and date.");		
 		getAttributes().add(attribute);		
 		attribute=new BaseAttribute("CostFactor",domain,"Factor cost in provider offer.");		
