@@ -1,0 +1,30 @@
+## Extensions ##
+
+### Semantic Preferences ###
+  * Add semantic structures to dataModel
+  * Take advantage of semantic reasoning
+  * Coherence
+  * Best trading preferences based on service preferences
+  * Concept Instantiation. Automated generation of domain-specific stuff (commands, components, etc...) based on AttributeCatalog.
+
+
+## Changes ##
+
+### Features and Requirements ###
+  * Is it usefull to classify statements into these groups?
+  * FOM Translations don't use Features.
+  * Matching Features to Requirements
+
+## Improvements ##
+
+### Multiple domains loaded ###
+  * Technology domains + specific domain
+
+### Interaction Adaptors ###
+  * Using decorator pattern they provide interoperability between DomainSpecific Adaptors and TechnologySpecific Adaptors.
+
+### Trading processes introspection interface ###
+  * Implement some general functions that allow monitoring the status of the trading process, including (generalStatus of subprocesses, number of proposals collected, number of potential counterparties found, etc...).
+
+### FAST as a domain ###
+  * Generic components and wiring as a domain.
